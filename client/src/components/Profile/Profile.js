@@ -14,7 +14,7 @@ function Profile() {
             <div className={styles.topsection}>
                 <div className={styles.pic}>
                     <img
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvPnjeYyAvdnoC_gdZYcJJK_f9f8jZoieK1-JG4YLc3SES_JeHlBbhDEtlyiA2atnl2W0&usqp=CAU"/>
+                        src="https://www.shutterstock.com/image-vector/hand-drawn-comic-gramophone-music-260nw-2258226855.jpg"/>
                 </div>
                 <div className="email">jennifer23@gmail.com</div>
             </div>
