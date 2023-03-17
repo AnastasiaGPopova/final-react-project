@@ -17,6 +17,7 @@ import Edit from "./components/Edit/Edit";
 import Profile from "./components/Profile/Profile";
 import Error from "./components/Error/Error";
 
+
 function App() {
   const initialEmail2 = initialEmail();
   const navigate = useNavigate();
@@ -107,7 +108,7 @@ function App() {
         <Route path="/records/:recordId/edit" element={<Edit onRecordEdit={onRecordEdit} 
                                                              errorMessages={errorMessages}/>} />
          <Route path="/myProfile" element={<Profile/>} />
-         <Route path="/404" element={<Error/>}/>
+         <Route path="*" element={<Error/>}/>
       </Routes>
       <Footer />
     </>
