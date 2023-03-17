@@ -1,0 +1,225 @@
+.profilecard {
+    width: 420px;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 0 10px #00000070;
+    margin: 0 auto;
+    margin-top: 50px;
+    border-radius: 20px;
+  }
+  
+  .topsection {
+    padding: 60px 40px;
+    background: #5aa8a0;
+    opacity: 0.8;
+  }
+  
+  .message,
+  .notif {
+    position: absolute;
+    top: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #ffffff50;
+  }
+  
+  .message {
+    right: 40px;
+  }
+  
+  .notif {
+    left: 40px;
+  }
+  
+  .pic {
+    width: 150px;
+    height: 150px;
+    margin: auto;
+    margin-bottom: 20px;
+    border: 2px solid #ff6d51;
+    border-radius: 50%;
+    padding: 8px;
+    position: relative;
+  }
+  
+  .pic:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border: 1px solid #ff6d51;
+    left: 0;
+    top: 0;
+    box-sizing: border-box;
+    border-radius: 50%;
+  }
+  
+  .pic img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+  
+  .name {
+    color: #f1f1f1;
+    font-size: 28px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  
+  .email {
+    font-size: 18px;
+    color: #222;
+  }
+  
+  .bottomsection {
+    background: #f1f1f1;
+    padding: 60px 40px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+  
+  .border {
+    width: 1px;
+    height: 20px;
+    background: #bbb;
+    margin: 0 30px;
+  }
+  
+  .bottomsection span {
+    font-size: 14px;
+    display: block;
+  }
+  
+  .socialmedia {
+    position: absolute;
+    width: 100%;
+    top: -30px;
+    left: 0;
+    z-index: 1;
+  }
+  
+  .socialmedia i {
+    width: 60px;
+    height: 60px;
+    background: #ff6d51;
+    border-radius: 50%;
+    color: #f1f1f1;
+    font-size: 20px;
+    line-height: 60px !important;
+    margin: 0 10px;
+    position: relative;
+  }
+  
+  .socialmedia i:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: #ff6d51;
+    left: 0;
+    top: 0;
+    box-sizing: border-box;
+    border-radius: 50%;
+    z-index: -1;
+    transition: 0.4s linear;
+  }
+  
+  .socialmedia i:hover:after {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+  
+  .wishbooks {
+    width: 100rem;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 15px;
+    box-shadow: 0 0 10px #00000070;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    background-color: linear-gradient(rgba(216, 196, 196, 0.5), rgba(43, 42, 42, 0.5));
+    opacity: 0.9;
+    min-height: 10rem;
+  }
+  
+  
+  .profilepage{
+    padding-top: 70px;
+  }
+  
+  
+  .record{
+    background-color: linear-gradient(rgba(216, 196, 196, 0.5), rgba(43, 42, 42, 0.5));
+    border-radius: 30px;
+    width: 200px;
+    height: 250px;
+    display: inline-block;
+    border-radius: 10px;
+    padding: 15px 25px;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin: 10px;
+    color: white;
+    box-shadow: 0 0 10px #00000070;
+  }
+  
+  
+  .record img{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    transition: 0.5s ease;
+  }
+  
+  .record p{
+    box-sizing: border-box;
+    text-align: left;
+    font-size: 0.7rem;
+    
+  }
+  
+  .record h5{
+    text-align: left;
+    font-size: 1rem;
+  }
+  
+  
+  
+  .text{
+    transform: translate(-7px, -161px);
+    font-size: 1.2rem;
+    background: #5aa8a0;
+    width: 165px;
+    height: 165px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    opacity: 0.8;
+    text-decoration: none;
+    visibility: hidden;
+    font-weight: bold;
+  }
+  
+  .record:hover .text{
+    visibility: visible;
+    /* transform: translateX(-10px); */
+  }
+  
+  .record:hover img{
+    transform: scale(1.1);
+  }
+
+  .norecords{
+    color: white
+  }

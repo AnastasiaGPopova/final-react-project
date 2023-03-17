@@ -14,6 +14,7 @@ import Catalog from "./components/Catalog/Catalog";
 import Footer from "./components/Footer/Footer";
 import Details from "./components/Details/Details";
 import Edit from "./components/Edit/Edit";
+import Profile from "./components/Profile/Profile";
 
 function App() {
   const initialEmail2 = initialEmail();
@@ -104,6 +105,7 @@ function App() {
         <Route path="/records/:recordId" element={<Details onDeleteClick={onDeleteClick}/>} />
         <Route path="/records/:recordId/edit" element={<Edit onRecordEdit={onRecordEdit} 
                                                              errorMessages={errorMessages}/>} />
+         <Route path="/myProfile" element={<Profile/>} />
 
 
         

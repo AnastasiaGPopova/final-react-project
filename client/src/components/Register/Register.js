@@ -64,7 +64,25 @@ function Register({setUserEmail}) {
             onChange={(e) => setEmail(e.target.value)}
           />
           <br />
+          <br/>
         </div>
+
+          {/* -----------NEW---------- */}
+        <div className={styles.registerbox}>
+          <label htmlFor="email">
+            <i className="fa-solid fa-envelope" /> Gender:
+          </label>
+          <input
+            type="text"
+            id="email"
+            name="email"
+            value={email}
+            placeholder="female /male/ other..."
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <br />
+        </div>
+
 
         <br />
         <div className={styles.registerbox}>
