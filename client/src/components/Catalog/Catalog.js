@@ -2,9 +2,14 @@ import { useEffect, useState } from 'react';
 import styles from '../Catalog/Catalog.module.css';
 import Record from '../SingleRecord/Record';
 import * as data from '../../api/data';
+import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+
 
 
 function Catalog({records}){
+  const navigate = useNavigate()
+
 
 
     return (
@@ -96,17 +101,6 @@ function Catalog({records}){
           </form>
         </div>
 
-        {records===null && (
-            <div className={styles.norecord}>
-              <h2 className={styles.norecord}>
-                There are no records reviews found yet...
-              </h2>
-              <button className={styles.createbutton} type="button">
-                <span className={styles.noentries}></span> CREATE NOW{" "}
-              </button>
-            </div>
-          )}
-
         <section className={styles.pagesection}>
           <div className={styles.container}>
             <div className={styles.row}>
@@ -179,6 +173,18 @@ function Catalog({records}){
                         </a>
                       </div>
                     </div> */}
+
+                    
+        {records.length === 0 && (
+            <div className={styles.norecord}>
+              <h2>
+                There are no records reviews found yet...
+              </h2>
+              <button className={styles.createbutton} type="button" onClick={() => navigate('/create')}>
+                <span className={styles.noentries}></span> CREATE NOW{" "}
+              </button>
+            </div>
+          )}
 
 
                 </div>

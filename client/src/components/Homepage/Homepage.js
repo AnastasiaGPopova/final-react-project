@@ -34,14 +34,18 @@ let lastAddedRecords = records.slice(0,4)
             </div>
           )}
 
-          {/* 
+          
 
-                  ---------- if no records, show this div ----------
-                <div className={styles.norecord}>
-              <h2 className={styles.norecord}>There are no records reviews found yet...</h2>
-              <button class={styles.createbutton} type="button"><span className={styles.noentries}></span> CREATE NOW </button>
-              
-          </div> */}
+                  {/* ---------- if no records, show this div ---------- */}
+
+                {lastAddedRecords.length === 0 &&
+                  <div className={styles.norecord}>
+                    <h2 className={styles.norecord}>There are no records reviews found yet...</h2>
+                    <button class={styles.createbutton} type="button"
+                            onClick={() => navigation('/create')}>
+                            <span className={styles.noentries}></span> CREATE NOW </button>   
+                  </div>
+                }
 
           {lastAddedRecords.map(x => <Record key={x._id}{...x}/>)}
 

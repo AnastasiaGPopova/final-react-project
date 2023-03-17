@@ -541,3 +541,13 @@ transform: translateY(-20px);
 .allSorting{
   transform: translateY(500px);
 }
+
+.norecord{
+  transform: translate(50px, 150px);
+
+}
+
+.norecord h2{
+  color: white;
+
+}

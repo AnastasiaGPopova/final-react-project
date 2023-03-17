@@ -169,6 +169,7 @@
   
   .addacomment{
     transform: translateY(20px);
+    width: 200px;
   }
   
   .addacomment form{
@@ -179,7 +180,7 @@
   
   .addacomment label{
     position: absolute;
-    transform: translateY(-20px);
+    transform: translateY(-10px);
     color: white;
   }
   

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import * as data from "../../api/data";
 import { useNavigate } from "react-router-dom";
 import SingleComment from "./SingleComment/SingleComment";
+import { isUserLogedIn, isOwnerRecord } from "../../util/useLocalStorage";
 
 function Details({ onDeleteClick }) {
   const { recordId } = useParams();
@@ -13,6 +14,13 @@ function Details({ onDeleteClick }) {
   const [commentContent, setCommentContent] = useState("");
   const [allComments, setAllComments] = useState([]);
   const [stateIsChanged, setStateIsChanged] = useState(null);
+
+  let isLogged = false;
+  let isOwner = false;
+
+  if (localStorage.getItem("email")) {
+    isLogged = true;
+  }
 
   //-------Get All Comments for this Record-----------
   useEffect(() => {
@@ -32,6 +40,13 @@ function Details({ onDeleteClick }) {
 
     getCurrent();
   }, [recordId]);
+
+  if (currentRecord._ownerId === localStorage.getItem("userId")) {
+    isOwner = true;
+  }
+
+  console.log(isLogged);
+  console.log(isOwner);
 
   const currentUserId = localStorage.getItem("userId");
 
@@ -58,7 +73,7 @@ function Details({ onDeleteClick }) {
     const newComment = await data.addComment(body);
     setAllComments((state) => [...state, newComment]);
     setStateIsChanged(newComment);
-    e.target.reset()
+    e.target.reset();
   };
 
   return (
@@ -74,34 +89,43 @@ function Details({ onDeleteClick }) {
           <h3>Genre: {currentRecord.genre}</h3>
           <h3>Description: {currentRecord.description}</h3>
           {/* If there is no registered user, do not display buttons*/}
+
+          {isLogged=== true && 
           <div className={styles.buttons}>
             {/* Only for registered user and author of the review */}
-            <a
-              href={`/records/${currentRecord._id}/edit`}
-              className={styles.btnedit}
-            >
-              Edit
-            </a>
-            <a
-              href={`/catalog`}
-              className={styles.btndelete}
-              onClick={() => onDeleteClick(recordId)}
-            >
-              Delete
-            </a>
-            {/* logged in user who has not yet wished book*/}
-            <a
-              href={`/records/${currentRecord._id}`}
-              className={styles.btnwish}
-              onClick={onWishClick}
-            >
-              <i className="fa-regular fa-heart" /> Love it! Wish to hear!
-            </a>
-            {/* logged in user who has already wished book*/}
-            <p className={styles.btnwish}>
-              You already liked this record and added it to your wish list
-            </p>
+            {isOwner ? (
+              <>
+                <a
+                  href={`/records/${currentRecord._id}/edit`}
+                  className={styles.btnedit}
+                >
+                  Edit
+                </a>
+                <a
+                  href={`/catalog`}
+                  className={styles.btndelete}
+                  onClick={() => onDeleteClick(recordId)}
+                >
+                  Delete
+                </a>
+              </>
+            ) : (
+              <>
+                <a
+                  href={`/records/${currentRecord._id}`}
+                  className={styles.btnwish}
+                  onClick={onWishClick}
+                >
+                  <i className="fa-regular fa-heart" /> Love it! Wish to hear!
+                </a>
+                {/* logged in user who has already wished book*/}
+                <p className={styles.btnwish}>
+                  You already liked this record and added it to your wish list
+                </p>
+              </>
+            )}
           </div>
+           }
         </article>
         <article className={styles.detailscardimage}>
           <img src={currentRecord.imageUrl} />
@@ -124,7 +148,6 @@ function Details({ onDeleteClick }) {
               {allComments.map((x) => (
                 <SingleComment key={x._id} {...x} />
               ))}
-
             </article>
           </article>
         </article>

@@ -76,6 +76,7 @@ function App() {
     if(choise){
       const response = await data.deleteRecord(id)
       const newState = records.filter(x => x._id !== id)
+      console.log(newState)
       setRecords(newState)
       setIsChanged(response)
     }
