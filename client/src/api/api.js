@@ -39,7 +39,6 @@ function getOptions(method = 'get', body) {
     };
 
     const token = localStorage.getItem('authToken');
-    console.log(token)
     if (token != null) {
         options.headers['X-Authorization'] = token;
     }
