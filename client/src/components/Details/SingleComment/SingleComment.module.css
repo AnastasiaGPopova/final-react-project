@@ -1,0 +1,26 @@
+.test{
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    background-color: linear-gradient(rgba(71, 68, 68, 0.5), rgba(43, 42, 42, 0.5));
+  }
+  
+  .comments{
+    display: flex;
+    justify-content: center;
+    background-color: linear-gradient(rgba(71, 68, 68, 0.5), rgba(43, 42, 42, 0.5));
+  
+  }
+  
+  .singleComment{
+    border: 1px solid white;
+    border-radius: 20px;
+    padding: 10px;
+    min-height: 100px;
+    width: 500px;
+  }
+  
+  .singleComment p{
+    width: 50px;
+    word-wrap: normal;
+  }

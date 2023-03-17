@@ -1,0 +1,270 @@
+.detailspage {
+    padding-top: 110px;
+    padding-bottom: 110px;
+    height: auto;
+  }
+  
+  
+  .detailspage > h1 {
+  
+    font-size: 30px;
+    text-align: center;
+    color: white;
+    margin-top: -1em;
+    margin-bottom: 0.1em;
+    padding: 5px;
+  }
+  
+  .detailscard {
+    display: flex;
+    width: 680px;
+    height: auto;
+    background-color: linear-gradient(rgba(71, 68, 68, 0.5), rgba(43, 42, 42, 0.5));
+    margin-bottom: 1.5em;
+    border-radius: 30px;
+    margin: 0 auto;
+    box-shadow: 0 0 10px #00000070;
+  }
+  
+  .detailscardimage {
+    position: relative;
+  }
+  
+  .detailscardimage > img {
+    width: 260px;
+    height: 260px;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto auto;
+  }
+  
+  .detailscardimage:hover img{
+    transform: scale(1.1);
+  }
+  
+  .detailscardtext {
+    width: 400px;
+    position: relative;
+    height: auto;
+  }
+  
+  .detailcardtextcontent {
+    position: relative;
+    width: 250px;
+    height: auto;
+    text-align: center;
+    margin-left: 15px;
+    padding-left: 10px;
+    box-shadow: 0px 0px 20px 0px black;
+  }
+  
+  .detailscardtext > h2 {
+    font-size: 23px;
+    text-align: center;
+    line-height: 1.6em;
+    word-wrap: break-word;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    color: white;
+  }
+  
+  .detailscardtext > h3 {
+    font-size: 14.5px;
+    line-height: 2em;
+    word-wrap: break-word;
+    padding-left: 10px;
+    margin-top: 0.2em;
+    color: white;
+  }
+  
+  .detailsbtn:hover {
+    box-shadow: none;
+    background-image: linear-gradient(to left, violet, rgb(41, 151, 151));
+  }
+  
+  .buttons {
+    margin-top: 10%;
+    position: relative;
+    text-align: center;
+    bottom: 2%;
+  }
+  
+  .buttons > .wish-pub {
+    color: #fff;
+    border: none;
+    padding: 5px;
+    outline: none;
+    font-size: 15.3px;
+    width: 250px;
+    margin-left: 5em;
+    font-weight: 600;
+    margin-top: 1.3em;
+    border-radius: 9px;
+    -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    -webkit-transition: 300ms ease-in-out;
+    -o-transition: 200ms ease-in-out;
+    transition: 200ms ease-in-out;
+    border-color: gray;
+    border-style: outset;
+    border-width: 3px;
+    background-color: rgb(113, 81, 155);
+  }
+  
+  .btnedit,
+  .btndelete,
+  .btnwish {
+    color: #fff;
+    border: none;
+    padding: 9px;
+    outline: none;
+    font-size: 15.3px;
+    font-weight: 600;
+    margin-top: 40px;
+    border-radius: 9px;
+    -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    -webkit-transition: 300ms ease-in-out;
+    -o-transition: 200ms ease-in-out;
+    transition: 200ms ease-in-out;
+    border-color: gray;
+    border-style: outset;
+    border-width: 3px;
+  }
+  
+  .btn-edit:hover,
+  .btn-delete:hover {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  
+  .btnedit {
+    background-color: #428aa0;
+  }
+  
+  .btnedit:hover {
+    background-color: #387183;
+  }
+  
+  .btndelete {
+    background-color: #f15505;
+  }
+  
+  .btndelete:hover {
+    background-color: #da4c06;
+  }
+  
+  .btnwish {
+    background-color: #595c61;
+  }
+  
+  .btnwish:hover {
+    background-color: #4b4d50;
+  }
+  
+  
+  .addacomment{
+    transform: translateY(20px);
+  }
+  
+  .addacomment form{
+    padding-left: 20px;
+    display: inline-block;
+    position: absolute;
+  }
+  
+  .addacomment label{
+    position: absolute;
+    transform: translateY(-20px);
+    color: white;
+  }
+  
+  .addacomment textarea{
+    width: 500px;
+    height: 100px;
+    padding: 10px;
+    font-size: 1rem;
+  }
+  
+  
+  .homebuttons{
+    width: 200px;
+    padding: 15px 0;
+    text-align: center;
+    margin: 20px 10px;
+    border-radius: 25px;
+    z-index: 0;
+    font-weight: bold;
+    border: 3px solid #5aa8a0;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .home{
+    background: #5aa8a0;
+    height: 100%;
+    width: 0%;
+    border-radius: 25px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: 0.5s;
+  }
+  
+  .homebuttons:hover .home{
+    width: 100%;
+  }
+  
+  .homebuttons:hover{
+    border: none
+  }
+  
+  .allcomments{
+    padding-top: 200px;
+    height: auto;
+  }
+  
+  .allcomments h3{
+    color: white;
+    padding-bottom: 10px;
+  
+  }
+  
+  .allcomments p{
+    color: white;
+  
+  }
+  
+  /* ------------------------- */
+  .test{
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    background-color: linear-gradient(rgba(71, 68, 68, 0.5), rgba(43, 42, 42, 0.5));
+  }
+  
+  .comments{
+    display: flex;
+    justify-content: center;
+    background-color: linear-gradient(rgba(71, 68, 68, 0.5), rgba(43, 42, 42, 0.5));
+  
+  }
+  
+  .singleComment{
+    border: 1px solid white;
+    border-radius: 20px;
+    padding: 10px;
+  }
+  
+  .singleComment p{
+    width: 80%;
+    word-wrap: normal;
+  }

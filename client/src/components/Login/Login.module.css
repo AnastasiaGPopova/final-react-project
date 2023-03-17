@@ -1,0 +1,134 @@
+
+
+button{
+    width: 200px;
+    padding: 15px 0;
+    text-align: center;
+    margin: 20px 10px;
+    border-radius: 25px;
+    z-index: 0;
+    font-weight: bold;
+    border: 3px solid #5aa8a0;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+span{
+    background: #5aa8a0;
+    height: 100%;
+    width: 0%;
+    border-radius: 25px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: 0.5s;
+}
+
+button:hover span{
+    width: 100%;
+}
+
+button:hover{
+    border: none
+}
+
+form{
+    width: 100%;
+    max-width: 600px;
+
+}
+
+.hero{
+    width: 250vh;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    transform: translateY(140px);
+}
+
+form{
+    width: 150%;
+    max-width: 600px;
+    align-items: center;
+
+}
+
+.registerbox{
+    margin-bottom: 30px;
+    position: relative;
+    display: flex;
+    
+}
+
+input{
+    width: 80%;
+    padding: 10px;
+    outline: 0;
+    border: 2px solid #fff;
+    color: #fff;
+    background: transparent;
+    font-size: 15px;
+}
+
+.registerbox label{
+    height: 100%;
+    position: absolute;
+    transform: translateY(-35px);
+    left: 0;
+    top: 0px;
+    padding: 10px;
+    color: #fff;
+    cursor: text;
+    transition: 0.2s;
+    pointer-events: none;
+}
+
+input:focus{
+    border: 4px solid #fff;
+}
+
+input:focus+label{
+    transform: translateY(50px);
+}
+
+
+.errorMsg{
+    position: absolute;
+    width: 200px;
+    height: auto;
+    border: 3px solid white;
+    border-style: dashed;
+    background-color:transparent;
+    transform: translateX(350px);
+    padding: 10px;
+    margin: 20px;
+    box-sizing: border-box;
+    display: block;
+    justify-content: center;
+    text-align: center;
+}
+
+.errorMsg h1{
+    color: white;
+    padding: 0px;
+}
+.errorMsg p{
+    color: white;
+    padding: 3px;
+    word-break: normal;
+    font-size: 20px;
+    font-style: italic;
+}
+
+.noaccount{
+    color: white;
+    transform: translateX(70px);
+}
+
+.noaccount a{
+    color: white;
+}
