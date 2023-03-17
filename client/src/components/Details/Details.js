@@ -14,9 +14,12 @@ function Details({ onDeleteClick }) {
   const [commentContent, setCommentContent] = useState("");
   const [allComments, setAllComments] = useState([]);
   const [stateIsChanged, setStateIsChanged] = useState(null);
+  const [isAlreadyWished, setIsAlreadyWished] = useState(false)
 
   let isLogged = false;
   let isOwner = false;
+
+  const currentUserId = localStorage.getItem("userId");
 
   if (localStorage.getItem("email")) {
     isLogged = true;
@@ -39,16 +42,29 @@ function Details({ onDeleteClick }) {
     }
 
     getCurrent();
-  }, [recordId]);
+  }, [recordId, stateIsChanged]);
 
   if (currentRecord._ownerId === localStorage.getItem("userId")) {
     isOwner = true;
   }
 
-  console.log(isLogged);
-  console.log(isOwner);
+  console.log(currentRecord.wishingList)
 
-  const currentUserId = localStorage.getItem("userId");
+  useEffect(() => {
+
+    if(currentRecord.hasOwnProperty('wishingList')){
+      if(currentRecord.wishingList.length !== 0){
+        if(currentRecord.wishingList === 1){
+          setIsAlreadyWished(true)
+        } else if (currentRecord.wishingList.includes(currentUserId)){
+          setIsAlreadyWished(true)
+        }
+      }
+    }
+  }, [currentRecord.wishingList])
+
+console.log(isAlreadyWished)
+
 
   async function onWishClick() {
     let newList = currentRecord.wishingList.push(currentUserId);
@@ -111,17 +127,25 @@ function Details({ onDeleteClick }) {
               </>
             ) : (
               <>
+              {isAlreadyWished ? 
+              (
+                <p className={styles.btnwish}>
+                You already liked this record and added it to your wish list
+                </p>
+              )
+               :
+               (
+                <>
                 <a
                   href={`/records/${currentRecord._id}`}
                   className={styles.btnwish}
                   onClick={onWishClick}
                 >
-                  <i className="fa-regular fa-heart" /> Love it! Wish to hear!
+                <i className="fa-regular fa-heart" /> Love it! Wish to hear!
                 </a>
-                {/* logged in user who has already wished book*/}
-                <p className={styles.btnwish}>
-                  You already liked this record and added it to your wish list
-                </p>
+                </>
+               )
+               }
               </>
             )}
           </div>
@@ -133,6 +157,7 @@ function Details({ onDeleteClick }) {
       </article>
       <br />
       <br />
+      {isLogged=== true && 
       <article className={styles.test}>
         <article className={styles.comments}>
           <article className={styles.addacomment}>
@@ -151,7 +176,7 @@ function Details({ onDeleteClick }) {
             </article>
           </article>
         </article>
-      </article>
+      </article>}
     </section>
   );
 }

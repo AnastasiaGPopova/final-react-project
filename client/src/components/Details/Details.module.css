@@ -18,7 +18,7 @@
   .detailscard {
     display: flex;
     width: 680px;
-    height: auto;
+    min-height: 400px;
     background-color: linear-gradient(rgba(71, 68, 68, 0.5), rgba(43, 42, 42, 0.5));
     margin-bottom: 1.5em;
     border-radius: 30px;
@@ -187,7 +187,6 @@
   .addacomment textarea{
     width: 500px;
     height: 100px;
-    padding: 10px;
     font-size: 1rem;
   }
   
@@ -246,10 +245,10 @@
   
   /* ------------------------- */
   .test{
+    width: fit-content;
     height: auto;
-    justify-content: center;
-    align-items: center;
     background-color: linear-gradient(rgba(71, 68, 68, 0.5), rgba(43, 42, 42, 0.5));
+    transform: translateX(400px);
   }
   
   .comments{

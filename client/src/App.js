@@ -65,6 +65,7 @@ function App() {
       setErrorMessages(response.message.join(', '));
     } else {
       setRecords(state => [...state, response]);
+      setErrorMessages(null)
       setIsChanged(response)
       navigate(`/records/${id}`)
     }
@@ -75,9 +76,10 @@ function App() {
 
     if(choise){
       const response = await data.deleteRecord(id)
-      const newState = records.filter(x => x._id !== id)
-      console.log(newState)
-      setRecords(newState)
+      setRecords(state => (state.filter(x => x._id !== id)))
+      // const newState = records.filter(x => x._id !== id)
+      // console.log(newState)
+      // setRecords(newState)
       setIsChanged(response)
     }
   }
