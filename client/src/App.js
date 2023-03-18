@@ -2,9 +2,9 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import * as data from "./api/data";
 import { useEffect, useState } from "react";
+import {useAuthUser} from 'react-auth-kit'
 import { useNavigate } from "react-router-dom";
 import { initialEmail } from "./util/useLocalStorage";
-import { useAuthUser } from "react-auth-kit";
 import Create from "./components/Create/Create";
 import Navigation from "./components/Navigation/Navigation";
 import Homepage from "./components/Homepage/Homepage.js";
@@ -19,6 +19,7 @@ import Error from "./components/Error/Error";
 
 
 function App() {
+  const auth = useAuthUser()
   const initialEmail2 = initialEmail();
   const navigate = useNavigate();
   const [userEmail, setUserEmail] = useState(initialEmail2);
@@ -26,6 +27,8 @@ function App() {
   const [records, setRecords] = useState([]);
   const [errorMessages, setErrorMessages] = useState(null);
   const [isChanged, setIsChanged] = useState(null);
+
+  console.log(auth()?.user)
 
   useEffect(() => {
     if (localStorage.getItem("email")) {
@@ -77,14 +80,10 @@ function App() {
     if(choise){
       const response = await data.deleteRecord(id)
       setRecords(state => (state.filter(x => x._id !== id)))
-      // const newState = records.filter(x => x._id !== id)
-      // console.log(newState)
-      // setRecords(newState)
       setIsChanged(response)
     }
   }
-
-
+  console.log(records)
 
 
   return (

@@ -50,20 +50,20 @@ function Details({ onDeleteClick }) {
 
   console.log(currentRecord.wishingList)
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    if(currentRecord.hasOwnProperty('wishingList')){
-      if(currentRecord.wishingList.length !== 0){
-        if(currentRecord.wishingList === 1){
-          setIsAlreadyWished(true)
-        } else if (currentRecord.wishingList.includes(currentUserId)){
-          setIsAlreadyWished(true)
-        }
-      }
-    }
-  }, [currentRecord.wishingList])
+  //   if(currentRecord.hasOwnProperty('wishingList')){
+  //     if(currentRecord.wishingList.length !== 0){
+  //       if(currentRecord.wishingList === 1){
+  //         setIsAlreadyWished(true)
+  //       } else if (currentRecord.wishingList.includes(currentUserId)){
+  //         setIsAlreadyWished(true)
+  //       }
+  //     }
+  //   }
+  // }, [currentRecord.wishingList])
 
-console.log(isAlreadyWished)
+console.log(currentRecord.wishingList)
 
 
   async function onWishClick() {

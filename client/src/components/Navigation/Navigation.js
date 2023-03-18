@@ -2,6 +2,7 @@ import styles from '../Navigation/Navigation.module.css';
 import * as data from '../../api/data';
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import {useSignOut} from 'react-auth-kit'
 
 
 
@@ -10,8 +11,10 @@ import { Link } from "react-router-dom";
 function Navigation({isLogged, setUserEmail}){
 
     const navigate = useNavigate()
+    const singOut = useSignOut()
 
     async function onLockOutClick() {
+        singOut()
         data.logout()
         setUserEmail('')
         navigate("/")
