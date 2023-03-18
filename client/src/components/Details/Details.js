@@ -15,7 +15,6 @@ function Details({ onDeleteClick, isLogged }) {
   const [allComments, setAllComments] = useState([]);
   const [stateIsChanged, setStateIsChanged] = useState(null);
   const [isAlreadyWished, setIsAlreadyWished] = useState(false)
-  const [wishingListArr, setWishingListArr] = useState([])
 
   let isOwner = false;
 
@@ -34,7 +33,6 @@ function Details({ onDeleteClick, isLogged }) {
   useEffect(() => {
     async function getCurrent() {
       const response = await data.getItemById(recordId);
-      setWishingListArr(response.wishingList)
       setCurrentRecord(response);
     }
 
@@ -47,18 +45,18 @@ function Details({ onDeleteClick, isLogged }) {
 
 
   useEffect(() => {
-    if(wishingListArr.includes(currentUserId)){
-      setIsAlreadyWished(true)
+    if(currentRecord.hasOwnProperty('wishingList')){
+      if(currentRecord.wishingList.includes(currentUserId)){
+        setIsAlreadyWished(true)
+      }
     }
-
   }, [currentRecord])
 
-console.log(wishingListArr)
+console.log(currentRecord.wishingList)
 
 
   async function onWishClick() {
     let newList = currentRecord.wishingList.push(currentUserId);
-    setWishingListArr(newList)
     setCurrentRecord((state) => ({ ...state, ["wishingList"]: newList }));
     let newBody = { ...currentRecord };
     const updatedWish = await data.editRecord(recordId, newBody);
