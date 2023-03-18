@@ -27,7 +27,7 @@ function Details({ onDeleteClick, isLogged }) {
       setAllComments(response);
     }
     getAllComments();
-  }, [stateIsChanged]);
+  }, [stateIsChanged, recordId]);
 
   //--------Get current Record------------
   useEffect(() => {
@@ -37,7 +37,7 @@ function Details({ onDeleteClick, isLogged }) {
     }
 
     getCurrent();
-  }, [recordId]);
+  }, [recordId, stateIsChanged]);
 
   if (currentRecord._ownerId === localStorage.getItem("userId")) {
     isOwner = true;
@@ -50,19 +50,19 @@ function Details({ onDeleteClick, isLogged }) {
         setIsAlreadyWished(true)
       }
     }
-  }, [currentRecord])
+  }, [currentRecord, currentUserId, stateIsChanged])
 
 console.log(currentRecord.wishingList)
 
-
   async function onWishClick() {
-    let newList = currentRecord.wishingList.push(currentUserId);
-    setCurrentRecord((state) => ({ ...state, ["wishingList"]: newList }));
+    currentRecord.wishingList.push(currentUserId);
+    setCurrentRecord((state) => ({ ...state, wishingList: currentRecord.wishingList }));
     let newBody = { ...currentRecord };
     const updatedWish = await data.editRecord(recordId, newBody);
     setStateIsChanged(updatedWish)
     navigate(`/records/${recordId}`);
   }
+
 
   const onChangeHandler = (e) => {
     setCommentContent(e.target.value);
