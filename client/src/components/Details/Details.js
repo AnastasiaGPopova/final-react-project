@@ -15,6 +15,7 @@ function Details({ onDeleteClick, isLogged }) {
   const [allComments, setAllComments] = useState([]);
   const [stateIsChanged, setStateIsChanged] = useState(null);
   const [isAlreadyWished, setIsAlreadyWished] = useState(false)
+  const [wishingListArr, setWishingListArr] = useState([])
 
   let isOwner = false;
 
@@ -33,6 +34,7 @@ function Details({ onDeleteClick, isLogged }) {
   useEffect(() => {
     async function getCurrent() {
       const response = await data.getItemById(recordId);
+      setWishingListArr(response.wishingList)
       setCurrentRecord(response);
     }
 
@@ -43,24 +45,20 @@ function Details({ onDeleteClick, isLogged }) {
     isOwner = true;
   }
 
-  console.log(currentRecord.wishingList)
 
   useEffect(() => {
-
-    if(currentRecord.hasOwnProperty('wishingList')){
-      if(currentRecord.wishingList.length !== 0){
-        if(currentRecord.wishingList.includes(currentUserId)){
-          setIsAlreadyWished(true)
-        }
-      }
+    if(wishingListArr.includes(currentUserId)){
+      setIsAlreadyWished(true)
     }
-  }, [stateIsChanged])
 
-console.log(currentRecord.wishingList)
+  }, [currentRecord])
+
+console.log(wishingListArr)
 
 
   async function onWishClick() {
     let newList = currentRecord.wishingList.push(currentUserId);
+    setWishingListArr(newList)
     setCurrentRecord((state) => ({ ...state, ["wishingList"]: newList }));
     let newBody = { ...currentRecord };
     const updatedWish = await data.editRecord(recordId, newBody);
@@ -104,7 +102,6 @@ console.log(currentRecord.wishingList)
           <div className={styles.buttons}>
             {/* Only for registered user and author of the review */}
             {isOwner ? (
-                    // <li> <Link to="/">Home</Link></li>
               <>
                 <Link to={`/records/${currentRecord._id}/edit`}
                   className={styles.btnedit}
