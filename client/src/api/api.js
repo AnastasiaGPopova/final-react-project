@@ -1,19 +1,16 @@
-import {initialEmail} from "../util/useLocalStorage"
+
 
 export const settings = {
     host: ''
 };
 
-const corsHeaders = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-  }
+
 
 async function request(url, options) {
     try {
         const response = await fetch(url, options);
 
-        if (response.ok == false) {
+        if (response.ok === false) {
                 const error = await response.json();
                 throw new Error(error.message);
         }
@@ -106,11 +103,11 @@ export async function register(email, password, rePassword) {
 }
 
 export async function logout() {
-    const result = await get(settings.host + '/users/logout');
+    // const result = await get(settings.host + '/users/logout');
 
     localStorage.removeItem('email');
     localStorage.removeItem('authToken');
     localStorage.removeItem('userId');
 
-    return result;
+    // return result;
 }

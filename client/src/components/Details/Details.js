@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import * as data from "../../api/data";
 import { useNavigate } from "react-router-dom";
 import SingleComment from "./SingleComment/SingleComment";
-import { isUserLogedIn, isOwnerRecord } from "../../util/useLocalStorage";
+import { Link } from "react-router-dom";
 
-function Details({ onDeleteClick }) {
+function Details({ onDeleteClick, isLogged }) {
   const { recordId } = useParams();
   const navigate = useNavigate();
 
@@ -16,14 +16,9 @@ function Details({ onDeleteClick }) {
   const [stateIsChanged, setStateIsChanged] = useState(null);
   const [isAlreadyWished, setIsAlreadyWished] = useState(false)
 
-  let isLogged = false;
   let isOwner = false;
 
   const currentUserId = localStorage.getItem("userId");
-
-  if (localStorage.getItem("email")) {
-    isLogged = true;
-  }
 
   //-------Get All Comments for this Record-----------
   useEffect(() => {
@@ -42,7 +37,7 @@ function Details({ onDeleteClick }) {
     }
 
     getCurrent();
-  }, [recordId, stateIsChanged]);
+  }, [recordId]);
 
   if (currentRecord._ownerId === localStorage.getItem("userId")) {
     isOwner = true;
@@ -50,18 +45,16 @@ function Details({ onDeleteClick }) {
 
   console.log(currentRecord.wishingList)
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   if(currentRecord.hasOwnProperty('wishingList')){
-  //     if(currentRecord.wishingList.length !== 0){
-  //       if(currentRecord.wishingList === 1){
-  //         setIsAlreadyWished(true)
-  //       } else if (currentRecord.wishingList.includes(currentUserId)){
-  //         setIsAlreadyWished(true)
-  //       }
-  //     }
-  //   }
-  // }, [currentRecord.wishingList])
+    if(currentRecord.hasOwnProperty('wishingList')){
+      if(currentRecord.wishingList.length !== 0){
+        if(currentRecord.wishingList.includes(currentUserId)){
+          setIsAlreadyWished(true)
+        }
+      }
+    }
+  }, [stateIsChanged])
 
 console.log(currentRecord.wishingList)
 
@@ -71,6 +64,7 @@ console.log(currentRecord.wishingList)
     setCurrentRecord((state) => ({ ...state, ["wishingList"]: newList }));
     let newBody = { ...currentRecord };
     const updatedWish = await data.editRecord(recordId, newBody);
+    setStateIsChanged(updatedWish)
     navigate(`/records/${recordId}`);
   }
 
@@ -110,13 +104,13 @@ console.log(currentRecord.wishingList)
           <div className={styles.buttons}>
             {/* Only for registered user and author of the review */}
             {isOwner ? (
+                    // <li> <Link to="/">Home</Link></li>
               <>
-                <a
-                  href={`/records/${currentRecord._id}/edit`}
+                <Link to={`/records/${currentRecord._id}/edit`}
                   className={styles.btnedit}
                 >
                   Edit
-                </a>
+                </Link>
                 <a
                   href={`/catalog`}
                   className={styles.btndelete}
@@ -152,7 +146,7 @@ console.log(currentRecord.wishingList)
            }
         </article>
         <article className={styles.detailscardimage}>
-          <img src={currentRecord.imageUrl} />
+          <img src={currentRecord.imageUrl} alt=""/>
         </article>
       </article>
       <br />

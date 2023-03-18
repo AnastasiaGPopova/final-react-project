@@ -1,12 +1,12 @@
 import styles from "../Login/Login.module.css";
 import * as data from '../../api/data';
-import { initialEmail } from '../../util/useLocalStorage';
+
 
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import {useSignIn} from 'react-auth-kit'
 
-function Login({setUserEmail}) {
+function Login() {
   const navigate = useNavigate();
   const singIn = useSignIn()
   const [email, setEmail] = useState("");
@@ -29,8 +29,6 @@ function Login({setUserEmail}) {
     tokenType: "Bearer",
     authState: {email: response.email, id: response._id}
   })
-  const newEmail = initialEmail()
-  setUserEmail(newEmail)
   navigate('/')
 }
 

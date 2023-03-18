@@ -1,13 +1,13 @@
 import styles from "../Register/Register.module.css";
 import * as data from '../../api/data';
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {useSignIn} from 'react-auth-kit'
-import { initialEmail, useLocalState } from '../../util/useLocalStorage';
 
 
-function Register({setUserEmail}) {
+
+function Register() {
   
   const navigate = useNavigate();
   const singIn = useSignIn()
@@ -33,8 +33,6 @@ function Register({setUserEmail}) {
         authState: {email: response.email, id: response._id}
       })
       setErrorMessages(null)
-      const email = initialEmail()
-      setUserEmail(email)
       navigate('/')
     }
 }

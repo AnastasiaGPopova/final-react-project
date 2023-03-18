@@ -20,7 +20,7 @@ function Profile() {
             setAllMyRecords(response)
         }
         getMy()
-    }, [])
+    }, [userId])
 
 
 
@@ -31,7 +31,7 @@ function Profile() {
             <div className={styles.topsection}>
                 <div className={styles.pic}>
                     <img
-                        src="https://www.shutterstock.com/image-vector/hand-drawn-comic-gramophone-music-260nw-2258226855.jpg"/>
+                        src="https://www.shutterstock.com/image-vector/hand-drawn-comic-gramophone-music-260nw-2258226855.jpg" alt=""/>
                 </div>
                 <div className="email">{userEmail}</div>
             </div>

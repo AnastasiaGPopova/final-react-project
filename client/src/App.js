@@ -4,7 +4,6 @@ import * as data from "./api/data";
 import { useEffect, useState } from "react";
 import {useAuthUser} from 'react-auth-kit'
 import { useNavigate } from "react-router-dom";
-import { initialEmail } from "./util/useLocalStorage";
 import Create from "./components/Create/Create";
 import Navigation from "./components/Navigation/Navigation";
 import Homepage from "./components/Homepage/Homepage.js";
@@ -18,23 +17,27 @@ import Profile from "./components/Profile/Profile";
 import Error from "./components/Error/Error";
 
 
+
 function App() {
   const auth = useAuthUser()
-  const initialEmail2 = initialEmail();
   const navigate = useNavigate();
-  const [userEmail, setUserEmail] = useState(initialEmail2);
   const [isLogged, setIsLogged] = useState(false);
   const [records, setRecords] = useState([]);
   const [errorMessages, setErrorMessages] = useState(null);
   const [isChanged, setIsChanged] = useState(null);
 
-  console.log(auth()?.user)
+  console.log(auth()?.email)
 
   useEffect(() => {
-    if (localStorage.getItem("email")) {
+    const userEmail = auth()?.email
+    if (userEmail !== undefined) {
       setIsLogged(true);
+    } else {
+      setIsLogged(false)
     }
-  }, [userEmail]);
+  }, [auth()?.email, auth()]);
+
+  console.log(isLogged)
 
   useEffect(() => {
     async function getAllRecords() {
@@ -88,13 +91,13 @@ function App() {
 
   return (
     <>
-      <Navigation setUserEmail={setUserEmail} isLogged={isLogged} />
+      <Navigation isLogged={isLogged} />
       <Routes>
         <Route path="/" element={<Homepage records={records} />} />
-        <Route path="/login" element={<Login setUserEmail={setUserEmail} />} />
+        <Route path="/login" element={<Login />} />
         <Route
           path="/register"
-          element={<Register setUserEmail={setUserEmail} />}
+          element={<Register/>}
         />
         <Route path="/catalog" element={<Catalog records={records} />} />
         <Route
@@ -106,7 +109,8 @@ function App() {
             />
           }
         />
-        <Route path="/records/:recordId" element={<Details onDeleteClick={onDeleteClick}/>} />
+        <Route path="/records/:recordId" element={<Details onDeleteClick={onDeleteClick}
+                                                            isLogged={isLogged}/>}/>
         <Route path="/records/:recordId/edit" element={<Edit onRecordEdit={onRecordEdit} 
                                                              errorMessages={errorMessages}/>} />
          <Route path="/myProfile" element={<Profile/>} />

@@ -1,6 +1,5 @@
 import styles from "../Homepage/Homepage.module.css";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
 import Record from "../SingleRecord/Record";
 
 function Homepage({records}) {
@@ -41,7 +40,7 @@ let lastAddedRecords = records.slice(0,4)
                 {lastAddedRecords.length === 0 &&
                   <div className={styles.norecord}>
                     <h2 className={styles.norecord}>There are no records reviews found yet...</h2>
-                    <button class={styles.createbutton} type="button"
+                    <button className={styles.createbutton} type="button"
                             onClick={() => navigation('/create')}>
                             <span className={styles.noentries}></span> CREATE NOW </button>   
                   </div>

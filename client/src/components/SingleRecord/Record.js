@@ -1,5 +1,6 @@
 
 import styles from "../SingleRecord/Record.module.css";
+import { Link } from 'react-router-dom';
 
 
 
@@ -22,10 +23,10 @@ function Record ({
             alt=""
         />
         <div className={styles.center}>
-            <a href={`/records/${_id}`} className={styles.text}>
+            <Link to={`/records/${_id}`} className={styles.text}>
                 <span />
                 Details
-            </a>
+            </Link>
         </div>
     </div>
     )

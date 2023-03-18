@@ -154,7 +154,7 @@ function Catalog({records}){
                   </div>
                 </div>
               </div>
-              {/*END  <div class="col-lg-3 blog-form">*/}
+
               <div className={styles["col-lg-9"]} style={{ paddingLeft: 30 }}>
                 <div className={styles.row}>
                   {/* ---------All Records----------- */}

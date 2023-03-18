@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import styles from "../Create/Create.module.css";
 import * as data from '../../api/data';
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+
 
 
 function Edit({onRecordEdit, errorMessages}) {
@@ -23,10 +24,7 @@ function Edit({onRecordEdit, errorMessages}) {
               }
         }
         getCurrent()
-    }, [recordId])
-
-
-    let genreObject = {}
+    }, [])
 
     // for(const key of recordValues.genre.split(", ")){
     //     setGenres({[key]: true})

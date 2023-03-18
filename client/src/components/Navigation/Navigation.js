@@ -8,15 +8,14 @@ import {useSignOut} from 'react-auth-kit'
 
 
 
-function Navigation({isLogged, setUserEmail}){
+function Navigation({isLogged}){
 
     const navigate = useNavigate()
     const singOut = useSignOut()
 
     async function onLockOutClick() {
-        singOut()
         data.logout()
-        setUserEmail('')
+        singOut()
         navigate("/")
     }
 
@@ -32,8 +31,7 @@ function Navigation({isLogged, setUserEmail}){
                  (<>
                  <li> <Link to="/create">CREATE</Link></li>
                  <li> <Link to="/myProfile">MY PROFILE</Link></li>
-                 {/* <li> <Link to={onLockOutClick}>Logout</Link></li> */}
-                 <li> <a href="/" onClick={onLockOutClick}>LOGOUT</a></li>
+                 <li> <Link to="" onClick={onLockOutClick}>LOGOUT</Link></li>
                  </>)
                  :
                  (<><li> <Link to="/login">Login</Link></li>
