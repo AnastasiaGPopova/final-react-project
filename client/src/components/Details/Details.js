@@ -111,13 +111,12 @@ console.log(currentRecord.wishingList)
                 >
                   Edit
                 </Link>
-                <a
-                  href={`/catalog`}
+                <Link to={`/catalog`}
                   className={styles.btndelete}
                   onClick={() => onDeleteClick(recordId)}
                 >
                   Delete
-                </a>
+                </Link>
               </>
             ) : (
               <>
@@ -130,13 +129,12 @@ console.log(currentRecord.wishingList)
                :
                (
                 <>
-                <a
-                  href={`/records/${currentRecord._id}`}
+                <Link to={`/records/${currentRecord._id}`}
                   className={styles.btnwish}
                   onClick={onWishClick}
                 >
                 <i className="fa-regular fa-heart" /> Love it! Wish to hear!
-                </a>
+                </Link>
                 </>
                )
                }
