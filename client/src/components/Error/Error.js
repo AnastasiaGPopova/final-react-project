@@ -5,7 +5,7 @@ function Error(){
 
  return(
     <section>
-      <div class={styles.notfoundpagecontainer}>
+      <div className={styles.notfoundpagecontainer}>
         <h1>404</h1>
         <h2>Page Not Found</h2>
       </div>

@@ -5,7 +5,7 @@ const parser = require('../utils/parser')
 
 router.get("/", async (req, res) => {
   try {
-    const records = await recordManager.getAll();
+    const records = await recordManager.getAll().populate('_ownerId');
     console.log(records)
     res.json(records);
   } catch (error) {
@@ -18,7 +18,7 @@ router.get("/", async (req, res) => {
 
 router.get("/:recordId", async (req, res) => {
   try {
-    const record = await recordManager.getOne(req.params.recordId);
+    const record = await recordManager.getOne(req.params.recordId).populate('_ownerId');
     console.log(`------------------------------------`)
     console.log(`------------------------------------`)
     console.log(record)

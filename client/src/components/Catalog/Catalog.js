@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 function Catalog({ records }) {
   const navigate = useNavigate();
 
+
   return (
     <>
       <div className={styles.s009}>
@@ -128,7 +129,7 @@ function Catalog({ records }) {
                     />
                     <div className={styles.centersort}>
                       <button className={styles.button2}>
-                        <span className={styles.search} />
+                        <span className={styles.search}/>
                         Likes count
                       </button>
                     </div>

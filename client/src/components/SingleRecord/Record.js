@@ -8,7 +8,9 @@ function Record ({
     recordName,
     artist,
     imageUrl,
-    _id
+    _id,
+    likes,
+    _ownerId
 }){
 
 
@@ -22,6 +24,8 @@ function Record ({
             src={imageUrl}
             alt=""
         />
+        <p>Likes: {likes}</p>
+        <p>Posted By: {_ownerId.email}</p>
         <div className={styles.center}>
             <Link to={`/records/${_id}`} className={styles.text}>
                 <span />

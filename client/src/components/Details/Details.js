@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import SingleComment from "./SingleComment/SingleComment";
 import { Link } from "react-router-dom";
 
-function Details({ onDeleteClick, isLogged }) {
+function Details({ onDeleteClick, isLogged, setIsChanged, setRecords  }) {
   const { recordId } = useParams();
   const navigate = useNavigate();
 
@@ -15,9 +15,9 @@ function Details({ onDeleteClick, isLogged }) {
   const [allComments, setAllComments] = useState([]);
   const [stateIsChanged, setStateIsChanged] = useState(null);
   const [isAlreadyWished, setIsAlreadyWished] = useState(false)
+  const [isOwner, setIsOwner] = useState(false)
+  const [postedBy, setPostedBy] = useState('')
 
-
-  let isOwner = false;
 
   const currentUserId = localStorage.getItem("userId");
 
@@ -34,18 +34,18 @@ function Details({ onDeleteClick, isLogged }) {
   useEffect(() => {
     async function getCurrent() {
       const response = await data.getItemById(recordId);
+      if(response._ownerId === currentUserId){
+        setIsOwner(true)
+      }
+      setPostedBy(response._ownerId.email)
       setCurrentRecord(response);
     }
 
     getCurrent();
-  }, [recordId, stateIsChanged]);
-
-  if (currentRecord._ownerId === localStorage.getItem("userId")) {
-    isOwner = true;
-  }
+  }, [recordId, stateIsChanged, currentUserId]);
 
 
-
+  //--------Setting isWished or not------------
   useEffect(() => {
     if(currentRecord.hasOwnProperty('wishingList')){
       if(currentRecord.wishingList.includes(currentUserId)){
@@ -54,12 +54,16 @@ function Details({ onDeleteClick, isLogged }) {
     }
   }, [currentRecord, currentUserId, stateIsChanged])
 
+
+
   async function onWishClick() {
     currentRecord.wishingList.push(currentUserId);
     currentRecord.likes++
     setCurrentRecord((state) => ({ ...state, wishingList: currentRecord.wishingList, likes: currentRecord.likes }));
     let newBody = { ...currentRecord };
     const updatedWish = await data.editRecord(recordId, newBody);
+    setRecords(state => [...state, updatedWish])
+    setIsChanged(updatedWish)
     setStateIsChanged(updatedWish)
     navigate(`/records/${recordId}`);
   }
@@ -98,6 +102,8 @@ function Details({ onDeleteClick, isLogged }) {
           <h3>Description: {currentRecord.description}</h3>
           {/* If there is no registered user, do not display buttons*/}
           <h3>Likes: {currentRecord.likes}</h3>
+          <h3>Posted by: {postedBy}</h3>
+          
     
 
           {isLogged=== true && 

@@ -29,6 +29,7 @@ function Login() {
     tokenType: "Bearer",
     authState: {email: response.email, id: response._id}
   })
+  setErrorMessages(null)
   navigate('/')
 }
 

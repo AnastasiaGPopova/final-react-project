@@ -86,6 +86,7 @@ function App() {
       setIsChanged(response)
     }
   }
+
   console.log(records)
 
 
@@ -110,7 +111,9 @@ function App() {
           }
         />
         <Route path="/records/:recordId" element={<Details onDeleteClick={onDeleteClick}
-                                                            isLogged={isLogged}/>}/>
+                                                            isLogged={isLogged}
+                                                            setIsChanged={setIsChanged}
+                                                            setRecords={setRecords}/>}/>
         <Route path="/records/:recordId/edit" element={<Edit onRecordEdit={onRecordEdit} 
                                                              errorMessages={errorMessages}/>} />
          <Route path="/myProfile" element={<Profile/>} />
