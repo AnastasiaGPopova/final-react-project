@@ -16,6 +16,7 @@ function Details({ onDeleteClick, isLogged }) {
   const [stateIsChanged, setStateIsChanged] = useState(null);
   const [isAlreadyWished, setIsAlreadyWished] = useState(false)
 
+
   let isOwner = false;
 
   const currentUserId = localStorage.getItem("userId");
@@ -44,6 +45,7 @@ function Details({ onDeleteClick, isLogged }) {
   }
 
 
+
   useEffect(() => {
     if(currentRecord.hasOwnProperty('wishingList')){
       if(currentRecord.wishingList.includes(currentUserId)){
@@ -52,17 +54,17 @@ function Details({ onDeleteClick, isLogged }) {
     }
   }, [currentRecord, currentUserId, stateIsChanged])
 
-console.log(currentRecord.wishingList)
-
   async function onWishClick() {
     currentRecord.wishingList.push(currentUserId);
-    setCurrentRecord((state) => ({ ...state, wishingList: currentRecord.wishingList }));
+    currentRecord.likes++
+    setCurrentRecord((state) => ({ ...state, wishingList: currentRecord.wishingList, likes: currentRecord.likes }));
     let newBody = { ...currentRecord };
     const updatedWish = await data.editRecord(recordId, newBody);
     setStateIsChanged(updatedWish)
     navigate(`/records/${recordId}`);
   }
 
+  console.log(currentRecord)
 
   const onChangeHandler = (e) => {
     setCommentContent(e.target.value);
@@ -95,6 +97,8 @@ console.log(currentRecord.wishingList)
           <h3>Genre: {currentRecord.genre}</h3>
           <h3>Description: {currentRecord.description}</h3>
           {/* If there is no registered user, do not display buttons*/}
+          <h3>Likes: {currentRecord.likes}</h3>
+    
 
           {isLogged=== true && 
           <div className={styles.buttons}>
