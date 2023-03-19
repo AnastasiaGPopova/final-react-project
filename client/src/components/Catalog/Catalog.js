@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "../Catalog/Catalog.module.css";
 import Record from "../SingleRecord/Record";
 import * as dataApi from "../../api/data";
 import { useNavigate } from "react-router-dom";
 
-function Catalog({ records, setRecords, setIsChanged }) {
+function Catalog({ records, setRecords }) {
   const navigate = useNavigate();
  
   const [sortedByLikes, setSortedByLikes] = useState(false)

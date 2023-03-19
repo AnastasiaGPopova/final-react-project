@@ -36,8 +36,8 @@ function App() {
     } else {
       setIsLogged(false)
     }
-  }, [auth()?.email, auth()]);
-
+  }, [auth]);
+  // [auth()?.email, auth()]
   console.log(isLogged)
 
   useEffect(() => {
