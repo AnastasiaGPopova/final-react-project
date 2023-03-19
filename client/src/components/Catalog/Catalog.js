@@ -10,6 +10,13 @@ function Catalog({ records, setRecords, setIsChanged }) {
   const [sortedByLikes, setSortedByLikes] = useState(false)
   const [sortedByRecordName, setSortedByRecordName] = useState(false)
   const [sortedByLastAdded, setSortedByLastAdded] = useState(true)
+  const [searchValues, setSearchValues] = useState({
+    searchItem: "",
+    genres: "",
+    rpm: "",
+    year: "",
+  });
+
 
 
 
@@ -24,40 +31,24 @@ function Catalog({ records, setRecords, setIsChanged }) {
               <div>
                 <input
                   type="text"
-                  id="email"
-                  name="email"
-                  placeholder="Write you email..."
+                  id="searchItem"
+                  name="searchItem"
+                  placeholder="Search artist/record..."
                 />
-              </div>
-              <div className={styles.inputselect}>
-                <select data-trigger="" name="choices-single-defaul">
-                  <option placeholder="" value="">
-                    Record condition
-                  </option>
-                  <option>Poor (P)</option>
-                  <option>Good (G)</option>
-                  <option>Very Good (VG)</option>
-                  <option>Excellent (E)</option>
-                  <option>Near Mint (NM)</option>
-                  <option>Mint (M)</option>
-                </select>
               </div>
               <div className="input-field">
                 <div className={styles.inputselect}>
+                  <label>TEST!</label>
                   <select data-trigger="" name="choices-single-defaul">
-                    <option placeholder="" value="">
-                      Genres
-                    </option>
                     <option>Rock</option>
-                    <option>Rhythm and blues</option>
-                    <option>Classical music</option>
+                    <option>Alternative</option>
                     <option>Jazz</option>
                     <option>Pop</option>
-                    <option>Pop rock</option>
                   </select>
                 </div>
               </div>
             </div>
+            <br/>
 
             <div className={styles.row2}>
               <div className="input-field">
@@ -68,7 +59,6 @@ function Catalog({ records, setRecords, setIsChanged }) {
                     </option>
                     <option>33</option>
                     <option>45</option>
-                    <option>78</option>
                   </select>
                 </div>
               </div>
@@ -82,6 +72,7 @@ function Catalog({ records, setRecords, setIsChanged }) {
                     <option>1950 and older</option>
                     <option>1950-1980</option>
                     <option>1980-2000</option>
+                    <option>2000-2020</option>
                     <option>2020 and newer</option>
                   </select>
                 </div>

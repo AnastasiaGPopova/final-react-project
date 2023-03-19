@@ -26,9 +26,6 @@ function Edit({onRecordEdit, errorMessages}) {
         getCurrent()
     }, [recordId])
 
-    // for(const key of recordValues.genre.split(", ")){
-    //     setGenres({[key]: true})
-    //   }
 
       console.log(genres)
 

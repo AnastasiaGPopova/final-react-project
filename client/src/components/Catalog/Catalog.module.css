@@ -144,7 +144,7 @@ p {
   margin-right: auto;
   margin-left: auto;
   justify-content: center;
-  transform: translateY(50px);
+  transform: translateY(100px);
 }
 
 /* div {
@@ -550,4 +550,8 @@ transform: translateY(-20px);
 .norecord h2{
   color: white;
 
+}
+
+form {
+  transform: translateY(20px);
 }
