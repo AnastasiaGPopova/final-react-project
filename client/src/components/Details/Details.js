@@ -20,6 +20,7 @@ function Details({ onDeleteClick, isLogged, setIsChanged, setRecords  }) {
 
 
   const currentUserId = localStorage.getItem("userId");
+  console.log(currentUserId)
 
   //-------Get All Comments for this Record-----------
   useEffect(() => {
@@ -34,7 +35,7 @@ function Details({ onDeleteClick, isLogged, setIsChanged, setRecords  }) {
   useEffect(() => {
     async function getCurrent() {
       const response = await data.getItemById(recordId);
-      if(response._ownerId === currentUserId){
+      if(response._ownerId._id === currentUserId){
         setIsOwner(true)
       }
       setPostedBy(response._ownerId.email)
@@ -55,6 +56,7 @@ function Details({ onDeleteClick, isLogged, setIsChanged, setRecords  }) {
   }, [currentRecord, currentUserId, stateIsChanged])
 
 
+  console.log(isOwner)
 
   async function onWishClick() {
     currentRecord.wishingList.push(currentUserId);

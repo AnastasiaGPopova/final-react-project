@@ -15,6 +15,7 @@ import Details from "./components/Details/Details";
 import Edit from "./components/Edit/Edit";
 import Profile from "./components/Profile/Profile";
 import Error from "./components/Error/Error";
+import { RecordContext } from "./contexts/RecordContext";
 
 
 
@@ -89,33 +90,42 @@ function App() {
 
   console.log(records)
 
+  const contextValue = {
+    records,
+    setRecords,
+    errorMessages,
+    setErrorMessages,
+    setIsChanged
+  }
+
 
   return (
     <>
       <Navigation isLogged={isLogged} />
+      
       <Routes>
-        <Route path="/" element={<Homepage records={records} />} />
+      {/* <RecordContext.Provider value={contextValue}> */}
+        <Route path="/" element={<Homepage records={records}/>} />
         <Route path="/login" element={<Login />} />
         <Route
           path="/register"
           element={<Register/>}
         />
-        <Route path="/catalog" element={<Catalog records={records} />} />
+        <Route path="/catalog" element={<Catalog records={records}
+                                                   setRecords={setRecords}
+                                                   setIsChanged={setIsChanged}/>} />
         <Route
           path="/create"
-          element={
-            <Create
-              onRecordCreate={onRecordCreate}
-              errorMessages={errorMessages}
-            />
-          }
-        />
+          element={ <Create onRecordCreate={onRecordCreate}
+                            errorMessages={errorMessages}/>}/>
         <Route path="/records/:recordId" element={<Details onDeleteClick={onDeleteClick}
                                                             isLogged={isLogged}
                                                             setIsChanged={setIsChanged}
                                                             setRecords={setRecords}/>}/>
         <Route path="/records/:recordId/edit" element={<Edit onRecordEdit={onRecordEdit} 
                                                              errorMessages={errorMessages}/>} />
+        {/* </RecordContext.Provider> */}
+                                                             
          <Route path="/myProfile" element={<Profile/>} />
          <Route path="*" element={<Error/>}/>
       </Routes>

@@ -10,10 +10,11 @@ function Record ({
     imageUrl,
     _id,
     likes,
-    _ownerId
+   _ownerId,
+    createdAt
 }){
 
-
+    let newDate = new Date(createdAt).toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric",  hour: 'numeric', minute: 'numeric'})
 
     return(
 
@@ -25,7 +26,7 @@ function Record ({
             alt=""
         />
         <p>Likes: {likes}</p>
-        <p>Posted By: {_ownerId.email}</p>
+        <p>Created on: {newDate}</p>
         <div className={styles.center}>
             <Link to={`/records/${_id}`} className={styles.text}>
                 <span />

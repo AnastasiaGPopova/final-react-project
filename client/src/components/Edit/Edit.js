@@ -24,7 +24,7 @@ function Edit({onRecordEdit, errorMessages}) {
               }
         }
         getCurrent()
-    }, [])
+    }, [recordId])
 
     // for(const key of recordValues.genre.split(", ")){
     //     setGenres({[key]: true})
@@ -205,7 +205,7 @@ function Edit({onRecordEdit, errorMessages}) {
             />
           </div>
         </div>
-        <button className={styles.submitButton}  type="button" onClick={onSubmitHandler}><span></span>CREATE RECORD </button>
+        <button className={styles.submitButton}  type="button" onClick={onSubmitHandler}><span></span>EDIT RECORD </button>
       </form>
     </div>
   );

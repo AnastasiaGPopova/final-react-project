@@ -4,8 +4,15 @@ import Record from "../SingleRecord/Record";
 import * as data from "../../api/data";
 import { useNavigate } from "react-router-dom";
 
-function Catalog({ records }) {
+function Catalog({ records, setRecords, setIsChanged }) {
   const navigate = useNavigate();
+  const [isSearched, setIsSearched] = useState(false)
+  const [sortedByLikes, setSortedByLikes] = useState(false)
+  const [sortedByRecordName, setSortedByRecordName] = useState(false)
+  const [sortedByLastAdded, setSortedByLastAdded] = useState(true)
+
+
+
 
 
   return (
@@ -115,8 +122,13 @@ function Catalog({ records }) {
                       alt=""
                     />
                     <div className={styles.centersort}>
-                      <button className={styles.button1}>
-                        <span className={styles.search} />
+                      <button className={styles.button1} onClick={async() => {
+                        setSortedByLastAdded(true)
+                        setSortedByLikes(false)
+                        setSortedByRecordName(false)
+                        setRecords(state => ([...state].sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt))))
+                      }}>
+                        <span className={styles.search}/>
                         Last added
                       </button>
                     </div>
@@ -128,7 +140,12 @@ function Catalog({ records }) {
                       alt=""
                     />
                     <div className={styles.centersort}>
-                      <button className={styles.button2}>
+                      <button className={styles.button2} onClick={() => {
+                        setSortedByLikes(true)
+                        setSortedByLastAdded(false)
+                        setSortedByRecordName(false)
+                        setRecords(state => ([...state].sort((a,b) => b.likes - a.likes)))
+                      }}>
                         <span className={styles.search}/>
                         Likes count
                       </button>
@@ -141,7 +158,12 @@ function Catalog({ records }) {
                       alt=""
                     />
                     <div className={styles.centersort}>
-                      <button className={styles.button3}>
+                      <button className={styles.button3} onClick={() => {
+                        setSortedByLikes(false)
+                        setSortedByLastAdded(false)
+                        setSortedByRecordName(true)
+                        setRecords(state => ([...state].sort((a,b) => a.recordName > b.recordName ? 1 : -1)))
+                      }}>
                         <span className={styles.search} />
                         Alphabetical
                       </button>
@@ -153,11 +175,24 @@ function Catalog({ records }) {
 
             <div className={styles["col-lg-9"]} style={{ paddingLeft: 30 }}>
               <div className={styles.row}>
-                {/* ---------All Records----------- */}
-                {records.map((x) => (
-                  <Record key={x._id} {...x} />
-                ))}
 
+                
+                {/* ---------All Records----------- */}
+
+                {sortedByLikes &&
+                records.map((x) => (<Record key={x._id} {...x} />
+                ))
+                }
+
+                {sortedByLastAdded &&
+                 records.map((x) => (<Record key={x._id} {...x} />
+                 ))
+                } 
+
+                {sortedByRecordName &&
+                 records.map((x) => (<Record key={x._id} {...x} />
+                 ))
+                } 
 
                 {records.length === 0 && (
                   <div className={styles.norecord}>
