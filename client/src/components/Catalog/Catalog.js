@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import styles from "../Catalog/Catalog.module.css";
 import Record from "../SingleRecord/Record";
-import * as data from "../../api/data";
+import * as dataApi from "../../api/data";
 import { useNavigate } from "react-router-dom";
 
 function Catalog({ records, setRecords, setIsChanged }) {
   const navigate = useNavigate();
-  const [isSearched, setIsSearched] = useState(false)
+ 
   const [sortedByLikes, setSortedByLikes] = useState(false)
   const [sortedByRecordName, setSortedByRecordName] = useState(false)
   const [sortedByLastAdded, setSortedByLastAdded] = useState(true)
@@ -17,7 +17,24 @@ function Catalog({ records, setRecords, setIsChanged }) {
     year: "",
   });
 
+  const onChangeHandler = (e) => {
+    setSearchValues((state) => ({ ...state, [e.target.name]: e.target.value }));
+  };
 
+  async function onSubmitHandler(e){
+    e.preventDefault()
+    const data = {
+      searchItem: searchValues.searchItem,
+      genres: searchValues.genres,
+      rpm: searchValues.rpm,
+      year: searchValues.year
+    }
+
+    const response = await dataApi.searchFunction(data)
+    console.log(response)
+    setRecords(response)
+
+  }
 
 
 
@@ -25,7 +42,7 @@ function Catalog({ records, setRecords, setIsChanged }) {
   return (
     <>
       <div className={styles.s009}>
-        <form>
+        <form onSubmit={onSubmitHandler}>
           <div className={styles.advancesearch}>
             <div className={styles.row1}>
               <div>
@@ -34,54 +51,60 @@ function Catalog({ records, setRecords, setIsChanged }) {
                   id="searchItem"
                   name="searchItem"
                   placeholder="Search artist/record..."
-                />
-              </div>
-              <div className="input-field">
-                <div className={styles.inputselect}>
-                  <label>TEST!</label>
-                  <select data-trigger="" name="choices-single-defaul">
-                    <option>Rock</option>
-                    <option>Alternative</option>
-                    <option>Jazz</option>
-                    <option>Pop</option>
-                  </select>
-                </div>
+                  value={searchValues.searchItem}
+                  onChange={onChangeHandler}/>
               </div>
             </div>
             <br/>
 
-            <div className={styles.row2}>
-              <div className="input-field">
+            {/* <div className={styles.row2}>
+            <div className={styles.inputfield}>
+            <label htmlFor="genre">Genre!</label>
                 <div className={styles.inputselect}>
-                  <select data-trigger="" name="choices-single-defaul">
-                    <option placeholder="" value="">
-                      RPM
-                    </option>
-                    <option>33</option>
-                    <option>45</option>
+                  <select name="genres" id="genre" value={searchValues.genres}
+                                                    onChange={onChangeHandler}>
+                    <option value='all'>All</option>
+                    <option value='rock'>Rock</option>
+                    <option value='alternative'>Alternative</option>
+                    <option value='jazz'>Jazz</option>
+                    <option value='pop'>Pop</option>
+                  </select>
+                </div>
+              </div>
+              <div className={styles.inputfield}>
+              <label htmlFor="rpm">RPM!</label>
+                <div className={styles.inputselect}>
+                  <select name="rpm" id="rpm" value={searchValues.rpm}
+                                              onChange={onChangeHandler}>
+                    <option value='all'>All</option>
+                    <option value='33'>33</option>
+                    <option value='45'>45</option>
                   </select>
                 </div>
               </div>
 
               <div className={styles.inputfield}>
+              <label htmlFor="year">Year!</label>
                 <div className={styles.inputselect}>
-                  <select data-trigger="" name="choices-single-defaul">
-                    <option placeholder="" value="">
-                      Year
-                    </option>
-                    <option>1950 and older</option>
-                    <option>1950-1980</option>
-                    <option>1980-2000</option>
-                    <option>2000-2020</option>
-                    <option>2020 and newer</option>
+                  <select name="year" id="year" value={searchValues.year}
+                                                onChange={onChangeHandler}>
+                    <option value='all'>All</option>
+                    <option>1980 and older</option>
+                    <option>1980-2020</option>
+                    <option>2021 and newer</option>
                   </select>
                 </div>
               </div>
-            </div>
+            </div> */}
+            <br/>
 
             <div className={styles.row3}>
               <div className={styles.groupbtn}>
-                <button className={styles.buttonReset}>
+                <button className={styles.buttonReset} onClick={async () => {
+                  const result = await dataApi.getRecords()
+                  setRecords(result)
+                  setSearchValues((state) => ({ ...state, searchItem:'' }))
+                }}>
                   <span className={styles.searchAdvanced} />
                   RESET
                 </button>

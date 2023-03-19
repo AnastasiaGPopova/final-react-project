@@ -14,15 +14,6 @@ export async function getRecords() {
 }
 
 
-export async function get4LastAdded() {
-    const response = await api.get(host + '/records/getLast');
-    console.log(response)
-    return response
-
-}
-
-
-
 
 export async function getItemById(id) {
     return await api.get(host + '/records/' + id);
@@ -57,6 +48,14 @@ export async function addToWishingList(recordId, data) {
     }
 }
 
+export async function searchFunction(data) {
+    try{
+        return await api.post(host + '/search', data);
+        
+    }catch(error){
+        console.log(error)
+    }
+}
 
 
 

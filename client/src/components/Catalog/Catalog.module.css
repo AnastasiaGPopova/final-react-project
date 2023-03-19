@@ -553,5 +553,11 @@ transform: translateY(-20px);
 }
 
 form {
-  transform: translateY(20px);
+  transform: translateY(15px);
+}
+
+form label{
+  position: inherit;
+  z-index: 2;
+  color: white;
 }

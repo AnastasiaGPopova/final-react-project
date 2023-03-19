@@ -6,7 +6,6 @@ const parser = require('../utils/parser')
 router.get("/", async (req, res) => {
   try {
     const records = await recordManager.getAll().populate('_ownerId');
-    console.log(records)
     res.json(records);
   } catch (error) {
     res.json(parser.parseError(error))
@@ -19,9 +18,6 @@ router.get("/", async (req, res) => {
 router.get("/:recordId", async (req, res) => {
   try {
     const record = await recordManager.getOne(req.params.recordId).populate('_ownerId');
-    console.log(`------------------------------------`)
-    console.log(`------------------------------------`)
-    console.log(record)
     res.json(record);
   } catch (error) {
     return res.json(parser.parseError(error));
@@ -34,7 +30,6 @@ router.post("/", async (req, res) => {
   const recordData = req.body;
 
   try {
-    console.log(req.user)
     const record = await recordManager.create(recordData, req.user._id);
 
     res.json({ _id: record._id });
@@ -52,8 +47,6 @@ router.put("/:recordId", async (req, res) => {
 
     try {
     const updatredRecord =  await recordManager.update(req.params.recordId, recordData);
-    console.log(`UPDATED RECORD`)
-    console.log(updatredRecord)
 
       res.json(updatredRecord);
     } catch (error) {
@@ -63,8 +56,6 @@ router.put("/:recordId", async (req, res) => {
 });
 
 router.delete("/:recordId", async (req, res) => {
-  console.log(`---------onDETELE--------------`)
-  console.log(req.params.recordId)
   let isOwner = false;
   let currentRecord = await recordManager.getOne(req.params.recordId);
     try {
