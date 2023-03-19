@@ -53,41 +53,6 @@ function App() {
     getAllRecords();
   }, [isChanged]);
 
-  const onRecordCreate = async (body) => {
-    const response = await data.createRecord(body);
-
-    if (response.hasOwnProperty("errors")) {
-      setErrorMessages(response.message.join(", "));
-    } else {
-      setRecords(state => [...state, response]);
-      setIsChanged(response)
-      navigate("/catalog");
-    }
-  };
-
-  const onRecordEdit = async (id, body) => {
-    const response = await data.editRecord(id, body);
-
-    if (response.hasOwnProperty("errors")) {
-      setErrorMessages(response.message.join(', '));
-    } else {
-      setRecords(state => [...state, response]);
-      setErrorMessages(null)
-      setIsChanged(response)
-      navigate(`/records/${id}`)
-    }
-  };
-
-  async function onDeleteClick(id){
-    const choise = window.confirm("Are you sure you want to delete this item?")
-
-    if(choise){
-      const response = await data.deleteRecord(id)
-      setRecords(state => (state.filter(x => x._id !== id)))
-      setIsChanged(response)
-    }
-  }
-
   console.log(records)
 
   const contextValue = {
@@ -95,40 +60,30 @@ function App() {
     setRecords,
     errorMessages,
     setErrorMessages,
-    setIsChanged
+    setIsChanged,
+    isLogged
   }
 
 
   return (
     <>
       <Navigation isLogged={isLogged} />
-      
+
+      <RecordContext.Provider value={contextValue}>
       <Routes>
-      {/* <RecordContext.Provider value={contextValue}> */}
         <Route path="/" element={<Homepage records={records}/>} />
         <Route path="/login" element={<Login />} />
-        <Route
-          path="/register"
-          element={<Register/>}
-        />
-        <Route path="/catalog" element={<Catalog records={records}
-                                                   setRecords={setRecords}
-                                                   setIsChanged={setIsChanged}/>} />
-        <Route
-          path="/create"
-          element={ <Create onRecordCreate={onRecordCreate}
-                            errorMessages={errorMessages}/>}/>
-        <Route path="/records/:recordId" element={<Details onDeleteClick={onDeleteClick}
-                                                            isLogged={isLogged}
-                                                            setIsChanged={setIsChanged}
-                                                            setRecords={setRecords}/>}/>
-        <Route path="/records/:recordId/edit" element={<Edit onRecordEdit={onRecordEdit} 
-                                                             errorMessages={errorMessages}/>} />
-        {/* </RecordContext.Provider> */}
+        <Route path="/register" element={<Register/>}/>
+        <Route path="/catalog" element={<Catalog/>} />
+        <Route path="/create" element={ <Create/>}/>
+        <Route path="/records/:recordId" element={<Details/>}/>
+        <Route path="/records/:recordId/edit" element={<Edit/>} />
+
                                                              
          <Route path="/myProfile" element={<Profile/>} />
          <Route path="*" element={<Error/>}/>
       </Routes>
+      </RecordContext.Provider>
       <Footer />
     </>
   );

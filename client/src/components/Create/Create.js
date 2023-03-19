@@ -2,8 +2,11 @@ import { useState } from "react";
 import styles from "../Create/Create.module.css";
 import * as data from "../../api/data";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import {RecordContext } from "../../contexts/RecordContext";
 
-function Create({ onRecordCreate, errorMessages }) {
+function Create() {
+  const {setErrorMessages, setRecords, setIsChanged, errorMessages} = useContext(RecordContext)
   const navigate = useNavigate();
   const [genres, setGenres] = useState({});
   const [recordValues, setRecordValues] = useState({
@@ -47,7 +50,16 @@ function Create({ onRecordCreate, errorMessages }) {
 
     console.log(body)
 
-    onRecordCreate(body);
+    const response = await data.createRecord(body);
+
+    if (response.hasOwnProperty("errors")) {
+      setErrorMessages(response.message.join(", "));
+    } else {
+      setRecords(state => [...state, response]);
+      setErrorMessages(null)
+      setIsChanged(response)
+      navigate("/catalog");
+    }
   };
 
   return (

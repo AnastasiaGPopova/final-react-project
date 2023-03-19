@@ -1,12 +1,14 @@
 import { useState } from "react";
+import { useContext } from "react";
+import {RecordContext } from "../../contexts/RecordContext";
 import styles from "../Catalog/Catalog.module.css";
 import Record from "../SingleRecord/Record";
 import * as dataApi from "../../api/data";
 import { useNavigate } from "react-router-dom";
 
-function Catalog({ records, setRecords }) {
+function Catalog() {
   const navigate = useNavigate();
- 
+  const {records, setRecords} = useContext(RecordContext)
   const [sortedByLikes, setSortedByLikes] = useState(false)
   const [sortedByRecordName, setSortedByRecordName] = useState(false)
   const [sortedByLastAdded, setSortedByLastAdded] = useState(true)

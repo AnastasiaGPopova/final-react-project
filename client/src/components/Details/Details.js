@@ -5,8 +5,11 @@ import * as data from "../../api/data";
 import { useNavigate } from "react-router-dom";
 import SingleComment from "./SingleComment/SingleComment";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import {RecordContext } from "../../contexts/RecordContext";
 
-function Details({ onDeleteClick, isLogged, setIsChanged, setRecords  }) {
+function Details() {
+  const {setErrorMessages, setRecords, setIsChanged, errorMessages, isLogged} = useContext(RecordContext)
   const { recordId } = useParams();
   const navigate = useNavigate();
 
@@ -71,6 +74,17 @@ function Details({ onDeleteClick, isLogged, setIsChanged, setRecords  }) {
   }
 
   console.log(currentRecord)
+
+
+  async function onDeleteClick(id){
+    const choise = window.confirm("Are you sure you want to delete this item?")
+
+    if(choise){
+      const response = await data.deleteRecord(id)
+      setRecords(state => (state.filter(x => x._id !== id)))
+      setIsChanged(response)
+    }
+  }
 
   const onChangeHandler = (e) => {
     setCommentContent(e.target.value);

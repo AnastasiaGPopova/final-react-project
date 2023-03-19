@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
 import styles from "../Create/Create.module.css";
 import * as data from '../../api/data';
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import {RecordContext } from "../../contexts/RecordContext";
 
 
 
-function Edit({onRecordEdit, errorMessages}) {
+function Edit() {
     const {recordId} = useParams()
+    const navigate = useNavigate()
+    const {setErrorMessages, setRecords, setIsChanged, errorMessages} = useContext(RecordContext)
 
 
     const [genres, setGenres] = useState({});
@@ -60,7 +64,17 @@ function Edit({onRecordEdit, errorMessages}) {
           genre: realGenre,
         }
 
-        onRecordEdit(recordId, body)
+        
+          const response = await data.editRecord(recordId, body);
+      
+          if (response.hasOwnProperty("errors")) {
+            setErrorMessages(response.message.join(', '));
+          } else {
+            setRecords(state => [...state, response]);
+            setErrorMessages(null)
+            setIsChanged(response)
+            navigate(`/records/${recordId}`)
+          }
       };
 
   return (

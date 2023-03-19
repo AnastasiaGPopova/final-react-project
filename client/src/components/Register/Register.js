@@ -1,9 +1,12 @@
 import styles from "../Register/Register.module.css";
 import * as data from '../../api/data';
+import { useContext } from "react";
+import {RecordContext } from "../../contexts/RecordContext";
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {useSignIn} from 'react-auth-kit'
+
 
 
 

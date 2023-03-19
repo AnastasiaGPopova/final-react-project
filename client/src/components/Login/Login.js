@@ -5,6 +5,8 @@ import * as data from '../../api/data';
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import {useSignIn} from 'react-auth-kit'
+import { useContext } from "react";
+import {RecordContext } from "../../contexts/RecordContext";
 
 function Login() {
   const navigate = useNavigate();
