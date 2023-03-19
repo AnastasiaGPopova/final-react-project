@@ -54,6 +54,9 @@ function Create() {
 
     if (response.hasOwnProperty("errors")) {
       setErrorMessages(response.message.join(", "));
+      setTimeout(()=> {
+        setErrorMessages(null)
+      },3000)
     } else {
       setRecords(state => [...state, response]);
       setErrorMessages(null)
@@ -65,11 +68,10 @@ function Create() {
   return (
     <div className={styles.hero}>
       {errorMessages && (
-        <div className={styles.errorMsg}>
+      <div className={styles.errorMsg}>
           <h1> Error Message:</h1>
           <p>{errorMessages}</p>
-        </div>
-      )}
+        </div>)}
 
       <form>
         <div className={styles.registerbox}>

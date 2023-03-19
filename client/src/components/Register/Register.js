@@ -28,6 +28,9 @@ function Register() {
 
       if(response.hasOwnProperty('errors')){
         setErrorMessages(response.message)
+        setTimeout(()=> {
+          setErrorMessages(null)
+        },3000)
       } else {
       singIn({
         token: response.accessToken,

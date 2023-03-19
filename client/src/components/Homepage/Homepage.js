@@ -1,9 +1,12 @@
 import styles from "../Homepage/Homepage.module.css";
 import { useNavigate } from "react-router-dom";
 import Record from "../SingleRecord/Record";
+import { useContext } from "react";
+import {RecordContext } from "../../contexts/RecordContext";
 
-function Homepage({records}) {
+function Homepage() {
   const navigation = useNavigate();
+  const {records} = useContext(RecordContext)
 
   function joinNowClick() {
     navigation("/register");

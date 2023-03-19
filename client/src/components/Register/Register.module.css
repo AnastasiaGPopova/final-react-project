@@ -90,6 +90,7 @@ input:focus{
 }
 
 .errorMsg{
+
     position: absolute;
     width: 200px;
     height: auto;
@@ -116,6 +117,8 @@ input:focus{
     font-size: 20px;
     font-style: italic;
 }
+
+
     
 .noaccount{
     color: white;

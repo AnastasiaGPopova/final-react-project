@@ -3,7 +3,6 @@ import { Route, Routes } from "react-router-dom";
 import * as data from "./api/data";
 import { useEffect, useState } from "react";
 import {useAuthUser} from 'react-auth-kit'
-import { useNavigate } from "react-router-dom";
 import Create from "./components/Create/Create";
 import Navigation from "./components/Navigation/Navigation";
 import Homepage from "./components/Homepage/Homepage.js";
@@ -21,7 +20,6 @@ import { RecordContext } from "./contexts/RecordContext";
 
 function App() {
   const auth = useAuthUser()
-  const navigate = useNavigate();
   const [isLogged, setIsLogged] = useState(false);
   const [records, setRecords] = useState([]);
   const [errorMessages, setErrorMessages] = useState(null);
@@ -37,7 +35,7 @@ function App() {
       setIsLogged(false)
     }
   }, [auth]);
-  // [auth()?.email, auth()]
+
   console.log(isLogged)
 
   useEffect(() => {
@@ -71,15 +69,13 @@ function App() {
 
       <RecordContext.Provider value={contextValue}>
       <Routes>
-        <Route path="/" element={<Homepage records={records}/>} />
+        <Route path="/" element={<Homepage/>} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register/>}/>
         <Route path="/catalog" element={<Catalog/>} />
         <Route path="/create" element={ <Create/>}/>
         <Route path="/records/:recordId" element={<Details/>}/>
-        <Route path="/records/:recordId/edit" element={<Edit/>} />
-
-                                                             
+        <Route path="/records/:recordId/edit" element={<Edit/>} />                                                    
          <Route path="/myProfile" element={<Profile/>} />
          <Route path="*" element={<Error/>}/>
       </Routes>

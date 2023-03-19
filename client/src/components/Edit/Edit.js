@@ -31,7 +31,7 @@ function Edit() {
     }, [recordId])
 
 
-      console.log(genres)
+      console.log(recordValues._ownerId)
 
 
       const onChangeHandler = (e) => {
@@ -68,7 +68,10 @@ function Edit() {
           const response = await data.editRecord(recordId, body);
       
           if (response.hasOwnProperty("errors")) {
-            setErrorMessages(response.message.join(', '));
+            setErrorMessages(response.message.join(', '))
+            setTimeout(()=> {
+              setErrorMessages(null)
+            },3000)
           } else {
             setRecords(state => [...state, response]);
             setErrorMessages(null)
@@ -96,7 +99,7 @@ function Edit() {
             id="recordName"
             name="recordName"
             placeholder="Write you record name..."
-            value={recordValues.recordName}
+            value={recordValues.recordName || ""}
             onChange={onChangeHandler}
           />
         </div>
@@ -105,12 +108,12 @@ function Edit() {
             <i className="fa-solid fa-envelope" /> Artist:
           </label>
           <input
-            className={styles.registerboxInput}
+            className={styles.registerboxInput || ""}
             type="text"
             id="artist"
             name="artist"
             placeholder="Write you record name..."
-            value={recordValues.artist}
+            value={recordValues.artist || ""}
             onChange={onChangeHandler}
           />
         </div>
@@ -123,7 +126,7 @@ function Edit() {
             id="year"
             name="year"
             placeholder="Write the year..."
-            value={recordValues.year}
+            value={recordValues.year || ""}
             onChange={onChangeHandler}
           />
         </div>
@@ -137,7 +140,7 @@ function Edit() {
             id="imageurl"
             name="imageUrl"
             placeholder="Write the image url..."
-            value={recordValues.imageUrl}
+            value={recordValues.imageUrl || ""}
             onChange={onChangeHandler}
           />
         </div>
@@ -152,7 +155,7 @@ function Edit() {
             id="description"
             name="description"
             placeholder="Write description..."
-            value={recordValues.description}
+            value={recordValues.description || ""}
             onChange={onChangeHandler}
           />
         </div>
@@ -165,7 +168,7 @@ function Edit() {
             <input className="radioInput" type="radio" id="PRM33" name="rpm" 
             value="33"
             onChange={onChangeHandler}
-            checked={recordValues.rpm === "33"}
+            checked={recordValues.rpm === "33" || false}
             />
           </div>
 
@@ -174,7 +177,7 @@ function Edit() {
             <input className="radioInput" type="radio" id="PRM33" name="rpm"
             value="45"
             onChange={onChangeHandler}
-            checked={recordValues.rpm === "45"}
+            checked={recordValues.rpm === "45" || false}
             />
           </div>
 
@@ -187,7 +190,7 @@ function Edit() {
             <label className={styles.radioLabels} htmlFor="genre">Rock</label>
             <input className="radioInput" type="checkbox" id="rock" name="genre" 
             onChange={onGenresChange}
-            checked={genres["rock"]}
+            checked={genres["rock"] || false}
             
             />
           </div>
@@ -196,7 +199,7 @@ function Edit() {
             <label className={styles.radioLabels} htmlFor="genre">Jazz</label>
             <input className="radioInput" type="checkbox" id="jazz" name="genre" 
             onChange={onGenresChange}
-            checked={genres["jazz"]}
+            checked={genres["jazz"] || false}
             />
           </div>
 
@@ -204,7 +207,7 @@ function Edit() {
             <label className={styles.radioLabels} htmlFor="genre">Pop</label>
             <input className="radioInput" type="checkbox" id="pop" name="genre" 
             onChange={onGenresChange}
-            checked={genres["pop"]}
+            checked={genres["pop"] || false}
             />
           </div>
 
@@ -212,7 +215,7 @@ function Edit() {
             <label className={styles.radioLabels} htmlFor="genre">Alternative</label>
             <input className="radioInput" type="checkbox" id="alternative" name="genre" 
             onChange={onGenresChange}
-            checked={genres["alternative"]}
+            checked={genres["alternative"] || false}
             />
           </div>
         </div>
