@@ -16,11 +16,19 @@ router.get("/", async (req, res) => {
 
 
 router.get("/:recordId", async (req, res) => {
-  try {
-    const record = await recordManager.getOne(req.params.recordId).populate('_ownerId');
-    res.json(record);
-  } catch (error) {
-    return res.json(parser.parseError(error));
+
+  if(req.params.recordId === "myRecords"){
+    const records = await recordManager.getAllRecordsByOwner(req.user._id)
+    return res.json(records);
+  } else {
+
+    try {
+      const record = await recordManager.getOne(req.params.recordId).populate('_ownerId');
+      res.json(record);
+    } catch (error) {
+      return res.json(parser.parseError(error));
+    }
+
   }
 });
 
@@ -36,6 +44,19 @@ router.post("/", async (req, res) => {
   } catch (error) {
     return res.json(parser.parseError(error))
   }
+});
+
+router.get("/recs", async (req, res) => {
+  console.log(`---Get My Records-----`)
+  console.log(req.user._id)
+  res.send(`hello`)
+  // try {
+  //   const records = await recordManager.getAllRecordsByOwner(req.user._id);
+  //   console.log(records)
+  //   res.json(records);
+  // } catch (error) {
+  //   return res.json(parser.parseError(error))
+  // }
 });
 
 router.put("/:recordId", async (req, res) => {

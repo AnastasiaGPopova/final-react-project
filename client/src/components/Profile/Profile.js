@@ -15,7 +15,7 @@ function Profile() {
 
         async function getMy(){
 
-            const response = await data.getMyRecords(userId)
+            const response = await data.getMyRecords(`myRecords`)
             console.log(response)
             setAllMyRecords(response)
         }

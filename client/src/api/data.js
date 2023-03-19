@@ -19,9 +19,10 @@ export async function getItemById(id) {
     return await api.get(host + '/records/' + id);
 }
 
-export async function getMyRecords() {
-    const userId = sessionStorage.getItem('userId');
-    return await api.get(host + `/records?where=_ownerId%3D%22${userId}%22`);
+export async function getMyRecords(id) {
+ 
+    const response = await api.get(host + `/records/` + id);
+    return response
 }
 
 export async function createRecord(data) {
@@ -40,13 +41,6 @@ export async function editRecord(id, data) {
 }
 
 
-export async function addToWishingList(recordId, data) {
-    try{
-        return await api.get(host + '/records/' + recordId + '/wish', data);
-    }catch(error){
-        console.log(error)
-    }
-}
 
 export async function searchFunction(data) {
     try{

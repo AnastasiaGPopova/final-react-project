@@ -1,14 +1,6 @@
 const Record = require('../models/Record');
 
-exports.getAllCreatedByUser = (ownerId) => {
-    let filter = {};
-
-    if (ownerId) {
-        filter._ownerId = ownerId;
-    }
-
-    return Record.find(filter);
-};
+exports.getAllRecordsByOwner = (ownerId) => Record.find({ "_ownerId": `${ownerId}` })
 
 
 // exports.getAll =() => Record.find()
