@@ -13,6 +13,12 @@ const userSchema = new mongoose.Schema({
         required: true,
         minLength: [3, 'Password too short!']
     },
+    gender: {
+        type: String,
+        required: true,
+        //match: /[A-Z][a-z]+ [A-Z][a-z]+/,
+        //minLength: [8, "Email should be at least 8 characters long!"]
+    },
  })
 
  userSchema.pre('save', function(next){

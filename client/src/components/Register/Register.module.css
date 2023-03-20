@@ -57,15 +57,20 @@ form{
     border-radius: 25px; */
 
 
+
 }
 
 .registerbox{
-    margin-bottom: 30px;
-    position: relative;
+    width: 400px;
+    margin-bottom: 10px;
+    display: inline-block;
+    height: fit-content;
+    transform: translateX(150px);
+
 }
 
 input{
-    width: 80%;
+    width: 100%;
     padding: 10px;
     outline: 0;
     border: 2px solid #fff;
@@ -128,3 +133,32 @@ input:focus{
 .noaccount a{
     color: white;
 }
+
+.radioLabels{
+    display: inline-block;
+    position: inherit;
+    font-size: small;
+}
+
+.radioButtons{
+    width: 30%;
+    align-items: center;
+    justify-content: center;
+    display: inline-flex;
+    color: white;
+    padding: 0px;
+    padding-left: 20px;
+    transform: translateY(-15px);
+    flex-direction: column;
+}
+
+/* .radioInput{
+    width: 30%;
+    padding: 0px;
+    outline: 0;
+    padding-right: 0px;
+    border: 2px solid #fff;
+    color: #fff;
+    background: transparent;
+    font-size: 15px;
+} */

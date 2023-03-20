@@ -86,9 +86,9 @@ export async function login(email, password) {
 
 }
 
-export async function register(email, password, rePassword) {
+export async function register(email, password, rePassword, gender) {
 
-        const result = await post(settings.host + '/users/register', { email, password, rePassword });
+        const result = await post(settings.host + '/users/register', { email, password, rePassword, gender });
 
         if(!result.hasOwnProperty('errors')){
             localStorage.setItem('email', result.email);

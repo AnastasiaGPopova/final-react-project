@@ -40,7 +40,7 @@ exports.login = async (email, password) => {
 }
 };
 
-exports.register = async (email, password, rePassword) => {
+exports.register = async (email, password, rePassword, gender) => {
     const existingUser = await User.findOne({ email });
 
     try{
@@ -57,7 +57,7 @@ exports.register = async (email, password, rePassword) => {
         throw new Error('Password missmatch!');
     }
 
-    const newUser = await User.create({email, password})
+    const newUser = await User.create({email, password, gender})
 
 
     return this.login(email, password)

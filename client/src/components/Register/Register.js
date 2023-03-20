@@ -14,17 +14,22 @@ function Register() {
   
   const navigate = useNavigate();
   const singIn = useSignIn()
+  const {setErrorMessages, errorMessages, isLogged} = useContext(RecordContext)
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
-  const [errorMessages, setErrorMessages] = useState(null)
+  const [gender, setGender] = useState("female");
+
+  if(isLogged){
+    navigate('/')
+  }
 
 
   async function submit(e) {
     e.preventDefault()
   
-      let response = await data.register(email, password, rePassword)
+      let response = await data.register(email, password, rePassword, gender)
 
       if(response.hasOwnProperty('errors')){
         setErrorMessages(response.message)
@@ -46,12 +51,11 @@ function Register() {
 
   return (
     <div className={styles.hero}>
-      
       {errorMessages && (
-              <div className={styles.errorMsg}>
-              <h1> Error Message:</h1>
-              <p>{errorMessages}</p>
-            </div>
+        <div className={styles.errorMsg}>
+          <h1> Error Message:</h1>
+          <p>{errorMessages}</p>
+        </div>
       )}
 
       <form action="" method="">
@@ -68,27 +72,79 @@ function Register() {
             onChange={(e) => setEmail(e.target.value)}
           />
           <br />
-          <br/>
         </div>
 
-          {/* -----------NEW---------- */}
+        {/* -----------NEW---------- */}
         {/* <div className={styles.registerbox}>
-          <label htmlFor="email">
-            <i className="fa-solid fa-envelope" /> Gender:
+          <label className={styles.registerboxLabels} htmlFor="text">
+            {" "}
+            RPM:
           </label>
-          <input
-            type="text"
-            id="email"
-            name="email"
-            value={email}
-            placeholder="female /male/ other..."
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <br />
+
+          <div className={styles.radioButtons}>
+            <label className={styles.radioLabels} htmlFor="PRM33">
+              33
+            </label>
+            <input
+              className="radioInput"
+              type="radio"
+              id="PRM33"
+              name="rpm"
+              value="33"
+              onChange={onChangeHandler}
+              checked={recordValues.rpm === "33"}
+            />
+          </div>
+
+          <div className={styles.radioButtons}>
+            <label className={styles.radioLabels} htmlFor="PRM33">
+              45
+            </label>
+            <input
+              className="radioInput"
+              type="radio"
+              id="PRM33"
+              name="rpm"
+              value="45"
+              onChange={onChangeHandler}
+              checked={recordValues.rpm === "45"}
+            />
+          </div>
         </div> */}
 
-
-        <br />
+        <div className={styles.registerbox}>
+          <label htmlFor="gender">Gender:</label>
+          <br/>
+          <br/>
+          <div className={styles.radioButtons}>
+            <label className={styles.radioLabels} htmlFor="female">
+              Female:
+            </label>
+            <input
+              className={styles.radioInput}
+              type="radio"
+              id="female"
+              name="female"
+              value="female"
+              onChange={(e) => setGender(e.target.name)}
+              checked={gender === "female"}
+            />
+          </div>
+          <div className={styles.radioButtons}>
+            <label className={styles.radioLabels} htmlFor="male">
+              Male:
+            </label>
+            <input
+              className={styles.radioInput}
+              type="radio"
+              id="male"
+              name="male"
+              value="male"
+              onChange={(e) => setGender(e.target.name)}
+              checked={gender === "male"}
+            />
+          </div>
+        </div>
         <div className={styles.registerbox}>
           <label htmlFor="password">
             <i className="fa-solid fa-lock" /> Password:
@@ -117,14 +173,16 @@ function Register() {
             onChange={(e) => setRePassword(e.target.value)}
           />
           <br />
+          <button className={styles.submitButton} type="button" onClick={submit}>
+          {" "}
+          <span /> REGISTER{" "}
+        </button>
+        <p className={styles.noaccount}>
+          Have an account ? <a href="/login">Click here</a>
+        </p>
         </div>
 
-        <button className={styles.submitButton} type="button" 
-        onClick={submit}>{" "}<span /> REGISTER{" "}
-        </button>        
-        <p className={styles.noaccount}>Have an account ? <a href="/login">Click here</a></p>
       </form>
-      
     </div>
   );
 }

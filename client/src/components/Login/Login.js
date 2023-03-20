@@ -9,11 +9,16 @@ import { useContext } from "react";
 import {RecordContext } from "../../contexts/RecordContext";
 
 function Login() {
+  const {setErrorMessages, errorMessages, isLogged} = useContext(RecordContext)
   const navigate = useNavigate();
   const singIn = useSignIn()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMessages, setErrorMessages] = useState(null)
+
+  if(isLogged === true){
+    navigate('/')
+  }
+
 
   
 

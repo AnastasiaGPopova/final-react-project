@@ -3,8 +3,8 @@ const router = require('express').Router()
 const userManager = require('../managers/userManager');
 
 router.post('/register', async (req, res) => {
-    const { email, password, rePassword } = req.body;
-    const result = await userManager.register(email, password, rePassword);
+    const { email, password, rePassword, gender } = req.body;
+    const result = await userManager.register(email, password, rePassword, gender);
 
     res.json(result);
 });

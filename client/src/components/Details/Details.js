@@ -47,7 +47,7 @@ function Details() {
     }
 
     getCurrent();
-  }, [recordId, stateIsChanged, currentUserId]);
+  }, [recordId, setIsOwner, currentUserId]);
 
 
   //--------Setting isWished or not------------
