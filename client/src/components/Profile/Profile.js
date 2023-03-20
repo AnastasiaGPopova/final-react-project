@@ -51,7 +51,7 @@ function Profile() {
                     }
 
                 </div>
-                <div className="email">{currentUser.email}</div>
+                <div className={styles.email}>{currentUser.email}</div>
             </div>
 
             <div className={styles.bottomsection}>

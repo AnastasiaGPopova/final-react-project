@@ -50,7 +50,7 @@ function App() {
       }
     }
     getAllRecords();
-  }, [isChanged]);
+  }, [isChanged, auth()?.email]);
 
   console.log(records)
 

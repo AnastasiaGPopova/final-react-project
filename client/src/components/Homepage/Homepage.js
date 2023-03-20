@@ -1,23 +1,29 @@
 import styles from "../Homepage/Homepage.module.css";
 import { useNavigate } from "react-router-dom";
 import Record from "../SingleRecord/Record";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import {RecordContext } from "../../contexts/RecordContext";
+import * as data from '../../api/data';
 
 function Homepage() {
   const navigation = useNavigate();
-  const {records} = useContext(RecordContext)
+  const [homeRecords, setHomeRecords] = useState([])
 
-  function joinNowClick() {
-    navigation("/register");
-  }
+  useEffect(()=> {
+    async function getRecs(){
+      const response = await data.getRecords()
+      setHomeRecords(response)
+    }
+    getRecs()
+  })
+
 
   function seeCatalog() {
     navigation("/catalog");
   }
 
 
-let lastAddedRecords = records.slice(0,4)
+let lastAddedRecords = homeRecords.slice(0,4)
 
 
   return (
@@ -70,13 +76,6 @@ let lastAddedRecords = records.slice(0,4)
             collection and get in touch with other vinyl lovers.
           </p>
           <div>
-            <button
-              className={styles.homebutton}
-              type="button"
-              onClick={joinNowClick}
-            >
-              <span className={styles.home} /> JOIN NOW{" "}
-            </button>
             <button
               className={styles.homebutton}
               type="submit"

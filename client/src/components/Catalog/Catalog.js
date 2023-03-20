@@ -181,7 +181,7 @@ function Catalog() {
                         setRecords(state => ([...state].sort((a,b) => a.recordName > b.recordName ? 1 : -1)))
                       }}>
                         <span className={styles.search} />
-                        Alphabetical
+                        Album(A-Z)
                       </button>
                     </div>
                   </div>

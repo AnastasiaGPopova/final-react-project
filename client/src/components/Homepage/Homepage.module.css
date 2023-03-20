@@ -42,14 +42,14 @@
     width: 150vh;
     color: white;
     align-items: center;
-    transform: translateY(80px);
+    transform: translateY(0px);
     justify-content: center;
 
 }
 
 .col{
     flex-basis: 50%;
-    transform: translateX(200px);
+    transform: translate(200px, -50px);
     align-items: center;
     justify-content: center;
 }
