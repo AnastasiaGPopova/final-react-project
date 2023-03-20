@@ -6,7 +6,6 @@ import { useContext } from "react";
 import {RecordContext } from "../../contexts/RecordContext";
 
 
-
 function Edit() {
     const {recordId} = useParams()
     const navigate = useNavigate()

@@ -26,16 +26,16 @@ function App() {
   const [isChanged, setIsChanged] = useState(null);
   const [isOwner, setIsOwner] = useState(false)
 
-  console.log(auth()?.email)
+  const userEmail = auth()?.email
 
   useEffect(() => {
-    const userEmail = auth()?.email
+ 
     if (userEmail !== undefined) {
       setIsLogged(true);
     } else {
       setIsLogged(false)
     }
-  }, [auth]);
+  }, [userEmail]);
 
   console.log(isLogged)
 
@@ -50,7 +50,8 @@ function App() {
       }
     }
     getAllRecords();
-  }, [isChanged, auth()?.email]);
+  }, [isChanged, userEmail]);
+
 
   console.log(records)
 
@@ -78,7 +79,7 @@ function App() {
         <Route path="/catalog" element={<Catalog/>} />
         <Route path="/create" element={<RequireAuth loginPath="/login"> <Create/> </RequireAuth>}/>
         <Route path="/records/:recordId" element={<Details/>}/>
-        <Route path="/records/:recordId/edit" element={<RequireAuth loginPath="/login"><Edit/> </RequireAuth>}/>                                                    
+        <Route path="/records/:recordId/edit" element={<RequireAuth loginPath="/login"><Edit/></RequireAuth>}/>                                                    
          <Route path="/myProfile" element={<RequireAuth loginPath="/login"><Profile/></RequireAuth>} />
          <Route path="*" element={<Error/>}/>
       </Routes>

@@ -1,8 +1,7 @@
 import styles from "../Homepage/Homepage.module.css";
 import { useNavigate } from "react-router-dom";
 import Record from "../SingleRecord/Record";
-import { useContext, useEffect, useState } from "react";
-import {RecordContext } from "../../contexts/RecordContext";
+import {useEffect, useState } from "react";
 import * as data from '../../api/data';
 
 function Homepage() {

@@ -62,6 +62,7 @@ function Details() {
 
   console.log(isOwner)
 
+  //--------on Wish/Like Click------------
   async function onWishClick() {
     currentRecord.wishingList.push(currentUserId);
     currentRecord.likes++
@@ -70,20 +71,17 @@ function Details() {
     const updatedWish = await data.editRecord(recordId, newBody);
     setRecords(state => [...state, updatedWish])
     setIsChanged(updatedWish)
-    // setStateIsChanged(updatedWish)
     navigate(`/records/${recordId}`);
   }
 
   console.log(currentRecord)
 
-
+//--------on Delete Click------------
   async function onDeleteClick(id){
     const choise = window.confirm("Are you sure you want to delete this item?")
-
     if(choise){
-      const response = await data.deleteRecord(id)
+      await data.deleteRecord(id)
       setRecords(state => (state.filter(x => x._id !== id)))
-      setIsChanged(response)
     }
   }
 

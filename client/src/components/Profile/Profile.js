@@ -8,7 +8,7 @@ function Profile() {
 
     const [currentUser, setCurrentUser] = useState({})
     const userId = localStorage.getItem('userId')
-    const [userGender, setUserGender] = useState('')
+
 
     const [allMyRecords, setAllMyRecords] = useState([])
 
