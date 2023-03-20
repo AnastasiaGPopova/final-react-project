@@ -36,14 +36,25 @@
     border: none
 }
 
-.row{
+.row1{
     display: inline-block;
     height: 34vh;
     width: 150vh;
     color: white;
     align-items: center;
-    transform: translateY(0px);
+    transform: translateY(20px);
     justify-content: center;
+
+}
+
+.row2{
+  display: inline-block;
+  height: 34vh;
+  width: 150vh;
+  color: white;
+  align-items: center;
+  transform: translateY(-30px);
+  justify-content: center;
 
 }
 
@@ -52,6 +63,13 @@
     transform: translate(200px, -50px);
     align-items: center;
     justify-content: center;
+}
+
+.col2{
+  flex-basis: 50%;
+  transform: translate(200px, 180px);
+  align-items: center;
+  justify-content: center;
 }
 
 .record{
@@ -156,6 +174,7 @@
   z-index: -1;
   transition: 0.5s;
 }
+
 
 .createbutton:hover .noentries{
   width: 100%;

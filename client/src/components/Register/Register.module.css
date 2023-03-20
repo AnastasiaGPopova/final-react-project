@@ -47,7 +47,7 @@ form{
     height: 70vh;
     display: flex;
     justify-content: center;
-    transform: translateY(140px);
+    transform: translate(230px, 140px);
 }
 
 form{
@@ -62,7 +62,17 @@ form{
 
 .registerbox{
     width: 400px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    display: inline-block;
+    height: fit-content;
+    transform: translate(0px, -50px);
+
+}
+
+
+.registerbox1{
+    height: 50px;
+    width: 400px;
     display: inline-block;
     height: fit-content;
     transform: translate(0px, -50px);
@@ -135,21 +145,23 @@ input:focus{
 }
 
 .radioLabels{
+    transform: translateX(0px);
     display: inline-block;
     position: inherit;
     font-size: medium;
+    padding-left: 10px;
 }
 
 .radioButtons{
-    width: 30%;
+    border: 2px solid white;
+    transform: translate(0px, -15px);
+    width: 50%;
     align-items: center;
     justify-content: center;
-    display: inline-flex;
+    display: flex;
     color: white;
-    padding: 0px;
-    padding-left: 20px;
-    transform: translateY(-15px);
-    flex-direction: column;
+    padding: -20px;
+
 }
 
 /* .radioInput{

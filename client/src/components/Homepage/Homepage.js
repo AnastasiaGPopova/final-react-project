@@ -18,57 +18,35 @@ function Homepage() {
   })
 
 
-  function seeCatalog() {
-    navigation("/catalog");
-  }
-
 
 let lastAddedRecords = homeRecords.slice(0,4)
 
 
   return (
     <main>
-      <div className={styles.row}>
-        <div className={styles.col}></div>
-        <div className={styles.col}>
-          {lastAddedRecords===null && (
+      <div className={styles.row1}>
+        <div className={styles.col2}>
+        {lastAddedRecords.length===0 && (
             <div className={styles.norecord}>
               <h2 className={styles.norecord}>
                 There are no records reviews found yet...
               </h2>
-              <button className={styles.createbutton} type="button">
+              <button className={styles.createbutton} type="button" onClick={() => navigation('/create')}>
                 <span className={styles.noentries}></span> CREATE NOW{" "}
               </button>
             </div>
           )}
 
-          
+        </div>
+        <div className={styles.col}>
 
                   {/* ---------- if no records, show this div ---------- */}
 
-                {lastAddedRecords.length === 0 &&
-                  <div className={styles.norecord}>
-                    <h2 className={styles.norecord}>There are no records reviews found yet...</h2>
-                    <button className={styles.createbutton} type="button"
-                            onClick={() => navigation('/create')}>
-                            <span className={styles.noentries}></span> CREATE NOW </button>   
-                  </div>
-                }
-
           {lastAddedRecords.map(x => <Record key={x._id}{...x}/>)}
 
-
-          {/* <div className={styles.record}>
-                      <h5>Nat King Cole</h5>
-                      <p>Album: Cole Español</p>
-                      <img src="https://upload.wikimedia.org/wikipedia/en/8/86/NatKingCole_Unforgettable_Capitol10inch.jpg" alt=""/>
-                      <div className={styles.center}>
-                          <a href="#" className={styles.text}><span />Details</a>
-                      </div>
-                  </div> */}
         </div>
       </div>
-      <div className={styles.row}>
+      <div className={styles.row2}>
         <div className={styles.col}>
           <h1>RECORD ME</h1>
           <p>
@@ -79,7 +57,7 @@ let lastAddedRecords = homeRecords.slice(0,4)
             <button
               className={styles.homebutton}
               type="submit"
-              onClick={seeCatalog}
+              onClick={() => navigation('/catalog')}
             >
               {" "}
               <span className={styles.home} /> SEE CATALOG{" "}

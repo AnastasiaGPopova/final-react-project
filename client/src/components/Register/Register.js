@@ -9,7 +9,6 @@ import {useSignIn} from 'react-auth-kit'
 
 
 
-
 function Register() {
   
   const navigate = useNavigate();
@@ -112,7 +111,7 @@ function Register() {
           </div>
         </div> */}
 
-        <div className={styles.registerbox}>
+        <div className={styles.registerbox1}>
           <label htmlFor="gender">Gender:</label>
           <br/>
           <br/>
@@ -129,8 +128,6 @@ function Register() {
               onChange={(e) => setGender(e.target.name)}
               checked={gender === "female"}
             />
-          </div>
-          <div className={styles.radioButtons}>
             <label className={styles.radioLabels} htmlFor="male">
               Male:
             </label>
@@ -144,6 +141,7 @@ function Register() {
               checked={gender === "male"}
             />
           </div>
+
         </div>
         <div className={styles.registerbox}>
           <label htmlFor="password">

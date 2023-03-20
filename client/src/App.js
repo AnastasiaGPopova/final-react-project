@@ -2,7 +2,7 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import * as data from "./api/data";
 import { useEffect, useState } from "react";
-import {useAuthUser} from 'react-auth-kit'
+import {useAuthUser, RequireAuth} from 'react-auth-kit'
 import Create from "./components/Create/Create";
 import Navigation from "./components/Navigation/Navigation";
 import Homepage from "./components/Homepage/Homepage.js";
@@ -76,10 +76,10 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register/>}/>
         <Route path="/catalog" element={<Catalog/>} />
-        <Route path="/create" element={ <Create/>}/>
+        <Route path="/create" element={<RequireAuth loginPath="/login"> <Create/> </RequireAuth>}/>
         <Route path="/records/:recordId" element={<Details/>}/>
-        <Route path="/records/:recordId/edit" element={<Edit/>} />                                                    
-         <Route path="/myProfile" element={<Profile/>} />
+        <Route path="/records/:recordId/edit" element={<RequireAuth loginPath="/login"><Edit/> </RequireAuth>}/>                                                    
+         <Route path="/myProfile" element={<RequireAuth loginPath="/login"><Profile/></RequireAuth>} />
          <Route path="*" element={<Error/>}/>
       </Routes>
       </RecordContext.Provider>
