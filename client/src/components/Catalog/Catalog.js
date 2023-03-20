@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 function Catalog() {
   const navigate = useNavigate();
   const {records, setRecords} = useContext(RecordContext)
-  const [noResult, setNoResult] = useState(false)
   const [sortedByLikes, setSortedByLikes] = useState(false)
   const [sortedByRecordName, setSortedByRecordName] = useState(false)
   const [sortedByLastAdded, setSortedByLastAdded] = useState(true)
@@ -35,11 +34,6 @@ function Catalog() {
 
     const response = await dataApi.searchFunction(data)
     console.log(response)
-    if(response.length === 0){
-      setNoResult(true)
-    }else{
-      setNoResult(false)
-    }
     setRecords(response)
   }
 
@@ -217,7 +211,7 @@ function Catalog() {
 
                 {records.length === 0 && (
                   <div className={styles.norecord}>
-                    <h2>There are no records reviews found yet...</h2>
+                    <h2>There are no records found.</h2>
                     <button
                       className={styles.createbutton}
                       type="button"
