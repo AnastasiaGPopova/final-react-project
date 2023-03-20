@@ -71,3 +71,5 @@ exports.register = async (email, password, rePassword, gender) => {
     }
 
 };
+
+exports.getCurrentUser = (email) => User.findOne({email})

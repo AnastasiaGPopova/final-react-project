@@ -20,6 +20,15 @@ router.get('/logout', (req, res) => {
 });
 
 
+router.get('/', async (req, res) => {
+    const {userEmail} = req.body
+    console.log(req.body)
+    const result = await userManager.getCurrentUser(req.user.email)
+    console.log(result)
+    res.json(result)
+});
+
+
 
 
 module.exports = router

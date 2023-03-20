@@ -61,7 +61,8 @@ form{
     margin-bottom: 30px;
     position: relative;
     display: flex;
-    
+    width: 400px;
+
 }
 
 input{

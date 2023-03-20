@@ -87,9 +87,7 @@ console.log(errorMessages)
               placeholder="Enter password..."
               onChange={(e) => setPassword(e.target.value)}
             />
-            <br />
           </div>
-          <br />
           <button className={styles.submitButton} type="button" onClick={onLoginClick}>
             <span />
             LOGIN{" "}

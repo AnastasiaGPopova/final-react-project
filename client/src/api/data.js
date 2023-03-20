@@ -69,3 +69,9 @@ export async function addComment(data) {
 export async function getAllCommentsForRecord(id) {
     return await api.get(host + '/comments/' + id);
 }
+
+export async function getUser() {
+ 
+    const response = await api.get(host + `/users/`);
+    return response
+}

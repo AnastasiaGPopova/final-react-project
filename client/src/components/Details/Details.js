@@ -70,7 +70,7 @@ function Details() {
     const updatedWish = await data.editRecord(recordId, newBody);
     setRecords(state => [...state, updatedWish])
     setIsChanged(updatedWish)
-    setStateIsChanged(updatedWish)
+    // setStateIsChanged(updatedWish)
     navigate(`/records/${recordId}`);
   }
 

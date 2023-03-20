@@ -65,7 +65,7 @@ form{
     margin-bottom: 10px;
     display: inline-block;
     height: fit-content;
-    transform: translateX(150px);
+    transform: translate(0px, -50px);
 
 }
 
@@ -137,7 +137,7 @@ input:focus{
 .radioLabels{
     display: inline-block;
     position: inherit;
-    font-size: small;
+    font-size: medium;
 }
 
 .radioButtons{

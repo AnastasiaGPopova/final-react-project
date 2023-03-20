@@ -59,9 +59,9 @@ router.put("/:recordId", async (req, res) => {
   }
 
     try {
-    if(!isOwner){
-      throw new Error(`You are not authotized!`)
-    }
+    // if(!isOwner){
+    //   throw new Error(`You are not authotized!`)
+    // }
     const updatredRecord =  await recordManager.update(req.params.recordId, recordData);
 
       res.json(updatredRecord);
