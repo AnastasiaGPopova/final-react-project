@@ -10,19 +10,21 @@ import {RecordContext } from "../../contexts/RecordContext";
 function Edit() {
     const {recordId} = useParams()
     const navigate = useNavigate()
-    const {setErrorMessages, setRecords, setIsChanged, errorMessages} = useContext(RecordContext)
+    const {setErrorMessages, setRecords, setIsChanged, errorMessages, isOwner} = useContext(RecordContext)
 
+    if(!isOwner){
+      navigate('/')
+    }
 
     const [genres, setGenres] = useState({});
     const [recordValues, setRecordValues] = useState({})
+
 
       useEffect(() => {
         async function getCurrent(){
             const response = await data.getItemById(recordId)
             setRecordValues(response)
-
             console.log(response)
-
             for(const key of response.genre.split(", ")){
                 setGenres({[key]: true})
               }
@@ -30,8 +32,6 @@ function Edit() {
         getCurrent()
     }, [recordId])
 
-
-      console.log(recordValues._ownerId)
 
 
       const onChangeHandler = (e) => {

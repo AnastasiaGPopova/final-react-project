@@ -24,6 +24,7 @@ function App() {
   const [records, setRecords] = useState([]);
   const [errorMessages, setErrorMessages] = useState(null);
   const [isChanged, setIsChanged] = useState(null);
+  const [isOwner, setIsOwner] = useState(false)
 
   console.log(auth()?.email)
 
@@ -54,6 +55,8 @@ function App() {
   console.log(records)
 
   const contextValue = {
+    isOwner,
+    setIsOwner,
     records,
     setRecords,
     errorMessages,

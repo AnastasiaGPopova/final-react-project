@@ -9,7 +9,7 @@ import { useContext } from "react";
 import {RecordContext } from "../../contexts/RecordContext";
 
 function Details() {
-  const {setErrorMessages, setRecords, setIsChanged, errorMessages, isLogged} = useContext(RecordContext)
+  const {setIsOwner, setRecords, setIsChanged, isOwner, isLogged} = useContext(RecordContext)
   const { recordId } = useParams();
   const navigate = useNavigate();
 
@@ -18,7 +18,6 @@ function Details() {
   const [allComments, setAllComments] = useState([]);
   const [stateIsChanged, setStateIsChanged] = useState(null);
   const [isAlreadyWished, setIsAlreadyWished] = useState(false)
-  const [isOwner, setIsOwner] = useState(false)
   const [postedBy, setPostedBy] = useState('')
 
 
@@ -40,6 +39,8 @@ function Details() {
       const response = await data.getItemById(recordId);
       if(response._ownerId._id === currentUserId){
         setIsOwner(true)
+      }else{
+        setIsOwner(false)
       }
       setPostedBy(response._ownerId.email)
       setCurrentRecord(response);
