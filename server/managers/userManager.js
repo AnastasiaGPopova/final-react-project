@@ -46,7 +46,7 @@ exports.register = async (email, password, rePassword, gender) => {
     try{
         
     if (existingUser) {
-        throw new Error('User exists');
+        throw new Error('Email is already taken !');
     }
 
     if(!email || !password || !rePassword){

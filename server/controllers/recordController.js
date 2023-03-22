@@ -35,10 +35,26 @@ router.get("/:recordId", async (req, res) => {
 
 
 router.post("/", async (req, res) => {
-  const recordData = req.body;
+
+  // recordName: recordValues.recordName,
+  // artist: recordValues.artist,
+  // year: recordValues.year,
+  // imageUrl: recordValues.imageUrl,
+  // description: recordValues.description,
+  // rpm: recordValues.rpm,
+  // genre: realGenre,
+
+  const {recordName, artist, year, imageUrl, description, genre, rpm} = req.body;
 
   try {
-    const record = await recordManager.create(recordData, req.user._id);
+
+    if(!recordName || !artist || !year || !imageUrl || !description || !genre || !rpm){
+      throw new Error (`All fields are requiered!`)
+    }
+
+
+
+    const record = await recordManager.create({recordName, artist, year, imageUrl, description, genre, rpm, _ownerId: req.user._id});
 
     res.json({ _id: record._id });
   } catch (error) {
@@ -52,17 +68,19 @@ router.put("/:recordId", async (req, res) => {
   //const {........} = req.body
   let isOwner = true;
   let currentRecord = await recordManager.getOne(req.params.recordId);
-  const recordData = req.body;
+  const {recordName, artist, year, imageUrl, description, genre, rpm} = req.body;
 
   if(currentRecord._ownerId !== req.user._id){
     isOwner = false
   }
 
     try {
-    // if(!isOwner){
-    //   throw new Error(`You are not authotized!`)
-    // }
-    const updatredRecord =  await recordManager.update(req.params.recordId, recordData);
+
+    if(!recordName || !artist || !year || !imageUrl || !description || !genre || !rpm){
+        throw new Error (`All fields are requiered!`)
+      }
+
+    const updatredRecord =  await recordManager.update(req.params.recordId, {recordName, artist, year, imageUrl, description, genre, rpm});
 
       res.json(updatredRecord);
     } catch (error) {

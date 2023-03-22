@@ -9,9 +9,9 @@ exports.getOne = (id) => Record.findById(id);
 
 exports.getAll = () => Record.find().sort({createdAt: -1})
 
-exports.create = (recordData, userId) => Record.create({ ...recordData, _ownerId: userId });
+exports.create = (recordData) => Record.create(recordData);
 
-exports.update = (id, recordData) => Record.findByIdAndUpdate(id, {...recordData}, {runValidators: true});
+exports.update = (id, recordData) => Record.findByIdAndUpdate(id, recordData, {runValidators: true});
 
 exports.delete = (id) => Record.findByIdAndDelete(id);
 

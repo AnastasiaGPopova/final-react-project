@@ -4,22 +4,23 @@ const recordSchema = new mongoose.Schema({
     recordName: {
         type: String,
         required: true,
-        minLength: [2, "Too short! Title should be at least 2 characters !"]
+        minLength: [2, "Record name should be at least 2 characters !"]
     }, 
     artist: {
         type: String,
         required: true,
-        minLength: [5, "Too short! Author should be at least 5 characters !"]
+        minLength: [5, "Artist should be at least 5 characters !"]
     }, 
     description: {
         type: String,
         required: true,
-        minLength: [5, "Too short! Description should be at least 5 characters !"]
+        minLength: [5, "Description should be at least 5 characters !"]
     }, 
     year: {
-        type: String,
+        type: Number,
         required: true,
-        minLength: [4, "Too short! Year should be at least 4 characters !"]
+        min: [1950, "Year should be at greater then 1950 and less then 2024 !"],
+        max: [2023, "Year should be at greater then 1950 and less then 2024 !"]
     }, 
     imageUrl: {
         type: String,

@@ -133,7 +133,7 @@ input:focus{
     border: 3px solid white;
     border-style: dashed;
     background-color:transparent;
-    transform: translateX(350px);
+    transform: translate(350px, -500px);
     padding: 10px;
     margin: 20px;
     box-sizing: border-box;

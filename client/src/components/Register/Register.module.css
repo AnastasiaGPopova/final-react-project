@@ -47,7 +47,7 @@ form{
     height: 70vh;
     display: flex;
     justify-content: center;
-    transform: translate(230px, 140px);
+    transform: translate(0px, 140px);
 }
 
 form{
