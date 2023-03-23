@@ -3,18 +3,25 @@ import { useNavigate } from "react-router-dom";
 import Record from "../SingleRecord/Record";
 import {useEffect, useState } from "react";
 import * as data from '../../api/data';
+import { useContext } from "react";
+import {RecordContext } from "../../contexts/RecordContext";
+import Spinner from "../../utils/Spinner";
+
 
 function Homepage() {
+  const {loading , setLoading} = useContext(RecordContext)
   const navigation = useNavigate();
   const [homeRecords, setHomeRecords] = useState([])
 
   useEffect(()=> {
     async function getRecs(){
+      setLoading(true)
       const response = await data.getRecords()
       setHomeRecords(response)
+      setLoading(false)
     }
     getRecs()
-  })
+  },[])
 
 
 
@@ -22,6 +29,8 @@ let lastAddedRecords = homeRecords.slice(0,4)
 
 
   return (
+    loading ? (<Spinner loading={loading}/>) :
+    (
     <main>
       <div className={styles.row1}>
         <div className={styles.col2}>
@@ -65,7 +74,9 @@ let lastAddedRecords = homeRecords.slice(0,4)
         </div>
       </div>
     </main>
-  );
+  )
+  )
+
 }
 
 export default Homepage;

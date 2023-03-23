@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 function Catalog() {
   const navigate = useNavigate();
-  const {records, setRecords} = useContext(RecordContext)
+  const {records, setRecords, loading , setLoading} = useContext(RecordContext)
   const [sortedByLikes, setSortedByLikes] = useState(false)
   const [sortedByRecordName, setSortedByRecordName] = useState(false)
   const [sortedByLastAdded, setSortedByLastAdded] = useState(true)
@@ -32,9 +32,11 @@ function Catalog() {
       year: searchValues.year
     }
 
+    setLoading(true)
     const response = await dataApi.searchFunction(data)
     console.log(response)
     setRecords(response)
+    setLoading(false)
   }
 
 

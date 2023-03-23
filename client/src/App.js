@@ -15,8 +15,7 @@ import Edit from "./components/Edit/Edit";
 import Profile from "./components/Profile/Profile";
 import Error from "./components/Error/Error";
 import { RecordContext } from "./contexts/RecordContext";
-import { CSSProperties } from "react";
-import ClipLoader from "react-spinners/ClipLoader";
+import Spinner from "./utils/Spinner";
 
 
 
@@ -29,7 +28,7 @@ function App() {
   const [isChanged, setIsChanged] = useState(null);
   const [isOwner, setIsOwner] = useState(false)
   const [loading, setLoading]= useState(false)
-  const override = { position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)" };
+
 
 
 
@@ -70,7 +69,9 @@ function App() {
     errorMessages,
     setErrorMessages,
     setIsChanged,
-    isLogged
+    isLogged,
+    setLoading,
+    loading,
   }
 
 
@@ -80,16 +81,10 @@ function App() {
 
       <RecordContext.Provider value={contextValue}>
       <Routes>
-        <Route path="/" element={ loading? <ClipLoader
-                                             loading={loading}
-                                             cssOverride={override}
-                                             size={150}/> : <Homepage/>} />
+        <Route path="/" element={<Homepage/>} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register/>}/>
-        <Route path="/catalog" element={loading? <ClipLoader
-                                                    loading={loading}
-                                                    cssOverride={override}
-                                                    size={150}/> : <Catalog/>} />
+        <Route path="/catalog" element={<Catalog/>} />
         <Route path="/create" element={<RequireAuth loginPath="/login"> <Create/> </RequireAuth>}/>
         <Route path="/records/:recordId" element={<Details/>}/>
         <Route path="/records/:recordId/edit" element={<RequireAuth loginPath="/login"><Edit/></RequireAuth>}/>                                                    

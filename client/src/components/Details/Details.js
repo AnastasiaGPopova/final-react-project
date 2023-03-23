@@ -7,9 +7,10 @@ import SingleComment from "./SingleComment/SingleComment";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import {RecordContext } from "../../contexts/RecordContext";
+import Spinner from "../../utils/Spinner";
 
 function Details() {
-  const {setIsOwner, setRecords, setIsChanged, isOwner, isLogged} = useContext(RecordContext)
+  const {setIsOwner, setRecords, setIsChanged, isOwner, isLogged, loading, setLoading} = useContext(RecordContext)
   const { recordId } = useParams();
   const navigate = useNavigate();
 
@@ -36,6 +37,7 @@ function Details() {
   //--------Get current Record------------
   useEffect(() => {
     async function getCurrent() {
+      setLoading(true)
       const response = await data.getItemById(recordId);
       if(response._ownerId._id === currentUserId){
         setIsOwner(true)
@@ -44,6 +46,7 @@ function Details() {
       }
       setPostedBy(response._ownerId.email)
       setCurrentRecord(response);
+      setLoading(false)
     }
 
     getCurrent();
@@ -104,6 +107,8 @@ function Details() {
   };
 
   return (
+    loading ? (<Spinner loading={loading}/>) :
+    (
     <section className={styles.detailspage}>
       <h1>Details</h1>
       <article className={styles.detailscard}>
@@ -190,7 +195,8 @@ function Details() {
         </article>
       </article>}
     </section>
-  );
+  )
+  )
 }
 
 export default Details;

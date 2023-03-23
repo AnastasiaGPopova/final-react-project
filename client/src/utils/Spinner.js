@@ -1,18 +1,15 @@
 import { CSSProperties } from "react";
 import ClipLoader from "react-spinners/ClipLoader";
 
-const override = CSSProperties = { position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)" };
+const override = { position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)" };
 
-<ClipLoader
-color={color}
-loading={loading}
+function Spinner(){
+return (<ClipLoader
 cssOverride={override}
 size={150}
-aria-label="Loading Spinner"
-data-testid="loader"
-/>
+/>)
+}
 
-export default ClipLoader
-
+export default Spinner
 
 
