@@ -28,9 +28,33 @@ function App() {
   const [isChanged, setIsChanged] = useState(null);
   const [isOwner, setIsOwner] = useState(false)
   const [loading, setLoading]= useState(false)
+ 
 
 
+  //-----Spotify API Access Token ------------
 
+    const baseUrl = `https://accounts.spotify.com/api/token`
+    const client_ID= 'bec8e94459364f46b241c54a02dc7727'
+    const client_Secret = "16dfb099cf584eeca7bd081e0fe16138"
+
+    useEffect(()=> {
+      let authParameters = {
+        method: "POST",
+        headers: {
+            'Content-Type': "application/x-www-form-urlencoded"
+        },
+        body: 'grant_type=client_credentials&client_id=' + client_ID 
+                                                         + "&client_secret=" + client_Secret 
+    }
+    fetch(baseUrl, authParameters)
+        .then(result=> result.json())
+        .then(data => {
+          localStorage.setItem('spotifyToken', data.access_token)
+        })
+    }, [baseUrl])
+    //-------------------------
+    
+console.log(localStorage.getItem('spotifyToken'))
 
   const userEmail = auth()?.email
 
@@ -72,7 +96,7 @@ function App() {
     isLogged,
     setLoading,
     loading,
-  }
+    }
 
 
   return (

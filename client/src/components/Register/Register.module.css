@@ -42,7 +42,7 @@ button:hover{
     height: 70vh;
     display: flex;
     justify-content: center;
-    transform: translate(200px, 150px);
+    transform: translate(0px, 150px);
 }
 
 form{

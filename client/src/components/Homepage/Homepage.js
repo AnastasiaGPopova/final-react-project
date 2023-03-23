@@ -6,10 +6,11 @@ import * as data from '../../api/data';
 import { useContext } from "react";
 import {RecordContext } from "../../contexts/RecordContext";
 import Spinner from "../../utils/Spinner";
+import * as spotify from '../../api/api_spotify';
 
 
 function Homepage() {
-  const {loading , setLoading} = useContext(RecordContext)
+  const {loading , setLoading, records} = useContext(RecordContext)
   const navigation = useNavigate();
   const [homeRecords, setHomeRecords] = useState([])
 
@@ -22,6 +23,20 @@ function Homepage() {
     }
     getRecs()
   },[setLoading])
+
+  useEffect(() => {
+    
+      records.forEach(element => {
+        async function getSpot(){
+        const res =  await spotify.getRequestSpotify(element.recordName)
+        console.log(res)
+        }
+        getSpot()
+      });
+    // external_urls
+    // "https://open.spotify.com/album/5ahEd7berYIgjRYsIHZa8Y"
+
+  }, [records])
 
 
 
