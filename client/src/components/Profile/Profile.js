@@ -2,10 +2,14 @@ import styles from "../Profile/Profile.module.css";
 import Record from '../SingleRecord/Record';
 import * as data from '../../api/data';
 import { useEffect, useState } from "react";
+import { useContext } from "react";
+import {RecordContext } from "../../contexts/RecordContext";
+import Spinner from "../../utils/Spinner";
 
 
 function Profile() {
 
+    const {loading, setLoading} = useContext(RecordContext)
     const [currentUser, setCurrentUser] = useState({})
     const userId = localStorage.getItem('userId')
 
@@ -14,17 +18,21 @@ function Profile() {
 
     useEffect(() => {
         async function getMy(){
+            setLoading(true)
             const response = await data.getMyRecords(`myRecords`)
             console.log(response)
             setAllMyRecords(response)
+            setLoading(false)
         }
         getMy()
     }, [userId])
 
     useEffect(() =>{
         async function getUserInfo(){
+            setLoading(true)
             const response = await data.getUser()
             setCurrentUser(response)
+            setLoading(false)
         }
         getUserInfo()
     },[])
@@ -35,8 +43,8 @@ function Profile() {
 
 
     return(
-
-        <section className={styles.profilepage}>
+        loading ? (<Spinner loading={loading}/>)
+        : (<section className={styles.profilepage}>
         <div className={styles.profilecard}>
             <div className={styles.topsection}>
                 <div className={styles.pic}>
@@ -69,6 +77,7 @@ function Profile() {
         </div>
     </section>
 
+        )
     )
 }
 
