@@ -248,7 +248,7 @@
     width: fit-content;
     height: auto;
     background-color: linear-gradient(rgba(71, 68, 68, 0.5), rgba(43, 42, 42, 0.5));
-    transform: translateX(400px);
+    transform: translateX(500px);
   }
   
   .comments{
@@ -268,4 +268,8 @@
     font-size: 10px;
     width: 80%;
     word-wrap: normal;
+  }
+
+  form label{
+     height: auto;
   }

@@ -103,7 +103,7 @@ function Details() {
     const newComment = await data.addComment(body);
     setAllComments((state) => [...state, newComment]);
     setStateIsChanged(newComment);
-    e.target.reset();
+    setCommentContent("")
   };
 
   return (

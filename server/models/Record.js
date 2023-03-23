@@ -4,12 +4,14 @@ const recordSchema = new mongoose.Schema({
     recordName: {
         type: String,
         required: true,
-        minLength: [2, "Record name should be at least 2 characters !"]
+        minLength: [2, "Record name should be at least 2 characters !"],
+        maxLength: [30, "Record name should be max 30 characters !"]
     }, 
     artist: {
         type: String,
         required: true,
-        minLength: [5, "Artist should be at least 5 characters !"]
+        minLength: [5, "Artist should be at least 5 characters !"],
+        maxLength: [30, "Artist should be max 30 characters !"]
     }, 
     description: {
         type: String,
