@@ -25,7 +25,7 @@ function Profile() {
             setLoading(false)
         }
         getMy()
-    }, [userId])
+    }, [userId, setLoading])
 
     useEffect(() =>{
         async function getUserInfo(){
@@ -35,7 +35,7 @@ function Profile() {
             setLoading(false)
         }
         getUserInfo()
-    },[])
+    },[setLoading])
 
     console.log(currentUser)
 
