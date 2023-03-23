@@ -43,3 +43,5 @@ exports.getbyGenre = (item) => Record.find({ "genre": { "$regex": `${item}`, "$o
 exports.getbyRPM = (item) => Record.find({ "rpm": `${item}` })
 
 
+exports.getWishList = (userId) => Record.find({ wishingList: userId })
+

@@ -20,8 +20,10 @@ router.get("/:recordId", async (req, res) => {
   if(req.params.recordId === "myRecords"){
     const records = await recordManager.getAllRecordsByOwner(req.user._id)
     return res.json(records);
+  } else if (req.params.recordId === "wishList") {
+    const records = await recordManager.getWishList(req.user._id)
+    return res.json(records);
   } else {
-
     try {
       const record = await recordManager.getOne(req.params.recordId).populate('_ownerId');
       res.json(record);

@@ -25,6 +25,12 @@ export async function getMyRecords(id) {
     return response
 }
 
+export async function getMyWishList(id) {
+ 
+    const response = await api.get(host + `/records/` + id);
+    return response
+}
+
 export async function createRecord(data) {
 
         const response = await api.post(host + '/records', data);
