@@ -13,6 +13,7 @@ function Homepage() {
   const {loading , setLoading, records} = useContext(RecordContext)
   const navigation = useNavigate();
   const [homeRecords, setHomeRecords] = useState([])
+  const [allSpotifyLinks, setSpotifyLinks] = useState([])
 
   useEffect(()=> {
     async function getRecs(){
@@ -29,7 +30,8 @@ function Homepage() {
       records.forEach(element => {
         async function getSpot(){
         const res =  await spotify.getRequestSpotify(element.recordName)
-        console.log(res)
+        console.log(res.albums.items[0].external_urls.spotify)
+        setSpotifyLinks(state => [...state, res.albums.items[0].external_urls.spotify])
         }
         getSpot()
       });
@@ -38,6 +40,7 @@ function Homepage() {
 
   }, [records])
 
+  console.log(allSpotifyLinks)
 
 
 let lastAddedRecords = homeRecords.slice(0,4)
