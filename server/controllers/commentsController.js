@@ -30,6 +30,16 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.post("/:recordId", async (req, res) => {
+
+  try {
+    await commentsManager.deleteAllbyUser(req.params.recordId);
+    res.json({ ok: true });
+  } catch (error) {
+        return res.json(parser.parseError(error))
+  }
+});
+
 
 
 

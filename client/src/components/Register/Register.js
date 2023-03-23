@@ -70,7 +70,6 @@ function Register() {
             placeholder="Write you email..."
             onChange={(e) => setEmail(e.target.value)}
           />
-          <br />
         </div>
 
         {/* -----------NEW---------- */}
@@ -113,14 +112,11 @@ function Register() {
 
         <div className={styles.registerbox1}>
           <label htmlFor="gender">Gender:</label>
-          <br/>
-          <br/>
           <div className={styles.radioButtons}>
             <label className={styles.radioLabels} htmlFor="female">
               Female:
             </label>
-            <input
-              className={styles.radioInput}
+            <input className={styles.radioInput}
               type="radio"
               id="female"
               name="female"
@@ -131,8 +127,7 @@ function Register() {
             <label className={styles.radioLabels} htmlFor="male">
               Male:
             </label>
-            <input
-              className={styles.radioInput}
+            <input className={styles.radioInput}
               type="radio"
               id="male"
               name="male"
@@ -141,6 +136,7 @@ function Register() {
               checked={gender === "male"}
             />
           </div>
+          <br/>
 
         </div>
         <div className={styles.registerbox}>

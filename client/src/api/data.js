@@ -75,3 +75,8 @@ export async function getUser() {
     const response = await api.get(host + `/users/`);
     return response
 }
+
+
+export async function deleteAllCommentsbyUser(id) {
+    return await api.post(host + '/comments/' + id);
+}

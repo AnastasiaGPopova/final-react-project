@@ -19,3 +19,4 @@ exports.create = (commentData) => Comment.create({ ...commentData });
 exports.getAllCommentsByRecord = (recordId) => Comment.find({}).where('recordId').equals(`${recordId}`)
                                                                .sort({createdAt: -1})
 
+exports.deleteAllbyUser = (id) => Comment.deleteMany({recordId: id});

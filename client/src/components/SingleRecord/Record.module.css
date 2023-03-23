@@ -96,13 +96,13 @@
 
 
 .text{
-  transform: translateY(-234px);
+  transform: translate(-0.5px, -234px);
   font-size: 1.2rem;
   top: 0;
   left: 0;
   background: #5aa8a0;
-  width: 165px;
-  height: 165px;
+  width: 166px;
+  height: 166px;
   display: flex;
   justify-content: center;
   flex-direction: column;

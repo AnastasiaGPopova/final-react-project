@@ -36,18 +36,13 @@ button:hover{
     border: none
 }
 
-form{
-    width: 100%;
-    max-width: 600px;
-
-}
 
 .hero{
     width: 250vh;
     height: 70vh;
     display: flex;
     justify-content: center;
-    transform: translate(0px, 140px);
+    transform: translate(200px, 150px);
 }
 
 form{
@@ -73,7 +68,7 @@ form{
 .registerbox1{
     height: 50px;
     width: 400px;
-    display: inline-block;
+    /* display: inline-block; */
     height: fit-content;
     transform: translate(0px, -50px);
 
@@ -144,28 +139,22 @@ input:focus{
     color: white;
 }
 
-.radioLabels{
-    transform: translateX(0px);
-    display: inline-block;
-    position: inherit;
-    font-size: medium;
-    padding-left: 10px;
-}
 
 .radioButtons{
     border: 2px solid white;
-    transform: translate(0px, -15px);
-    width: 50%;
-    align-items: center;
-    justify-content: center;
-    display: flex;
+    width: 55%;
+    height: 40px;
+    padding: 10px;
+    /* align-items: center; */
+    /* justify-content: center; */
+    /* display: flex; */
     color: white;
-    padding: -20px;
+    /* padding: -20px; */
 
 }
 
-/* .radioInput{
-    width: 30%;
+.radioInput{
+    width: 10%;
     padding: 0px;
     outline: 0;
     padding-right: 0px;
@@ -173,4 +162,4 @@ input:focus{
     color: #fff;
     background: transparent;
     font-size: 15px;
-} */
+}

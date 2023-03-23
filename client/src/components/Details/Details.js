@@ -85,6 +85,7 @@ function Details() {
     if(choise){
       await data.deleteRecord(id)
       setRecords(state => (state.filter(x => x._id !== id)))
+      await data.deleteAllCommentsbyUser(recordId)
     }
   }
 
