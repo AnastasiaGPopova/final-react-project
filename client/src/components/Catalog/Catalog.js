@@ -5,6 +5,7 @@ import styles from "../Catalog/Catalog.module.css";
 import Record from "../SingleRecord/Record";
 import * as dataApi from "../../api/data";
 import { useNavigate } from "react-router-dom";
+import Spinner from "../../utils/Spinner";
 
 function Catalog() {
   const navigate = useNavigate();
@@ -43,6 +44,7 @@ function Catalog() {
 
 
   return (
+    loading ? (<Spinner loading={loading}/>) : (
     <>
       <div className={styles.s009}>
         <form onSubmit={onSubmitHandler}>
@@ -229,7 +231,8 @@ function Catalog() {
         </div>
       </section>
     </>
-  );
+  )
+  )
 }
 
 export default Catalog;

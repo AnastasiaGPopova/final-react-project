@@ -50,7 +50,7 @@ function Details() {
     }
 
     getCurrent();
-  }, [recordId, setIsOwner, currentUserId]);
+  }, [recordId, setIsOwner, currentUserId, setLoading]);
 
 
   //--------Setting isWished or not------------

@@ -21,7 +21,7 @@ function Homepage() {
       setLoading(false)
     }
     getRecs()
-  },[])
+  },[setLoading])
 
 
 

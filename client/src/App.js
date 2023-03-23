@@ -15,7 +15,7 @@ import Edit from "./components/Edit/Edit";
 import Profile from "./components/Profile/Profile";
 import Error from "./components/Error/Error";
 import { RecordContext } from "./contexts/RecordContext";
-import Spinner from "./utils/Spinner";
+
 
 
 
