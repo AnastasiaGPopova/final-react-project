@@ -27,18 +27,24 @@ function Homepage() {
 
   useEffect(() => {
     
-      records.forEach(element => {
+    homeRecords.forEach(element => {
         async function getSpot(){
         const res =  await spotify.getRequestSpotify(element.recordName)
-        console.log(res.albums.items[0].external_urls.spotify)
-        setSpotifyLinks(state => [...state, res.albums.items[0].external_urls.spotify])
+        // console.log(res.albums.items[0].external_urls.spotify)
+        // console.log(res)
+        // console.log(res.albums.items[0].images[0].url)
+        const newRecordLink = {
+          spotifyLink: res.albums.items[0].external_urls.spotify,
+          spotifyCover: res.albums.items[0].images[0].url
+        }
+        setSpotifyLinks(state => [...state, newRecordLink])
         }
         getSpot()
       });
     // external_urls
     // "https://open.spotify.com/album/5ahEd7berYIgjRYsIHZa8Y"
 
-  }, [records])
+  }, [homeRecords])
 
   console.log(allSpotifyLinks)
 
