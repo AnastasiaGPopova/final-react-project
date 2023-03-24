@@ -44,8 +44,7 @@ function App() {
         headers: {
             'Content-Type': "application/x-www-form-urlencoded"
         },
-        body: 'grant_type=client_credentials&client_id=' + client_ID 
-                                                         + "&client_secret=" + client_Secret 
+        body: 'grant_type=client_credentials&client_id=' + client_ID + "&client_secret=" + client_Secret 
     }
     fetch(baseUrl, authParameters)
         .then(result=> result.json())
@@ -103,7 +102,6 @@ console.log(localStorage.getItem('spotifyToken'))
   return (
     <>
       <Navigation isLogged={isLogged} />
-
       <RecordContext.Provider value={contextValue}>
       <Routes>
         <Route path="/" element={<Homepage/>} />

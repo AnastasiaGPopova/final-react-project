@@ -131,7 +131,7 @@ function Details() {
 
           {isLogged=== true && 
           <div className={styles.buttons}>
-            {/* Only for registered user and author of the review */}
+            {/* Only for registered user and owner of the record */}
             {isOwner ? (
               <>
                 <Link to={`/records/${currentRecord._id}/edit`}
