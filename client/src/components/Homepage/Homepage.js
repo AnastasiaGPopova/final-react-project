@@ -70,6 +70,9 @@ function Homepage() {
               <h2 className={styles.norecord}>
                 There are no records reviews found yet...
               </h2>
+              <br/>
+              <br/>
+              <br/>
               <button className={styles.createbutton} type="button" onClick={() => navigation('/create')}>
                 <span className={styles.noentries}></span> CREATE NOW{" "}
               </button>
