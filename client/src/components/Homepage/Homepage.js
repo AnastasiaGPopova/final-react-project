@@ -7,6 +7,7 @@ import { useContext } from "react";
 import {RecordContext } from "../../contexts/RecordContext";
 import Spinner from "../../utils/Spinner";
 import * as spotify from '../../api/api_spotify';
+import ContainerExample from '../Table/ContainerExample'
 
 
 function Homepage() {
@@ -34,6 +35,8 @@ function Homepage() {
         // console.log(res)
         // console.log(res.albums.items[0].images[0].url)
         const newRecordLink = {
+          album: element.recordName,
+          artist: element.artist,
           spotifyLink: res.albums.items[0].external_urls.spotify,
           spotifyCover: res.albums.items[0].images[0].url
         }
@@ -57,6 +60,7 @@ let lastAddedRecords = homeRecords.slice(0,4)
     (
     <main>
       <div className={styles.row1}>
+      <ContainerExample/>
         <div className={styles.col2}>
         {lastAddedRecords.length===0 && (
             <div className={styles.norecord}>
@@ -71,11 +75,7 @@ let lastAddedRecords = homeRecords.slice(0,4)
 
         </div>
         <div className={styles.col}>
-
-                  {/* ---------- if no records, show this div ---------- */}
-
           {lastAddedRecords.map(x => <Record key={x._id}{...x}/>)}
-
         </div>
       </div>
       <div className={styles.row2}>
@@ -85,7 +85,7 @@ let lastAddedRecords = homeRecords.slice(0,4)
             Show your passion for vinyl records to the wolrd. Share your
             collection and get in touch with other vinyl lovers.
           </p>
-          <div>
+          <div className={styles.buttonPosition}>
             <button
               className={styles.homebutton}
               type="submit"

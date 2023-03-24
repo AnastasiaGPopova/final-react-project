@@ -192,11 +192,15 @@
 main{
   display: inline-block;
   position: relative;
-  transform: translateY(100px);
+  transform: translateY(0px);
   justify-content: center;
   align-items: center;
 }
 
 .col h1{
     padding: 0;
+}
+
+.buttonPosition{
+  transform: translateY(-30px);
 }
