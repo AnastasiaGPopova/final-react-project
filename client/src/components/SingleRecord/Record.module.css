@@ -97,7 +97,7 @@
 
 
 .text{
-  transform: translate(-0.5px, -240px);
+  transform: translate(-0.5px, -242px);
   font-size: 1.2rem;
   top: 0;
   left: 0;
@@ -117,6 +117,7 @@
 .record:hover .text{
   visibility: visible;
   text-decoration: none;
+  color: white;
   /* transform: translateX(-10px); */
 }
 

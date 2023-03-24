@@ -11,7 +11,7 @@ import ContainerExample from '../Table/ContainerExample'
 
 
 function Homepage() {
-  const {loading , setLoading, records} = useContext(RecordContext)
+  const {loading , setLoading} = useContext(RecordContext)
   const navigation = useNavigate();
   const [homeRecords, setHomeRecords] = useState([])
   const [allSpotifyLinks, setSpotifyLinks] = useState([])
@@ -21,6 +21,7 @@ function Homepage() {
       setLoading(true)
       const response = await data.getRecords()
       setHomeRecords(response)
+      setSpotifyLinks([])
       setLoading(false)
     }
     getRecs()
@@ -61,7 +62,8 @@ let lastAddedRecords = homeRecords.slice(0,4)
     (
     <main>
       <div className={styles.row1}>
-      <ContainerExample allSpotifyLinks={allSpotifyLinks}/>
+      {lastAddedRecords.length!==0 && (
+      <ContainerExample allSpotifyLinks={allSpotifyLinks}/>)}
         <div className={styles.col2}>
         {lastAddedRecords.length===0 && (
             <div className={styles.norecord}>
