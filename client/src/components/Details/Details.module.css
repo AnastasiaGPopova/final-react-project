@@ -231,8 +231,9 @@
   }
   
   .allcomments{
-    padding-top: 200px;
     height: auto;
+    transform: translateY(220px);
+    padding-bottom: 150px;
   }
   
   .allcomments h3{
@@ -258,6 +259,7 @@
     display: flex;
     justify-content: center;
     background-color: linear-gradient(rgba(71, 68, 68, 0.5), rgba(43, 42, 42, 0.5));
+    height: auto;
   
   }
   
