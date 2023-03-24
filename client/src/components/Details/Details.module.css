@@ -148,6 +148,7 @@
   
   .btnedit:hover {
     background-color: #387183;
+    color: white
   }
   
   .btndelete {
@@ -155,7 +156,8 @@
   }
   
   .btndelete:hover {
-    background-color: #da4c06;
+    background-color: #bd4306de;
+    color: white
   }
   
   .btnwish {
@@ -164,6 +166,7 @@
   
   .btnwish:hover {
     background-color: #4b4d50;
+    color: white
   }
   
   

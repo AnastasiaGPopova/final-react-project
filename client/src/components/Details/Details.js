@@ -51,9 +51,9 @@ function Details() {
 
     getCurrent();
   }, [recordId, setIsOwner, currentUserId, setLoading]);
+ //---------------------------------------
 
-
-  //--------Setting isWished or not------------
+  //--------Set isWished or not------------
   useEffect(() => {
     if(currentRecord.hasOwnProperty('wishingList')){
       if(currentRecord.wishingList.includes(currentUserId)){
@@ -61,7 +61,7 @@ function Details() {
       }
     }
   }, [currentRecord, currentUserId, stateIsChanged])
-
+ //---------------------------------------
 
   console.log(isOwner)
 
@@ -76,6 +76,7 @@ function Details() {
     setIsChanged(updatedWish)
     navigate(`/records/${recordId}`);
   }
+   //---------------------------------------
 
   console.log(currentRecord)
 
@@ -88,6 +89,7 @@ function Details() {
       await data.deleteAllCommentsbyUser(recordId)
     }
   }
+  //---------------------------------------
 
   const onChangeHandler = (e) => {
     setCommentContent(e.target.value);
@@ -111,7 +113,7 @@ function Details() {
     loading ? (<Spinner loading={loading}/>) :
     (
     <section className={styles.detailspage}>
-      <h1>Details</h1>
+      <h1>Record details</h1>
       <article className={styles.detailscard}>
         <article className={styles.detailscardtext}>
           <h2>
