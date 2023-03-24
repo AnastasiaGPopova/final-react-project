@@ -13,21 +13,22 @@ import ContainerExample from '../Table/ContainerExample'
 function Homepage() {
   const {loading , setLoading} = useContext(RecordContext)
   const navigation = useNavigate();
-  const [homeRecords, setHomeRecords] = useState([])
   const [allSpotifyLinks, setSpotifyLinks] = useState([])
+  const [lastAddedRecords, setLastAddedRecords] = useState([])
+
+
 
   useEffect(()=> {
     async function getRecs(){
       setLoading(true)
       const response = await data.getRecords()
-      setHomeRecords(response)
       setSpotifyLinks([])
       setLoading(false)
+      setLastAddedRecords(response.slice(0,4))
     }
     getRecs()
   },[setLoading])
 
-  let lastAddedRecords = homeRecords.slice(0,4)
 
   useEffect(() => {
     
@@ -51,11 +52,9 @@ function Homepage() {
     // external_urls
     // "https://open.spotify.com/album/5ahEd7berYIgjRYsIHZa8Y"
 
-  }, [homeRecords])
+  }, [lastAddedRecords])
 
   console.log(allSpotifyLinks)
-
-
 
   return (
     loading ? (<Spinner loading={loading}/>) :
