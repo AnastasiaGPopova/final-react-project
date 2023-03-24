@@ -1,13 +1,16 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import Table from "react-bootstrap/Table";
 import Button from 'react-bootstrap/Button'
+import TableBody from "./TableBody";
 
 import styles from "../Table/ContainerExample.module.css";
 
-function ContainerExample() {
+function ContainerExample({allSpotifyLinks}) {
+
   return (
     <div className={styles.container}> 
-      <Table striped bordered hover variant="dark">
+    <h4>Check on Spotify our last added records...</h4>
+      <Table striped bordered hover variant="dark" allSpotifyLinks={allSpotifyLinks}>
         <thead>
           <tr>
             <th>Image</th>
@@ -17,16 +20,7 @@ function ContainerExample() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>
-              <img src="" alt=""></img>
-            </td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>
-            <Button size="sm">Success</Button>{' '}
-            </td>
-          </tr>
+        {allSpotifyLinks.map(x => <TableBody key={x._id}{...x}/>)}
         </tbody>
       </Table>
     </div>

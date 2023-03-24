@@ -35,6 +35,7 @@ function Homepage() {
         // console.log(res)
         // console.log(res.albums.items[0].images[0].url)
         const newRecordLink = {
+          _id: element._id,
           album: element.recordName,
           artist: element.artist,
           spotifyLink: res.albums.items[0].external_urls.spotify,
@@ -60,7 +61,7 @@ let lastAddedRecords = homeRecords.slice(0,4)
     (
     <main>
       <div className={styles.row1}>
-      <ContainerExample/>
+      <ContainerExample allSpotifyLinks={allSpotifyLinks}/>
         <div className={styles.col2}>
         {lastAddedRecords.length===0 && (
             <div className={styles.norecord}>

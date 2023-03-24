@@ -65,6 +65,7 @@
   margin: 10px;
   color: white;
   box-shadow: 0 0 10px #00000070;
+  text-decoration: none;
 }
 
 
@@ -96,7 +97,7 @@
 
 
 .text{
-  transform: translate(-0.5px, -234px);
+  transform: translate(-0.5px, -240px);
   font-size: 1.2rem;
   top: 0;
   left: 0;
@@ -115,6 +116,7 @@
 
 .record:hover .text{
   visibility: visible;
+  text-decoration: none;
   /* transform: translateX(-10px); */
 }
 

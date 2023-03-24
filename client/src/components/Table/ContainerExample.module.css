@@ -1,5 +1,9 @@
 .container{
-    width: 20%;
+    position: absolute;
+    width: 30%;
     height: auto;
-    transform: translate(1100px, 80px);
+    transform: translate(1100px, 50px);
 }
+
+
+

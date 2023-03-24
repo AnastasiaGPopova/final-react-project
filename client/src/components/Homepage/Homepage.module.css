@@ -192,7 +192,7 @@
 main{
   display: inline-block;
   position: relative;
-  transform: translateY(0px);
+  transform: translate(-100px, 110px);
   justify-content: center;
   align-items: center;
 }
@@ -203,4 +203,9 @@ main{
 
 .buttonPosition{
   transform: translateY(-30px);
+}
+
+.buttonPlay{
+  width: 20%;
+
 }
