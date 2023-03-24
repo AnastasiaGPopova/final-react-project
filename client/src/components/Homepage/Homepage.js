@@ -27,9 +27,11 @@ function Homepage() {
     getRecs()
   },[setLoading])
 
+  let lastAddedRecords = homeRecords.slice(0,4)
+
   useEffect(() => {
     
-    homeRecords.forEach(element => {
+    lastAddedRecords.forEach(element => {
         async function getSpot(){
         const res =  await spotify.getRequestSpotify(element.recordName)
         // console.log(res.albums.items[0].external_urls.spotify)
@@ -54,8 +56,6 @@ function Homepage() {
   console.log(allSpotifyLinks)
 
 
-let lastAddedRecords = homeRecords.slice(0,4)
-
 
   return (
     loading ? (<Spinner loading={loading}/>) :
@@ -63,7 +63,7 @@ let lastAddedRecords = homeRecords.slice(0,4)
     <main>
       <div className={styles.row1}>
       {lastAddedRecords.length!==0 && (
-      <ContainerExample allSpotifyLinks={allSpotifyLinks}/>)}
+      <ContainerExample allspotifylinks={allSpotifyLinks}/>)}
         <div className={styles.col2}>
         {lastAddedRecords.length===0 && (
             <div className={styles.norecord}>

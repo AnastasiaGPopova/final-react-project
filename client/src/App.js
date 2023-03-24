@@ -1,8 +1,5 @@
 import "./App.css";
 
-import 'bootstrap/dist/css/bootstrap.min.css'
-import {} from 'react-bootstrap'
-
 import { Route, Routes } from "react-router-dom";
 import * as data from "./api/data";
 import { useEffect, useState } from "react";

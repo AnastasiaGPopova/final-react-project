@@ -1,4 +1,5 @@
 import styles from "../Table/TableBody.module.css";
+import { Link } from "react-router-dom";
 
 function TableBody({
     _id,
@@ -12,12 +13,12 @@ function TableBody({
     return(
         <tr>
         <td>
-          <img src={spotifyCover} alt=""></img>
+          <img src={spotifyCover} alt={album}></img>
         </td>
         <td className={styles.text}>{album}</td>
         <td className={styles.text}>{artist}</td>
         <td>
-        <a className={styles.playbtn} href={spotifyLink}></a>
+        <Link className={styles.playbtn} to={spotifyLink}></Link>
         </td>
       </tr>
     )
