@@ -5,9 +5,6 @@ import { Link } from "react-router-dom";
 import {useSignOut} from 'react-auth-kit'
 
 
-
-
-
 function Navigation({isLogged}){
 
     const navigate = useNavigate()
@@ -37,16 +34,6 @@ function Navigation({isLogged}){
                  (<><li> <Link to="/login">Login</Link></li>
                     <li> <Link to="/register">Register</Link></li></>)
                 } 
-                
-
-                {/* <li> <a href="/">Home</a></li>
-                <li> <a href="/login">Login</a></li>
-                <li> <a href="/register">Register</a></li>
-                <li> <a href="/catalog">Catalog</a></li>
-
-                <li> <a href="/create">CREATE</a></li>
-                <li> <a href="/myprofile">My Profile</a></li>
-                <li> <a href="/" onClick={onLockOutClick}>LOGOUT</a></li> */}
 
             </ul>
         </nav>
