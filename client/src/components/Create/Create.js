@@ -147,7 +147,7 @@ function Create() {
           />
         </div>
 
-        <div className={styles.registerbox}>
+        <div className={styles.registerbox1}>
           <label className={styles.registerboxLabels} htmlFor="text">
             {" "}
             RPM:
@@ -184,7 +184,7 @@ function Create() {
           </div>
         </div>
 
-        <div className={styles.registerbox}>
+        <div className={styles.registerbox2}>
           <label className={styles.registerboxLabels} htmlFor="text">
             {" "}
             Genre:
@@ -245,6 +245,7 @@ function Create() {
             />
           </div>
         </div>
+        <br/>
         <button
           className={styles.submitButton}
           type="button"

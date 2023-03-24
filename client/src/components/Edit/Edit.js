@@ -159,7 +159,7 @@ function Edit() {
           />
         </div>
 
-        <div className={styles.registerbox}>
+        <div className={styles.registerbox1}>
           <label className={styles.registerboxLabels} htmlFor="text">{" "}RPM:</label>
 
           <div className={styles.radioButtons}>
@@ -183,7 +183,7 @@ function Edit() {
         </div>
 
 
-        <div className={styles.registerbox}>
+        <div className={styles.registerbox2}>
           <label className={styles.registerboxLabels} htmlFor="text">{" "}Genre:</label>
           <div className={styles.radioButtons}>
             <label className={styles.radioLabels} htmlFor="genre">Rock</label>
@@ -218,6 +218,7 @@ function Edit() {
             />
           </div>
         </div>
+        <br/>
         <button className={styles.submitButton}  type="button" onClick={onSubmitHandler}><span></span>EDIT RECORD </button>
       </form>
     </div>

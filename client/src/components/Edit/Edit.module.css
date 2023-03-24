@@ -154,3 +154,7 @@ input:focus{
     font-style: italic;
 }
 
+.registerbox1, .registerbox2{
+    position: relative;
+    display: flex;
+}

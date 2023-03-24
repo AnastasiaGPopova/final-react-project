@@ -44,7 +44,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: translateY(110px);
+    transform: translateY(95px);
 
 }
 
@@ -152,4 +152,9 @@ input:focus{
     word-break: normal;
     font-size: 20px;
     font-style: italic;
+}
+
+.registerbox1, .registerbox2{
+    position: relative;
+    display: flex;
 }
