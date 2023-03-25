@@ -61,7 +61,7 @@ function Homepage() {
         {lastAddedRecords.length===0 && (
             <div className={styles.norecord}>
               <h2 className={styles.norecord}>
-                There are no records reviews found yet...
+                There are no records reviews added yet...
               </h2>
               <br/>
               <br/>
