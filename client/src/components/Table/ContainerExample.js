@@ -8,7 +8,7 @@ function ContainerExample({allspotifylinks}) {
 
   return (
     <div className={styles.container}> 
-    <h4>Check on Spotify our last added records...</h4>
+    <h4>Check our last added records on <img src="./images/Spotify1.png" alt="" />Spotify: </h4>
       <Table striped bordered hover variant="dark" allspotifylinks={allspotifylinks}>
         <thead>
           <tr>
