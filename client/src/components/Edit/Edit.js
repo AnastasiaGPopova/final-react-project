@@ -10,15 +10,16 @@ import { useForm } from "../../hooks/useForm";
 function Edit() {
     const {recordId} = useParams()
     const navigate = useNavigate()
-    const {setErrorMessages, setRecords, setIsChanged, errorMessages, isOwner} = useContext(RecordContext)
-    const {recordValues, genres, onChangeHandler, onGenresChange, setRecordValues, setGenres} = useForm({}, {
+    const {isOwner} = useContext(RecordContext)
+    const {recordValues, genres, onChangeHandler, onGenresChange, 
+           setRecordValues, setGenres, errorMessages, onSubmitHandler} = useForm({}, {
       recordName: "",
       artist: "",
       year: "",
       imageUrl: "",
       description: "",
       rpm: "33",
-    })
+    }, "edit", recordId )
 
     if(!isOwner){
       navigate('/')
@@ -37,43 +38,41 @@ function Edit() {
     }, [recordId, setGenres, setRecordValues])
 
 
-      const onSubmitHandler = async (e) => {
-        e.preventDefault()
-        let realGenre = []
+      // const onSubmitHandler = async (e) => {
+      //   e.preventDefault()
+      //   let realGenre = []
 
-        for(const key of Object.keys(genres)){
-          console.log(genres.key)
-          if(genres[key] === true){
-            realGenre.push(key)
-          }
-        }
-        realGenre = realGenre.join(", ")
+      //   for(const key of Object.keys(genres)){
+      //     console.log(genres.key)
+      //     if(genres[key] === true){
+      //       realGenre.push(key)
+      //     }
+      //   }
+      //   realGenre = realGenre.join(", ")
 
-        const body = {
-          recordName : recordValues.recordName,
-          artist: recordValues.artist,
-          year: recordValues.year,
-          imageUrl: recordValues.imageUrl,
-          description: recordValues.description,
-          rpm: recordValues.rpm,
-          genre: realGenre,
-        }
-
-        
-          const response = await data.editRecord(recordId, body);
+      //   const body = {
+      //     recordName : recordValues.recordName,
+      //     artist: recordValues.artist,
+      //     year: recordValues.year,
+      //     imageUrl: recordValues.imageUrl,
+      //     description: recordValues.description,
+      //     rpm: recordValues.rpm,
+      //     genre: realGenre,
+      //   }
+      //     const response = await data.editRecord(recordId, body);
       
-          if (response.hasOwnProperty("errors")) {
-            setErrorMessages(response.message.join(', '))
-            setTimeout(()=> {
-              setErrorMessages(null)
-            },3000)
-          } else {
-            setRecords(state => [...state, response]);
-            setErrorMessages(null)
-            setIsChanged(response)
-            navigate(`/records/${recordId}`)
-          }
-      };
+      //     if (response.hasOwnProperty("errors")) {
+      //       setErrorMessages(response.message.join(', '))
+      //       setTimeout(()=> {
+      //         setErrorMessages(null)
+      //       },3000)
+      //     } else {
+      //       setRecords(state => [...state, response]);
+      //       setErrorMessages(null)
+      //       setIsChanged(response)
+      //       navigate(`/records/${recordId}`)
+      //     }
+      // };
 
   return (
     <div className={styles.hero}>

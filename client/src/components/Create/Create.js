@@ -1,63 +1,17 @@
 
 import styles from "../Create/Create.module.css";
-import * as data from "../../api/data";
-import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import {RecordContext } from "../../contexts/RecordContext";
 import { useForm } from "../../hooks/useForm";
 
 function Create() {
-  const {setErrorMessages, setRecords, setIsChanged, errorMessages} = useContext(RecordContext)
-  const navigate = useNavigate();
-
-  const {recordValues, genres, onChangeHandler, onGenresChange} = useForm({}, {
+  const {recordValues, onChangeHandler, onGenresChange, onSubmitHandler, errorMessages} = useForm({}, {
     recordName: "",
     artist: "",
     year: "",
     imageUrl: "",
     description: "",
     rpm: "33",
-  })
+  }, 'create')
 
-
-  const onSubmitHandler = async (e) => {
-    e.preventDefault();
-    let realGenre = [];
-
-    for (const key of Object.keys(genres)) {
-      console.log(genres.key);
-      if (genres[key] === true) {
-        realGenre.push(key);
-      }
-    }
-    realGenre = realGenre.join(", ");
-
-    const body = {
-      recordName: recordValues.recordName,
-      artist: recordValues.artist,
-      year: recordValues.year,
-      imageUrl: recordValues.imageUrl,
-      description: recordValues.description,
-      rpm: recordValues.rpm,
-      genre: realGenre,
-    };
-
-    console.log(body)
-
-    const response = await data.createRecord(body);
-
-    if (response.hasOwnProperty("errors")) {
-      setErrorMessages(response.message.join(", "));
-      setTimeout(()=> {
-        setErrorMessages(null)
-      },3000)
-    } else {
-      setRecords(state => [...state, response]);
-      setErrorMessages(null)
-      setIsChanged(response)
-      navigate("/catalog");
-    }
-  };
 
   return (
     <div className={styles.hero}>
