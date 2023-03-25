@@ -18,7 +18,7 @@ function TableBody({
         <td className={styles.text}>{album}</td>
         <td className={styles.text}>{artist}</td>
         <td>
-        <Link className={styles.playbtn} to={spotifyLink}></Link>
+        <button className={styles.playbtn} onClick={() => window.open(spotifyLink)}></button>
         </td>
       </tr>
     )
