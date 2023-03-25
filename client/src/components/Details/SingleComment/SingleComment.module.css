@@ -19,6 +19,11 @@
     min-height: 100px;
     width: 500px;
   }
+
+  .singleComment h3{
+    color: white;
+    font-size: medium;
+  }
   
   .singleComment p{
     width: 50px;
