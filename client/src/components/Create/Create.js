@@ -1,30 +1,24 @@
-import { useState } from "react";
+
 import styles from "../Create/Create.module.css";
 import * as data from "../../api/data";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import {RecordContext } from "../../contexts/RecordContext";
+import { useForm } from "../../hooks/useForm";
 
 function Create() {
   const {setErrorMessages, setRecords, setIsChanged, errorMessages} = useContext(RecordContext)
   const navigate = useNavigate();
-  const [genres, setGenres] = useState({});
-  const [recordValues, setRecordValues] = useState({
+
+  const {recordValues, genres, onChangeHandler, onGenresChange} = useForm({}, {
     recordName: "",
     artist: "",
     year: "",
     imageUrl: "",
     description: "",
     rpm: "33",
-  });
+  })
 
-  const onChangeHandler = (e) => {
-    setRecordValues((state) => ({ ...state, [e.target.name]: e.target.value }));
-  };
-
-  const onGenresChange = (e) => {
-    setGenres((state) => ({ ...state, [e.target.id]: e.target.checked }));
-  };
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();

@@ -1,23 +1,28 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import styles from "../Create/Create.module.css";
 import * as data from '../../api/data';
 import { useParams, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import {RecordContext } from "../../contexts/RecordContext";
+import { useForm } from "../../hooks/useForm";
 
 
 function Edit() {
     const {recordId} = useParams()
     const navigate = useNavigate()
     const {setErrorMessages, setRecords, setIsChanged, errorMessages, isOwner} = useContext(RecordContext)
+    const {recordValues, genres, onChangeHandler, onGenresChange, setRecordValues, setGenres} = useForm({}, {
+      recordName: "",
+      artist: "",
+      year: "",
+      imageUrl: "",
+      description: "",
+      rpm: "33",
+    })
 
     if(!isOwner){
       navigate('/')
     }
-
-    const [genres, setGenres] = useState({});
-    const [recordValues, setRecordValues] = useState({})
-
 
       useEffect(() => {
         async function getCurrent(){
@@ -25,22 +30,13 @@ function Edit() {
             setRecordValues(response)
             console.log(response)
             for(const key of response.genre.split(", ")){
-                setGenres({[key]: true})
+                setGenres(state=> ({...state, [key]: true}))
               }
         }
         getCurrent()
-    }, [recordId])
+    }, [recordId, setGenres, setRecordValues])
 
 
-
-      const onChangeHandler = (e) => {
-        setRecordValues(state => ({...state, [e.target.name]: e.target.value}));
-    };
-
-      const onGenresChange = (e) => {
-        setGenres(state => ({...state, [e.target.id]: e.target.checked}));
-    }
-      
       const onSubmitHandler = async (e) => {
         e.preventDefault()
         let realGenre = []
