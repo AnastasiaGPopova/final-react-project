@@ -122,6 +122,7 @@ function Details() {
           </h2>
           <h3>Artist: {currentRecord.artist}</h3>
           <h3>Genre: {currentRecord.genre}</h3>
+          <h3>RPM: {currentRecord.rpm}</h3>
           <h3>Description: {currentRecord.description}</h3>
           {/* If there is no registered user, do not display buttons*/}
           <h3>Likes: {currentRecord.likes}</h3>
