@@ -16,6 +16,18 @@ button{
     overflow: hidden;
 }
 
+
+.registerboxLabels{
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: -40px;
+    padding: 10px;
+    color: #fff;
+    cursor: text;
+    transition: 0.2s;
+}
+
 span{
     background: #5aa8a0;
     height: 100%;
@@ -66,12 +78,14 @@ form{
 
 
 .registerbox1{
-    height: 50px;
-    width: 400px;
-    /* display: inline-block; */
-    height: fit-content;
-    transform: translate(0px, -50px);
+    position: relative;
+    display: flex;
+    transform: translateY(-30px);
+}
 
+.radioLabels{
+    display: inline-block;
+    position: inherit;
 }
 
 input{
@@ -88,7 +102,7 @@ label{
     height: 100%;
     position: absolute;
     left: 0;
-    top: -35px;
+    /* top: -35px; */
     padding: 10px;
     color: #fff;
     cursor: text;
@@ -139,22 +153,18 @@ input:focus{
     color: white;
 }
 
-
 .radioButtons{
-    border: 2px solid white;
-    width: 55%;
-    height: 40px;
-    padding: 10px;
-    /* align-items: center; */
-    /* justify-content: center; */
-    /* display: flex; */
+    width: 15%;
+    align-items: center;
     color: white;
-    /* padding: -20px; */
-
+    display: flex;
+    padding: 0px;
+    /* padding-left: 20px; */
+    transform: translateY(-15px);
 }
 
 .radioInput{
-    width: 10%;
+    width: 25%;
     padding: 0px;
     outline: 0;
     padding-right: 0px;

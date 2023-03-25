@@ -72,46 +72,9 @@ function Register() {
           />
         </div>
 
-        {/* -----------NEW---------- */}
-        {/* <div className={styles.registerbox}>
-          <label className={styles.registerboxLabels} htmlFor="text">
-            {" "}
-            RPM:
-          </label>
-
-          <div className={styles.radioButtons}>
-            <label className={styles.radioLabels} htmlFor="PRM33">
-              33
-            </label>
-            <input
-              className="radioInput"
-              type="radio"
-              id="PRM33"
-              name="rpm"
-              value="33"
-              onChange={onChangeHandler}
-              checked={recordValues.rpm === "33"}
-            />
-          </div>
-
-          <div className={styles.radioButtons}>
-            <label className={styles.radioLabels} htmlFor="PRM33">
-              45
-            </label>
-            <input
-              className="radioInput"
-              type="radio"
-              id="PRM33"
-              name="rpm"
-              value="45"
-              onChange={onChangeHandler}
-              checked={recordValues.rpm === "45"}
-            />
-          </div>
-        </div> */}
-
         <div className={styles.registerbox1}>
-          <label htmlFor="gender">Gender:</label>
+          <label className={styles.registerboxLabels} htmlFor="gender">Gender:</label>
+
           <div className={styles.radioButtons}>
             <label className={styles.radioLabels} htmlFor="female">
               Female:
@@ -124,6 +87,9 @@ function Register() {
               onChange={(e) => setGender(e.target.name)}
               checked={gender === "female"}
             />
+           </div>
+
+             <div className={styles.radioButtons}>            
             <label className={styles.radioLabels} htmlFor="male">
               Male:
             </label>
