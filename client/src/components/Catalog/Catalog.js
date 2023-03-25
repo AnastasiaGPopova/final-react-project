@@ -62,7 +62,9 @@ function Catalog() {
             </div>
             <br/>
 
-            {/* <div className={styles.row2}>
+
+{/* 
+            <div className={styles.row2}>
             <div className={styles.inputfield}>
             <label htmlFor="genre">Genre!</label>
                 <div className={styles.inputselect}>
@@ -100,8 +102,10 @@ function Catalog() {
                   </select>
                 </div>
               </div>
-            </div> */}
-            <br/>
+            </div>
+            <br/> */}
+
+
 
             <div className={styles.row3}>
               <div className={styles.groupbtn}>

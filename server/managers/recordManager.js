@@ -27,7 +27,7 @@ exports.getSearchedbyArtistOrRecord = (item) => Record.find(
 
 
 exports.getSearchedbyYear1980to2020 = () => Record.find(
-    {$or: [{ "year": {$lt: 2021} }, { "year": {$gt: 1979} }]}
+    {$or: [, { "year": {$gt: 1979} }, { "year": {$lt: 2021} }]}
 );
 
 exports.getSearchedbyYear2021andNewer = () => Record.find(

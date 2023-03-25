@@ -35,10 +35,13 @@ function Homepage() {
     lastAddedRecords.forEach(element => {
         async function getSpot(){
         const res =  await spotify.getRequestSpotify(element.recordName)
+        console.log(res)
         const newRecordLink = {
           _id: element._id,
           album: element.recordName,
-          artist: element.artist,
+          artist: (res.albums.items[0].artists > 0 ? 
+            res.albums.items[0].artists[0].name + "  " + res.albums.items[0].artists[1].name
+            : res.albums.items[0].artists[0].name),
           spotifyLink: res.albums.items[0].external_urls.spotify,
           spotifyCover: res.albums.items[0].images[0].url
         }
