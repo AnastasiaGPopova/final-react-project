@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const parser = require('../utils/parser')
 
 const jwt = require('../lib/jsonwebtoken');
 const User = require('../models/User');
@@ -32,11 +33,8 @@ exports.login = async (email, password) => {
     };
 
 }catch(error){
-    let response = {
-        "errors": {},
-        "message": error.message
-    }
-    return response
+    console.log(parser.parseError(error))
+    return (parser.parseError(error))
 }
 };
 
@@ -63,11 +61,8 @@ exports.register = async (email, password, rePassword, gender) => {
     return this.login(email, password)
 
     }catch(error){
-        let response = {
-            "errors": {},
-            "message": error.message
-        }
-        return response
+        console.log(parser.parseError(error))
+        return (parser.parseError(error))
     }
 
 };

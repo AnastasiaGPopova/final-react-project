@@ -3,6 +3,7 @@ exports.parseError = (error) => {
     const errorMessages = Object.values(error.errors).map(
       (value) => value.message
     );
+    
     let response = {
       errors: {},
       message: errorMessages,
