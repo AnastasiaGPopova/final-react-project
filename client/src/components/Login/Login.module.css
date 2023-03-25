@@ -128,7 +128,7 @@ input:focus+label{
 
 .noaccount{
     color: white;
-    transform: translateX(70px);
+    transform: translate(20px, -20px);
 }
 
 .noaccount a{
