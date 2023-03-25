@@ -26,6 +26,6 @@
   }
   
   .singleComment p{
-    width: 50px;
+    width: 100%;
     word-wrap: normal;
   }
