@@ -8,16 +8,16 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import {RecordContext } from "../../contexts/RecordContext";
 import Spinner from "../../utils/Spinner";
+import { useCommentForm } from "../../hooks/useCommentForm";
 
 function Details() {
-  const {setIsOwner, setRecords, setIsChanged, isOwner, isLogged, loading, setLoading} = useContext(RecordContext)
   const { recordId } = useParams();
   const navigate = useNavigate();
+  const {setIsOwner, setRecords, setIsChanged, isOwner, isLogged, loading, setLoading} = useContext(RecordContext)
+  const {allComments, commentContent, setAllComments, onChangeHandler, onSubmitHandler} = useCommentForm(
+    "", [], recordId)
 
   const [currentRecord, setCurrentRecord] = useState({});
-  const [commentContent, setCommentContent] = useState("");
-  const [allComments, setAllComments] = useState([]);
-  const [stateIsChanged, setStateIsChanged] = useState(null);
   const [isAlreadyWished, setIsAlreadyWished] = useState(false)
   const [postedBy, setPostedBy] = useState('')
 
@@ -32,7 +32,7 @@ function Details() {
       setAllComments(response);
     }
     getAllComments();
-  }, [stateIsChanged, recordId]);
+  }, [recordId, setAllComments]);
 
   //--------Get current Record------------
   useEffect(() => {
@@ -60,7 +60,7 @@ function Details() {
         setIsAlreadyWished(true)
       }
     }
-  }, [currentRecord, currentUserId, stateIsChanged])
+  }, [currentRecord, currentUserId])
  //---------------------------------------
 
   console.log(isOwner)
@@ -91,23 +91,6 @@ function Details() {
   }
   //---------------------------------------
 
-  const onChangeHandler = (e) => {
-    setCommentContent(e.target.value);
-    console.log(commentContent);
-  };
-
-  const onSubmitHandler = async (e) => {
-    e.preventDefault();
-    const body = {
-      ownerComment: localStorage.getItem("email"),
-      content: commentContent,
-      recordId: recordId,
-    };
-    const newComment = await data.addComment(body);
-    setAllComments((state) => [...state, newComment]);
-    setStateIsChanged(newComment);
-    setCommentContent("")
-  };
 
   return (
     loading ? (<Spinner loading={loading}/>) :
