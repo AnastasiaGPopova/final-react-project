@@ -29,6 +29,7 @@ function App() {
   const [isChanged, setIsChanged] = useState(null);
   const [isOwner, setIsOwner] = useState(false)
   const [loading, setLoading]= useState(false)
+
  
 
 
@@ -56,16 +57,16 @@ function App() {
     
 console.log(localStorage.getItem('spotifyToken'))
 
-  const userEmail = auth()?.email
 
   useEffect(() => {
- 
-    if (userEmail !== undefined) {
+    if (auth()?.email !== undefined) {
       setIsLogged(true);
+
     } else {
       setIsLogged(false)
+
     }
-  }, [userEmail]);
+  }, [auth]);
 
 
 
@@ -81,7 +82,7 @@ console.log(localStorage.getItem('spotifyToken'))
       }
     }
     getAllRecords();
-  }, [isChanged, userEmail]);
+  }, [isChanged]);
 
 
 
@@ -90,19 +91,19 @@ console.log(localStorage.getItem('spotifyToken'))
     setIsOwner,
     records,
     setRecords,
-    errorMessages,
-    setErrorMessages,
     setIsChanged,
     isLogged,
     setLoading,
     loading,
+    errorMessages,
+    setErrorMessages
     }
 
 
   return (
     <>
-      <Navigation isLogged={isLogged} />
-      <RecordContext.Provider value={contextValue}>
+    <RecordContext.Provider value={contextValue}>
+      <Navigation/>
       <Routes>
         <Route path="/" element={<Homepage/>} />
         <Route path="/login" element={<Login />} />

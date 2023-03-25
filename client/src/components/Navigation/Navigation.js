@@ -3,9 +3,12 @@ import * as data from '../../api/data';
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import {useSignOut} from 'react-auth-kit'
+import { useContext } from "react";
+import {RecordContext } from "../../contexts/RecordContext";
 
 
-function Navigation({isLogged}){
+function Navigation(){
+    const {isLogged} = useContext(RecordContext)
 
     const navigate = useNavigate()
     const singOut = useSignOut()
