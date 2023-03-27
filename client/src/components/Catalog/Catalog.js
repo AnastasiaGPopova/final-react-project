@@ -69,7 +69,7 @@ function Catalog() {
 
             <div className={styles.row2}>
             <div className={styles.inputfield}>
-            <label htmlFor="genre">Genre!</label>
+            <label htmlFor="genre">Genre</label>
                 <div className={styles.inputselect}>
                   <select name="genres" id="genre" value={searchValues.genres}
                                                     onChange={onChangeHandler}>
@@ -82,7 +82,7 @@ function Catalog() {
                 </div>
               </div>
               <div className={styles.inputfield}>
-              <label htmlFor="rpm">RPM!</label>
+              <label htmlFor="rpm">RPM</label>
                 <div className={styles.inputselect}>
                   <select name="rpm" id="rpm" value={searchValues.rpm}
                                               onChange={onChangeHandler}>
@@ -94,7 +94,7 @@ function Catalog() {
               </div>
 
               <div className={styles.inputfield}>
-              <label htmlFor="year">Year!</label>
+              <label htmlFor="year">Year</label>
                 <div className={styles.inputselect}>
                   <select name="year" id="year" value={searchValues.year}
                                                 onChange={onChangeHandler}>
