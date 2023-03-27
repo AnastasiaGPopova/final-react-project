@@ -22,6 +22,7 @@ function Catalog() {
 
   const onChangeHandler = (e) => {
     setSearchValues((state) => ({ ...state, [e.target.name]: e.target.value }));
+    console.log(searchValues)
   };
 
   async function onSubmitHandler(e){
@@ -32,6 +33,8 @@ function Catalog() {
       rpm: searchValues.rpm,
       year: searchValues.year
     }
+
+    console.log(data)
 
     setLoading(true)
     const response = await dataApi.searchFunction(data)
@@ -63,7 +66,8 @@ function Catalog() {
             <br/>
 
 
-{/* 
+
+
             <div className={styles.row2}>
             <div className={styles.inputfield}>
             <label htmlFor="genre">Genre!</label>
@@ -103,7 +107,8 @@ function Catalog() {
                 </div>
               </div>
             </div>
-            <br/> */}
+            <br/>
+
 
 
 

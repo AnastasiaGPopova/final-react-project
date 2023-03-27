@@ -21,7 +21,7 @@ const recordSchema = new mongoose.Schema({
     year: {
         type: Number,
         required: true,
-        min: [1950, "Year should be at greater then 1950 and less then 2024 !"],
+        min: [1940, "Year should be at greater then 1940 and less then 2024 !"],
         max: [2023, "Year should be at greater then 1950 and less then 2024 !"]
     }, 
     imageUrl: {
