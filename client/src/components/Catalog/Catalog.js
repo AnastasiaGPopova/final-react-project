@@ -22,7 +22,6 @@ function Catalog() {
 
   const onChangeHandler = (e) => {
     setSearchValues((state) => ({ ...state, [e.target.name]: e.target.value }));
-    console.log(searchValues)
   };
 
   async function onSubmitHandler(e){
@@ -117,7 +116,7 @@ function Catalog() {
                 <button className={styles.buttonReset} onClick={async () => {
                   const result = await dataApi.getRecords()
                   setRecords(result)
-                  setSearchValues((state) => ({ ...state, searchItem:'' }))
+                  setSearchValues((state) => ({ searchItem:'', genres: "all", rpm: "all", year: "all" }))
                 }}>
                   <span className={styles.searchAdvanced} />
                   RESET
