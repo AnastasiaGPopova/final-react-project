@@ -451,12 +451,12 @@ form{
 }
 
 .row1, .row2, .row3{
-  display: -ms-flexbox;
+  /* display: -ms-flexbox; */
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
+  /* margin-right: -15px;
+  margin-left: -15px; */
   justify-content: right;
   height: 5vh;
 
@@ -470,10 +470,12 @@ form{
   transform: translateY(-20px);
 }
 .advancesearch{
+  padding: 0;
   box-sizing: border-box;
   display: block;
   transform: translateX(750px);
 }
+
 
 .inputselect {
   padding: 5px;
@@ -490,10 +492,11 @@ form{
 
 
 .advancesearch input{
-  padding: 20px;
+  /* padding: 20px; */
   width: 250px;
-  height: 25px;
+  height: 50px;
   margin-left: 5px;
+  padding-left: 10px;
 }
 
 

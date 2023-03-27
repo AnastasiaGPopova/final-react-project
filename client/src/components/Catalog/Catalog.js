@@ -52,7 +52,6 @@ function Catalog() {
         <form onSubmit={onSubmitHandler}>
           <div className={styles.advancesearch}>
             <div className={styles.row1}>
-              <div>
                 <input
                   type="text"
                   id="searchItem"
@@ -60,7 +59,6 @@ function Catalog() {
                   placeholder="Search artist/record..."
                   value={searchValues.searchItem}
                   onChange={onChangeHandler}/>
-              </div>
             </div>
             <br/>
 
