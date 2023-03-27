@@ -15,9 +15,9 @@ function Catalog() {
   const [sortedByLastAdded, setSortedByLastAdded] = useState(true)
   const [searchValues, setSearchValues] = useState({
     searchItem: "",
-    genres: "",
-    rpm: "",
-    year: "",
+    genres: "all",
+    rpm: "all",
+    year: "all",
   });
 
   const onChangeHandler = (e) => {
