@@ -37,43 +37,6 @@ function Edit() {
         getCurrent()
     }, [recordId, setGenres, setRecordValues])
 
-
-      // const onSubmitHandler = async (e) => {
-      //   e.preventDefault()
-      //   let realGenre = []
-
-      //   for(const key of Object.keys(genres)){
-      //     console.log(genres.key)
-      //     if(genres[key] === true){
-      //       realGenre.push(key)
-      //     }
-      //   }
-      //   realGenre = realGenre.join(", ")
-
-      //   const body = {
-      //     recordName : recordValues.recordName,
-      //     artist: recordValues.artist,
-      //     year: recordValues.year,
-      //     imageUrl: recordValues.imageUrl,
-      //     description: recordValues.description,
-      //     rpm: recordValues.rpm,
-      //     genre: realGenre,
-      //   }
-      //     const response = await data.editRecord(recordId, body);
-      
-      //     if (response.hasOwnProperty("errors")) {
-      //       setErrorMessages(response.message.join(', '))
-      //       setTimeout(()=> {
-      //         setErrorMessages(null)
-      //       },3000)
-      //     } else {
-      //       setRecords(state => [...state, response]);
-      //       setErrorMessages(null)
-      //       setIsChanged(response)
-      //       navigate(`/records/${recordId}`)
-      //     }
-      // };
-
   return (
     <div className={styles.hero}>
       {errorMessages && (

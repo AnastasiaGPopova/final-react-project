@@ -30,7 +30,6 @@ function App() {
   const [isOwner, setIsOwner] = useState(false)
   const [loading, setLoading]= useState(false)
 
- 
 
 
   //-----Spotify API Access Token ------------

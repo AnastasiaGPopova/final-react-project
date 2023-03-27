@@ -10,43 +10,41 @@ import {useSignIn} from 'react-auth-kit'
 
 
 function Register() {
-  
   const navigate = useNavigate();
-  const singIn = useSignIn()
-  const {setErrorMessages, errorMessages, isLogged} = useContext(RecordContext)
+  const singIn = useSignIn();
+  const { setErrorMessages, errorMessages, isLogged } =
+    useContext(RecordContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
   const [gender, setGender] = useState("female");
 
-  if(isLogged){
-    navigate('/')
+  if (isLogged) {
+    navigate("/");
   }
 
-
   async function submit(e) {
-    e.preventDefault()
-  
-      let response = await data.register(email, password, rePassword, gender)
+    e.preventDefault();
 
-      if(response.hasOwnProperty('errors')){
-        setErrorMessages(response.message)
-        setTimeout(()=> {
-          setErrorMessages(null)
-        },3000)
-      } else {
+    let response = await data.register(email, password, rePassword, gender);
+
+    if (response.hasOwnProperty("errors")) {
+      setErrorMessages(response.message);
+      setTimeout(() => {
+        setErrorMessages(null);
+      }, 3000);
+    } else {
       singIn({
         token: response.accessToken,
         expiresIn: 3600,
         tokenType: "Bearer",
-        authState: {email: response.email, id: response._id}
-      })
-      setErrorMessages(null)
-      navigate('/')
+        authState: { email: response.email, id: response._id },
+      });
+      setErrorMessages(null);
+      navigate("/");
     }
-}
-
+  }
 
   return (
     <div className={styles.hero}>
@@ -73,13 +71,16 @@ function Register() {
         </div>
 
         <div className={styles.registerbox1}>
-          <label className={styles.registerboxLabels} htmlFor="gender">Gender:</label>
+          <label className={styles.registerboxLabels} htmlFor="gender">
+            Gender:
+          </label>
 
           <div className={styles.radioButtons}>
             <label className={styles.radioLabels} htmlFor="female">
               Female:
             </label>
-            <input className={styles.radioInput}
+            <input
+              className={styles.radioInput}
               type="radio"
               id="female"
               name="female"
@@ -87,13 +88,14 @@ function Register() {
               onChange={(e) => setGender(e.target.name)}
               checked={gender === "female"}
             />
-           </div>
+          </div>
 
-             <div className={styles.radioButtons}>            
+          <div className={styles.radioButtons}>
             <label className={styles.radioLabels} htmlFor="male">
               Male:
             </label>
-            <input className={styles.radioInput}
+            <input
+              className={styles.radioInput}
               type="radio"
               id="male"
               name="male"
@@ -102,8 +104,7 @@ function Register() {
               checked={gender === "male"}
             />
           </div>
-          <br/>
-
+          <br />
         </div>
         <div className={styles.registerbox}>
           <label htmlFor="password">
@@ -133,15 +134,18 @@ function Register() {
             onChange={(e) => setRePassword(e.target.value)}
           />
           <br />
-          <button className={styles.submitButton} type="button" onClick={submit}>
-          {" "}
-          <span /> REGISTER{" "}
-        </button>
-        <p className={styles.noaccount}>
-          Have an account ? <a href="/login">Click here</a>
-        </p>
+          <button
+            className={styles.submitButton}
+            type="button"
+            onClick={submit}
+          >
+            {" "}
+            <span /> REGISTER{" "}
+          </button>
+          <p className={styles.noaccount}>
+            Have an account ? <a href="/login">Click here</a>
+          </p>
         </div>
-
       </form>
     </div>
   );
