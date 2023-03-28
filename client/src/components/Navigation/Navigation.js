@@ -13,7 +13,7 @@ function Navigation(){
     const navigate = useNavigate()
     const singOut = useSignOut()
 
-    async function onLockOutClick() {
+    async function onLogOutClick() {
         data.logout()
         singOut()
         navigate("/")
@@ -31,7 +31,7 @@ function Navigation(){
                  (<>
                  <li> <Link to="/create">CREATE</Link></li>
                  <li> <Link to="/myProfile">MY PROFILE</Link></li>
-                 <li> <Link to="" onClick={onLockOutClick}>LOGOUT</Link></li>
+                 <li> <Link to="" onClick={onLogOutClick}>LOGOUT</Link></li>
                  </>)
                  :
                  (<><li> <Link to="/login">Login</Link></li>
