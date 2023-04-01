@@ -63,8 +63,6 @@ function Catalog() {
             <br/>
 
 
-
-
             <div className={styles.row2}>
             <div className={styles.inputfield}>
             <label htmlFor="genre">Genre</label>
@@ -127,6 +125,13 @@ function Catalog() {
             </div>
           </div>
         </form>
+        <h5 className={styles.catalogText}>Record list: 
+        {sortedByLikes && ' sorted by likes'}
+        {sortedByLastAdded && ' sorted by creation date'}
+        {sortedByRecordName && ' sorted by album name (A-Z)'}
+        </h5>
+
+
       </div>
 
       <section className={styles.pagesection}>

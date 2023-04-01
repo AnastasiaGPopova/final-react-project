@@ -579,3 +579,8 @@ form label{
   z-index: 2;
   color: white;
 }
+
+.catalogText{
+  color: white;
+  transform: translate(270px, -40px)
+}
