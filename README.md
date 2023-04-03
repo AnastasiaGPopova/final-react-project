@@ -2,8 +2,8 @@
 
 I. Introduction
 
-"Record Me" project is a web app where people can share their passion for vinyl records.
-MERN stack project - MongoDB, Express.js, React.js, and Nodejs
+- "Record Me" project is a web app where people can share their passion for vinyl records.
+- MERN stack project - MongoDB, Express.js, React.js, and Nodejs
 
 II. Getting Started
 
