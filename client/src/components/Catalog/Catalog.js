@@ -112,6 +112,9 @@ function Catalog() {
                 <button className={styles.buttonReset} onClick={async () => {
                   const result = await dataApi.getRecords()
                   setRecords(result)
+                  setSortedByLikes(false)
+                  setSortedByLastAdded(true)
+                  setSortedByRecordName(false)
                   setSearchValues((state) => ({ searchItem:'', genres: "all", rpm: "all", year: "all" }))
                 }}>
                   <span className={styles.searchAdvanced} />
@@ -125,11 +128,12 @@ function Catalog() {
             </div>
           </div>
         </form>
-        <h5 className={styles.catalogText}>Record list: 
+        <h5 className={styles.catalogText}>Record list: </h5>
+        <p className={styles.catalogText}>
         {sortedByLikes && ' sorted by likes'}
         {sortedByLastAdded && ' sorted by creation date'}
         {sortedByRecordName && ' sorted by album name (A-Z)'}
-        </h5>
+        </p>
 
 
       </div>
