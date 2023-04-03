@@ -53,6 +53,7 @@ function Details() {
   }, [recordId, setIsOwner, currentUserId, setLoading]);
  //---------------------------------------
 
+ 
   //--------Set isWished or not------------
   useEffect(() => {
     if(currentRecord.hasOwnProperty('wishingList')){
