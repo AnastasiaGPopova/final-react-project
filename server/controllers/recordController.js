@@ -54,6 +54,9 @@ router.post("/", async (req, res) => {
       throw new Error (`All fields are requiered!`)
     }
 
+    if(recordManager.getExisting(recordName)){
+      throw new Error (`This record already exist in our catalog!`)
+    }
 
 
     const record = await recordManager.create({recordName, artist, year, imageUrl, description, genre, rpm, _ownerId: req.user._id});
