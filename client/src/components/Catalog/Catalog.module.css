@@ -144,7 +144,7 @@ p {
   margin-right: auto;
   margin-left: auto;
   justify-content: center;
-  transform: translateY(100px);
+  transform: translateY(120px);
 }
 
 /* div {
@@ -458,7 +458,7 @@ form{
   /* margin-right: -15px;
   margin-left: -15px; */
   justify-content: right;
-  height: 5vh;
+  height: 7vh;
 
 }
 
@@ -552,7 +552,7 @@ select{
 }
 
 .groupbtn{
-height: 30px;
+height: 50px;
 transform: translateY(-20px);
 }
 
@@ -583,4 +583,10 @@ form label{
 .catalogText{
   color: white;
   transform: translate(270px, -40px)
+}
+
+.catalogTextP{
+  color: white;
+  transform: translate(270px, -55px);
+  font-style: italic;
 }
