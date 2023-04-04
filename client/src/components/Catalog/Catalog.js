@@ -129,7 +129,7 @@ function Catalog() {
           </div>
         </form>
         <h5 className={styles.catalogText}>Record list: </h5>
-        <p className={styles.catalogText}>
+        <p className={styles.catalogTextP}>
         {sortedByLikes && ' sorted by likes'}
         {sortedByLastAdded && ' sorted by creation date'}
         {sortedByRecordName && ' sorted by album name (A-Z)'}
