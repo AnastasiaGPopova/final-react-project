@@ -31,7 +31,6 @@ function App() {
   const [loading, setLoading]= useState(false)
 
 
-
   //-----Spotify API Access Token ------------
 
     const baseUrl = `https://accounts.spotify.com/api/token`
