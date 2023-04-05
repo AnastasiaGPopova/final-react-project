@@ -48,6 +48,9 @@ router.post("/", async (req, res) => {
 
   const {recordName, artist, year, imageUrl, description, genre, rpm} = req.body;
 
+  const all = recordManager.getAll()
+  console.log(all)
+
   try {
 
     if(!recordName || !artist || !year || !imageUrl || !description || !genre || !rpm){

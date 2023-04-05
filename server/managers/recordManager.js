@@ -11,7 +11,7 @@ exports.getAll = () => Record.find().sort({createdAt: -1})
 
 exports.create = (recordData) => Record.create(recordData);
 
-exports.getExisting = (recordname) => Record.find({'recordName': recordname});
+exports.getExisting = (recordname) => Record.find({'recordName': `${recordname}`});
 
 exports.update = (id, recordData) => Record.findByIdAndUpdate(id, recordData, {runValidators: true});
 
