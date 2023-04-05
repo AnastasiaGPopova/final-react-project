@@ -81,7 +81,6 @@ function Details() {
    //---------------------------------------
 
   console.log(currentRecord)
-  console.log(records)
 
 //--------on Delete Click------------
   async function onDeleteClick(id){
