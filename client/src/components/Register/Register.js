@@ -6,6 +6,7 @@ import {RecordContext } from "../../contexts/RecordContext";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {useSignIn} from 'react-auth-kit'
+import { Link } from "react-router-dom";
 
 
 
@@ -143,7 +144,7 @@ function Register() {
             <span /> REGISTER{" "}
           </button>
           <p className={styles.noaccount}>
-            Have an account ? <a href="/login">Click here</a>
+            Have an account ? <Link to="/login">Click here</Link>
           </p>
         </div>
       </form>
