@@ -2,12 +2,14 @@ import styles from "../Login/Login.module.css";
 import * as data from '../../api/data';
 
 
+
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import {useSignIn} from 'react-auth-kit'
 import { useContext } from "react";
 import {RecordContext } from "../../contexts/RecordContext";
 import {useAuthUser} from 'react-auth-kit'
+import { Link } from "react-router-dom";
 
 function Login() {
   const {setErrorMessages, errorMessages, isLogged, setUserEmail} = useContext(RecordContext)
@@ -95,7 +97,7 @@ console.log(errorMessages)
             <span />
             LOGIN{" "}
           </button>
-          <p className={styles.noaccount}>Don't have an account ? <a href="/register">Create one</a></p>
+          <p className={styles.noaccount}>Don't have an account ? <Link to="/register">Create one</Link></p>
         </form>
       </div>
     </>
