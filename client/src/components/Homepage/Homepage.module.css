@@ -192,7 +192,7 @@
 main{
   display: inline-block;
   position: relative;
-  transform: translate(-100px, 110px);
+  transform: translate(-100px, 160px);
   justify-content: center;
   align-items: center;
 }
