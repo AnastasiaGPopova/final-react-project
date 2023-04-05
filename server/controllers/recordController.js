@@ -74,6 +74,8 @@ router.put("/:recordId", async (req, res) => {
   let isOwner = true;
   let currentRecord = await recordManager.getOne(req.params.recordId);
   const {recordName, artist, year, imageUrl, description, genre, rpm, likes, wishingList} = req.body;
+  console.log(likes)
+  console.log(wishingList)
 
     try {
 

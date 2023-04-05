@@ -13,7 +13,7 @@ import { useCommentForm } from "../../hooks/useCommentForm";
 function Details() {
   const { recordId } = useParams();
   const navigate = useNavigate();
-  const {setIsOwner, setRecords, setIsChanged, isOwner, isLogged, loading, setLoading} = useContext(RecordContext)
+  const {setIsOwner, records, setRecords, setIsChanged, isOwner, isLogged, loading, setLoading} = useContext(RecordContext)
   const {allComments, commentContent, setAllComments, onChangeHandler, onSubmitHandler} = useCommentForm(
     "", [], recordId)
 
@@ -72,6 +72,7 @@ function Details() {
     currentRecord.likes++
     setCurrentRecord((state) => ({ ...state, wishingList: currentRecord.wishingList, likes: currentRecord.likes }));
     let newBody = { ...currentRecord };
+    console.log(`New Body: ${newBody}`)
     const updatedWish = await data.editRecord(recordId, newBody);
     setRecords(state => [...state, updatedWish])
     setIsChanged(updatedWish)
@@ -80,6 +81,7 @@ function Details() {
    //---------------------------------------
 
   console.log(currentRecord)
+  console.log(records)
 
 //--------on Delete Click------------
   async function onDeleteClick(id){
