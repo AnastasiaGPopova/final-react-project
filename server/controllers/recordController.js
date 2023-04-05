@@ -47,9 +47,6 @@ router.post("/", async (req, res) => {
   // genre: realGenre,
 
   const {recordName, artist, year, imageUrl, description, genre, rpm} = req.body;
-
-console.log(`--------------Existing----------------`)
-
   const existingRecord = await recordManager.getExisting(recordName)
 
 
