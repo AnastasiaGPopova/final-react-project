@@ -446,8 +446,9 @@ form{
 }
 
 .inputselect{
-  margin-bottom: 30px;
+  margin-bottom: 0px;
   position: relative;
+  transform: translateY(-20px);
 }
 
 .row1, .row2, .row3{
@@ -463,11 +464,12 @@ form{
 }
 
 .row2{
-  transform: translateY(-43px);
+  transform: translateY(-25px);
+  height: 9vh;
 }
 
 .row3{
-  transform: translateY(-20px);
+  transform: translateY(-43px);
 }
 .advancesearch{
   padding: 0;
@@ -548,7 +550,7 @@ select{
 }
 
 .inputfield label{
-  transform: translateY(20px);
+  transform: translateY(-10px);
 }
 
 .groupbtn{
@@ -581,12 +583,16 @@ form label{
 }
 
 .catalogText{
+  width: 30%;
+  margin: 0px;
   color: white;
   transform: translate(270px, -40px)
 }
 
 .catalogTextP{
   color: white;
-  transform: translate(270px, -55px);
+  width: 30%;
+  margin: 0px;
+  transform: translate(270px, -40px);
   font-style: italic;
 }
