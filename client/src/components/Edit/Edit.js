@@ -5,6 +5,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import {RecordContext } from "../../contexts/RecordContext";
 import { useForm } from "../../hooks/useForm";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCompactDisc, faUser, faCalendar, faPhotoFilm, faPenNib } from '@fortawesome/free-solid-svg-icons'
 
 
 function Edit() {
@@ -49,7 +51,7 @@ function Edit() {
       <form>
         <div className={styles.registerbox}>
           <label className={styles.registerboxLabels} htmlFor="text">
-            <i className="fa-solid fa-envelope" /> Record Name:</label>
+          <FontAwesomeIcon icon={faCompactDisc} style={{color: "#ffffff",}} /> Record Name:</label>
           <input
             className={styles.registerboxInput}
             type="text"
@@ -62,7 +64,7 @@ function Edit() {
         </div>
         <div className={styles.registerbox}>
           <label className={styles.registerboxLabels} htmlFor="text">
-            <i className="fa-solid fa-envelope" /> Artist:
+          <FontAwesomeIcon icon={faUser} style={{color: "#ffffff",}} /> Artist:
           </label>
           <input
             className={styles.registerboxInput || ""}
@@ -76,7 +78,7 @@ function Edit() {
         </div>
         <div className={styles.registerbox}>
           <label className={styles.registerboxLabels} htmlFor="text">
-            <i className="fa-solid fa-envelope" /> Year:</label>
+          <FontAwesomeIcon icon={faCalendar} style={{color: "#ffffff",}} /> Year:</label>
         <input
             className={styles.registerboxInput}
             type="text"
@@ -90,7 +92,7 @@ function Edit() {
 
         <div className={styles.registerbox}>
           <label className={styles.registerboxLabels} htmlFor="text">
-            <i className="fa-solid fa-envelope" /> Image Url:</label>
+          <FontAwesomeIcon icon={faPhotoFilm} style={{color: "#ffffff",}} /> Image Url:</label>
           <input
             className={styles.registerboxInput}
             type="text"
@@ -104,7 +106,7 @@ function Edit() {
 
         <div className={styles.registerbox}>
           <label className={styles.registerboxLabels} htmlFor="text">
-            <i className="fa-solid fa-envelope" /> Description:
+          <FontAwesomeIcon icon={faPenNib} style={{color: "#ffffff",}} /> Description:
           </label>
           <textarea
             className={styles.registerboxInputDescription}

@@ -1,6 +1,9 @@
 
 import styles from "../Create/Create.module.css";
 import { useForm } from "../../hooks/useForm";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCompactDisc, faUser, faCalendar, faPhotoFilm, faPenNib } from '@fortawesome/free-solid-svg-icons'
+
 
 function Create() {
   const {recordValues, onChangeHandler, onGenresChange, onSubmitHandler, errorMessages} = useForm({}, {
