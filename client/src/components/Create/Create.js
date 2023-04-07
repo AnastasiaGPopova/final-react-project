@@ -27,7 +27,7 @@ function Create() {
       <form>
         <div className={styles.registerbox}>
           <label className={styles.registerboxLabels} htmlFor="text">
-            <i className="fa-solid fa-envelope" /> Record Name:
+          <FontAwesomeIcon icon={faCompactDisc} style={{color: "#ffffff",}} /> Record Name:
           </label>
           <input
             className={styles.registerboxInput}
@@ -41,7 +41,7 @@ function Create() {
         </div>
         <div className={styles.registerbox}>
           <label className={styles.registerboxLabels} htmlFor="text">
-            <i className="fa-solid fa-envelope" /> Artist:
+          <FontAwesomeIcon icon={faUser} style={{color: "#ffffff",}} /> Artist:
           </label>
           <input
             className={styles.registerboxInput}
@@ -55,7 +55,7 @@ function Create() {
         </div>
         <div className={styles.registerbox}>
           <label className={styles.registerboxLabels} htmlFor="text">
-            <i className="fa-solid fa-envelope" /> Year:
+          <FontAwesomeIcon icon={faCalendar} style={{color: "#ffffff",}} /> Year:
           </label>
           <input
             className={styles.registerboxInput}
@@ -70,7 +70,7 @@ function Create() {
 
         <div className={styles.registerbox}>
           <label className={styles.registerboxLabels} htmlFor="text">
-            <i className="fa-solid fa-envelope" /> Image Url:
+          <FontAwesomeIcon icon={faPhotoFilm} style={{color: "#ffffff",}} /> Image Url:
           </label>
           <input
             className={styles.registerboxInput}
@@ -85,7 +85,7 @@ function Create() {
 
         <div className={styles.registerbox}>
           <label className={styles.registerboxLabels} htmlFor="text">
-            <i className="fa-solid fa-envelope" /> Description:
+          <FontAwesomeIcon icon={faPenNib} style={{color: "#ffffff",}} /> Description:
           </label>
           <textarea
             className={styles.registerboxInputDescription}
