@@ -53,17 +53,4 @@ All requests are sent to http:localhost/3030/:resource. Supported requests are G
 - MongoDB Models: User, Comment, Record
 
 VIII. Styling
-- The application is divided into components with separate CSS files
-
-IX. Testing
-
-Explain the testing strategy used in the project (e.g. unit tests, integration tests)
-Provide examples of how to write tests
-X. Deployment
-
-Explain how to deploy the project to a production environment
-Provide any additional information on hosting, server setup, or other deployment considerations
-XI. Conclusion
-
-Summarize the main points of the documentation
-Provide any additional resources or links that may be useful
+- The application is divided into components with separate CSS files.
