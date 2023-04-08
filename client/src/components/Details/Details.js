@@ -13,7 +13,7 @@ import { useCommentForm } from "../../hooks/useCommentForm";
 function Details() {
   const { recordId } = useParams();
   const navigate = useNavigate();
-  const {setIsOwner, records, setRecords, setIsChanged, isOwner, isLogged, loading, setLoading} = useContext(RecordContext)
+  const {setIsOwner, setRecords, setIsChanged, isOwner, isLogged, loading, setLoading} = useContext(RecordContext)
   const {allComments, commentContent, setAllComments, onChangeHandler, onSubmitHandler} = useCommentForm(
     "", [], recordId)
 
@@ -40,7 +40,7 @@ function Details() {
       setLoading(true)
       const response = await data.getItemById(recordId);
 
-      if(response._ownerId === undefined){
+      if(response.hasOwnProperty('errors')){
         navigate('/404')
       }
 
@@ -55,7 +55,7 @@ function Details() {
     }
 
     getCurrent();
-  }, [recordId, setIsOwner, currentUserId, setLoading]);
+  }, [recordId, setIsOwner, currentUserId, setLoading, navigate]);
  //---------------------------------------
 
  
