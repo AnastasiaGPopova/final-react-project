@@ -79,15 +79,19 @@ router.put("/:recordId", async (req, res) => {
   console.log(likes)
   console.log(wishingList)
 
-    try {
+  try {
+
+    if(!currentRecord){
+      throw new Error (`No such record!`)
+    }
 
     if(!recordName || !artist || !year || !imageUrl || !description || !genre || !rpm){
         throw new Error (`All fields are requiered!`)
       }
 
     const updatredRecord =  await recordManager.update(req.params.recordId, {recordName, artist, year, imageUrl, description, genre, rpm, likes, wishingList});
-
-      res.json(updatredRecord);
+    console.log(record)  
+    res.json(updatredRecord);
     } catch (error) {
       console.log(error)
       return res.json(parser.parseError(error))

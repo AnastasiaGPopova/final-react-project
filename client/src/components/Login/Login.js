@@ -8,14 +8,12 @@ import { useNavigate } from 'react-router-dom';
 import {useSignIn} from 'react-auth-kit'
 import { useContext } from "react";
 import {RecordContext } from "../../contexts/RecordContext";
-import {useAuthUser} from 'react-auth-kit'
 import { Link } from "react-router-dom";
 
 function Login() {
-  const {setErrorMessages, errorMessages, isLogged, setUserEmail} = useContext(RecordContext)
+  const {setErrorMessages, errorMessages, isLogged, setIsLogged} = useContext(RecordContext)
   const navigate = useNavigate();
   const singIn = useSignIn()
-  const auth = useAuthUser()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -44,7 +42,7 @@ function Login() {
     authState: {email: response.email, id: response._id}
   })
   setErrorMessages(null)
-  setUserEmail(auth()?.email)
+  setIsLogged(true)
   navigate('/')
 }
 

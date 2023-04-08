@@ -39,6 +39,11 @@ function Details() {
     async function getCurrent() {
       setLoading(true)
       const response = await data.getItemById(recordId);
+
+      if(response._ownerId === undefined){
+        navigate('/404')
+      }
+
       if(response._ownerId._id === currentUserId){
         setIsOwner(true)
       }else{

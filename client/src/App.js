@@ -29,7 +29,6 @@ function App() {
   const [isChanged, setIsChanged] = useState(null);
   const [isOwner, setIsOwner] = useState(false)
   const [loading, setLoading]= useState(false)
-  const [userEmail, setUserEmail]= useState(false)
 
 
   //-----Spotify API Access Token ------------
@@ -62,8 +61,6 @@ function App() {
 
     } else {
       setIsLogged(false)
-      setUserEmail(auth()?.email)
-
     }
   }, [auth]);
 
@@ -92,12 +89,11 @@ function App() {
     setRecords,
     setIsChanged,
     isLogged,
+    setIsLogged,
     setLoading,
     loading,
     errorMessages,
     setErrorMessages,
-    userEmail,
-    setUserEmail
     }
 
 
@@ -114,7 +110,8 @@ function App() {
         <Route path="/records/:recordId" element={<Details/>}/>
         <Route path="/records/:recordId/edit" element={<RequireAuth loginPath="/login"><Edit/></RequireAuth>}/>                                                    
          <Route path="/myProfile" element={<RequireAuth loginPath="/login"><Profile/></RequireAuth>} />
-         <Route path="*" element={<Error/>}/>
+         <Route path="/*" element={<Error/>}/>
+         <Route path="/404" element={<Error/>}/>
       </Routes>
       </RecordContext.Provider>
       <Footer />
