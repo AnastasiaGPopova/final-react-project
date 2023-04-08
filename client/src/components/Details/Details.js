@@ -42,6 +42,7 @@ function Details() {
 
       if(response.hasOwnProperty('errors')){
         navigate('/404')
+        return
       }
 
       if(response._ownerId._id === currentUserId){
