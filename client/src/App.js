@@ -29,6 +29,7 @@ function App() {
   const [isChanged, setIsChanged] = useState(null);
   const [isOwner, setIsOwner] = useState(false)
   const [loading, setLoading]= useState(false)
+  const [userEmail, setUserEmail]= useState(false)
 
 
   //-----Spotify API Access Token ------------
@@ -61,6 +62,7 @@ function App() {
 
     } else {
       setIsLogged(false)
+      setUserEmail(auth()?.email)
 
     }
   }, [auth]);
@@ -93,7 +95,9 @@ function App() {
     setLoading,
     loading,
     errorMessages,
-    setErrorMessages
+    setErrorMessages,
+    userEmail,
+    setUserEmail
     }
 
 
