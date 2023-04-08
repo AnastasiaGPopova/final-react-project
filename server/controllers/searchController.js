@@ -158,7 +158,7 @@ router.post("/", async (req, res) => {
         //SearchItem+ Genre + Year
         if(year !== "all" && rpm === "all" && genres !=="all" && searchItem !== ""){
 
-            console.log(`-------Iteam and year-----------`)
+            console.log(`-------SearchItem+ Genre + Year-----------`)
     
             if(year === "1980-2020"){
                 const result = await recordManager.itemGenreYear1980to2020(searchItem, genres).clone()
@@ -169,14 +169,14 @@ router.post("/", async (req, res) => {
             }
     
             if(year === "2021 and newer"){
-                const result = await recordManager.itemGenreYear2020andNewer(searchItem).clone()
+                const result = await recordManager.itemGenreYear2020andNewer(searchItem, genres).clone()
                 console.log(`--------2021 and newer----------`)
                 console.log(result)
                 return res.json(result)
             }
     
             if(year === "1980 and older"){
-                const result = await recordManager.itemGenreYearear1980andOlder(searchItem).clone()
+                const result = await recordManager.itemGenreYearear1980andOlder(searchItem, genres).clone()
                 console.log(`--------1980 and older----------`)
                 console.log(result)
                 return res.json(result)
