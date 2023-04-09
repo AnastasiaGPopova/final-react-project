@@ -92,8 +92,8 @@ function Details() {
   async function onDeleteClick(id){
     const choise = window.confirm("Are you sure you want to delete this item?")
     if(choise){
-      await data.deleteRecord(id)
       await data.deleteAllCommentsbyUser(recordId)
+      await data.deleteRecord(id)
       setRecords(state => (state.filter(x => x._id !== id)))
     }
   }
