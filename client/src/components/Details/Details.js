@@ -95,6 +95,7 @@ function Details() {
       await data.deleteAllCommentsbyUser(recordId)
       await data.deleteRecord(id)
       setRecords(state => (state.filter(x => x._id !== id)))
+      navigate('/catalog')
     }
   }
   //---------------------------------------
