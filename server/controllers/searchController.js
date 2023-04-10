@@ -212,6 +212,17 @@ router.post("/", async (req, res) => {
             }
         }
 
+
+                //SearchItem+ Genre + RPM
+
+                if(year === "all" && rpm !== "all" && genres !=="all" && searchItem !== ""){
+
+                    console.log(`-------Iteam + Genre + RPM-----------`)
+
+                    const result = await recordManager.itemGenreRPM(searchItem, genres, rpm)
+                    return res.json(result)
+                }
+
 //------------ Combinations with Year
 
 /// Year with PRM

@@ -94,6 +94,14 @@ exports.allYear2020andNwer = (item, genres, rpm) => Record.find(
 );
 
 
+///---With item, genre and rpm
+
+exports.itemGenreRPM = (item, genres, rpm) => Record.find(
+    {"artist": { "$regex": `${item}`, "$options": "i" },"genre": { "$regex": `${genres}`, "$options": "i" }, "rpm": `${rpm}`},
+);
+
+
+
 //year and prm
 
 exports.RPMYear1980to2020 = (rpm) => Record.find(
