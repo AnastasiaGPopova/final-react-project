@@ -13,6 +13,8 @@ function Profile() {
 
   const [allMyRecords, setAllMyRecords] = useState([]);
   const [wishList, setWishlist] = useState([]);
+   
+  const buyOrHave = true
 
   useEffect(() => {
     async function getMy() {
@@ -95,7 +97,7 @@ function Profile() {
       </div>
       <div className={styles.wishbooks}>
         {wishList.map((x) => (
-          <Record key={x._id} {...x} />
+          <Record key={x._id} buyOrHave={buyOrHave} {...x} />
         ))}
         {/* <!--If there are wished books--> */}
         {/* <!--If there are no wished books--> */}

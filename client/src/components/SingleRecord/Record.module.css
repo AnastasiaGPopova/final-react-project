@@ -178,3 +178,91 @@
 .col h1{
     padding: 0;
 }
+
+
+
+
+
+
+
+
+.btnedit,
+.btndelete,
+.btnwish {
+  color: #fff;
+  border: none;
+  padding: 9px;
+  outline: none;
+  font-size: 15.3px;
+  font-weight: 600;
+  margin-top: 40px;
+  border-radius: 9px;
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  -webkit-transition: 300ms ease-in-out;
+  -o-transition: 200ms ease-in-out;
+  transition: 200ms ease-in-out;
+  border-color: gray;
+  border-style: outset;
+  border-width: 3px;
+}
+
+.btn-edit:hover,
+.btn-delete:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.btnedit {
+  background-color: #428aa0;
+}
+
+.btnedit:hover {
+  background-color: #387183;
+  color: white
+}
+
+.btndelete {
+  background-color: #f15505;
+}
+
+.btndelete:hover {
+  background-color: #bd4306de;
+  color: white
+}
+
+.btnwish {
+  background-color: #595c61;
+}
+
+.btnwish:hover {
+  background-color: #4b4d50;
+  color: white
+}
+
+
+.textNew{
+  transform: translate(-0.5px, -220px);
+  font-size: 1.2rem;
+  top: 0;
+  left: 0;
+  background: #5aa8a0;
+  width: 166px;
+  height: 166px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  opacity: 0.7;
+  text-decoration: none;
+  visibility: hidden;
+}
+
+.record:hover .textNew{
+  visibility: visible;
+  text-decoration: none;
+  color: white;
+  /* transform: translateX(-10px); */
+}
