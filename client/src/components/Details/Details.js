@@ -19,6 +19,7 @@ function Details() {
 
   const [currentRecord, setCurrentRecord] = useState({});
   const [isAlreadyWished, setIsAlreadyWished] = useState(false)
+  const [isAlreadyLiked, setIsAlreadyLiked] = useState(false)
   const [postedBy, setPostedBy] = useState('')
 
 
@@ -62,21 +63,40 @@ function Details() {
  
   //--------Set isWished or not------------
   useEffect(() => {
-    if(currentRecord.hasOwnProperty('wishingList')){
-      if(currentRecord.wishingList.includes(currentUserId)){
-        setIsAlreadyWished(true)
+    if(currentRecord.hasOwnProperty('likedBy')){
+      if(currentRecord.likedBy.includes(currentUserId)){
+        setIsAlreadyLiked(true)
       }
+    }
+      if(currentRecord.hasOwnProperty('wishingList')){
+        if(currentRecord.wishingList.includes(currentUserId)){
+          setIsAlreadyWished(true)
+        }
     }
   }, [currentRecord, currentUserId])
  //---------------------------------------
 
   console.log(isOwner)
 
-  //--------on Wish/Like Click------------
+  //--------on Wish Click------------
   async function onWishClick() {
     currentRecord.wishingList.push(currentUserId);
+    setCurrentRecord((state) => ({ ...state, wishingList: currentRecord.wishingList }));
+    let newBody = { ...currentRecord };
+    console.log(`New Body: ${newBody}`)
+    const updatedWish = await data.editRecord(recordId, newBody);
+    setRecords(state => [...state, updatedWish])
+    setIsChanged(updatedWish)
+    navigate(`/records/${recordId}`);
+  }
+   //---------------------------------------
+
+
+     //--------on Like Click------------
+  async function onLikeClick() {
+    currentRecord.likedBy.push(currentUserId);
     currentRecord.likes++
-    setCurrentRecord((state) => ({ ...state, wishingList: currentRecord.wishingList, likes: currentRecord.likes }));
+    setCurrentRecord((state) => ({ ...state, likedBy: currentRecord.likedBy, likes: currentRecord.likes }));
     let newBody = { ...currentRecord };
     console.log(`New Body: ${newBody}`)
     const updatedWish = await data.editRecord(recordId, newBody);
@@ -144,7 +164,7 @@ function Details() {
               {isAlreadyWished ? 
               (
                 <p className={styles.btnwish}>
-                You already liked this record and added it to your wish list
+                You already added it to your wish list!
                 </p>
               )
                :
@@ -153,13 +173,31 @@ function Details() {
                 <Link to={`/records/${currentRecord._id}`}
                   className={styles.btnwish}
                   onClick={onWishClick}
+                > Wish to hear!
+                </Link>
+                </>
+               )
+               }
+              {isAlreadyLiked ? 
+              (
+                <p className={styles.btndelete}>
+                You already liked this record!
+                </p>
+              )
+               :
+               (
+                <>
+                <Link to={`/records/${currentRecord._id}`}
+                  className={styles.btndelete}
+                  onClick={onLikeClick}
                 >
-                <i className="fa-regular fa-heart" /> Love it! Wish to hear!
+                <i className="fa-regular fa-heart" /> Like it!
                 </Link>
                 </>
                )
                }
               </>
+              
             )}
           </div>
            }

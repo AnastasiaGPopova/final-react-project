@@ -7,7 +7,7 @@ import { RecordContext } from "../../contexts/RecordContext";
 import Spinner from "../../utils/Spinner";
 
 function Profile() {
-  const { loading, setLoading } = useContext(RecordContext);
+  const { loading, setLoading, isChanged, records } = useContext(RecordContext);
   const [currentUser, setCurrentUser] = useState({});
   const userId = localStorage.getItem("userId");
 
@@ -46,7 +46,7 @@ function Profile() {
       setLoading(false);
     }
     getWish();
-  }, [setLoading]);
+  }, [setLoading, isChanged, records]);
 
 
   console.log(currentUser);
