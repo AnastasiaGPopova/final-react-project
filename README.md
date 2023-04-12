@@ -6,7 +6,7 @@ I. Introduction
 - MERN stack project - MongoDB, Express.js, React.js, and Nodejs
  - Deploy: 
         https://shiny-peony-05e450.netlify.app
-        - it took some time to initially load/
+        - it takes some time to initially load/ -
 
 II. Getting Started
 
