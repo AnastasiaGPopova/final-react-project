@@ -5,7 +5,7 @@ I. Introduction
 - "Record Me" project is a web app where people can share their passion for vinyl records.
 - MERN stack project - MongoDB, Express.js, React.js, and Nodejs
  - Deploy: 
-        https://shiny-peony-05e450.netlify.app/myProfile
+        https://shiny-peony-05e450.netlify.app
 
 II. Getting Started
 
