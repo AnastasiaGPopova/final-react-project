@@ -22,7 +22,7 @@ function Navigation(){
     return(
     <div className={styles.headerNEW}>
         <nav className={styles.navbar}>
-            <img src="https://i.imgupx.com/NrZyLoyH/Logo.png" alt="" className={styles.logo}/>
+            <img src="/images/Logo.png" alt="" className={styles.logo}/>
             <ul>
             <li> <Link to="/">Home</Link></li>
             <li> <Link to="/catalog">Catalog</Link></li>
